@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panorama de la unidad · Papel y Madera</title>
+<meta name="description" content="Mapa completo de la unidad Papel y Madera: diagrama de flujo interactivo, cifras clave y el hilo conductor celulosa–lignina.">
+<link rel="stylesheet" href="../assets/css/libdoc.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
+<script>window.SITE_ROOT = "../";</script>
+</head>
+<body data-unit="papel-madera">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header id="site-header"></header>
+<div class="scrim"></div>
+
+<div class="layout">
+  <nav class="sidebar" aria-label="Navegación de la unidad"></nav>
+
+  <div class="main-wrap">
+    <main class="content" id="main">
+
+      <nav class="breadcrumb" aria-label="Ruta"></nav>
+
+      <h1>Panorama de la unidad</h1>
+      <p class="lead">
+        La Unidad 10 del programa junta dos industrias que comparten la misma materia prima y la misma
+        química, pero que la aprovechan al revés. La <strong>industria de la madera</strong> quiere conservar
+        la estructura del árbol: corta, seca y arma piezas. La <strong>industria del papel</strong> quiere
+        destruirla: separa las fibras, tira la lignina y las vuelve a tejer en forma de hoja.
+        Entender esa oposición es entender toda la unidad.
+      </p>
+
+      <h2 id="dos-caminos">Dos caminos a partir del mismo tronco</h2>
+
+      <div class="grid grid--2">
+        <div class="card">
+          <p class="card__kicker">Camino A · Conservar la estructura</p>
+          <h3>🪵 Industria de la madera</h3>
+          <p>El objetivo es sacar del tronco la mayor cantidad posible de piezas con forma comercial y
+          dimensionalmente estables. La lignina y la celulosa se dejan donde están: lo que se ataca es
+          el <strong>agua</strong>, porque es el agua la que hace que la madera se mueva.</p>
+          <p class="mb-0"><strong>Producto:</strong> tablas, tablones, vigas, listones, chapas y tableros
+          (contrachapado, aglomerado, MDF).</p>
+        </div>
+        <div class="card">
+          <p class="card__kicker">Camino B · Destruir la estructura</p>
+          <h3>📄 Industria del papel</h3>
+          <p>El objetivo es <em>liberar la fibra</em>. Como las fibras de celulosa están pegadas entre sí por
+          lignina, todo el proceso gira alrededor de romper ese pegamento —a golpes o a los químicos— para
+          después volver a formar una lámina.</p>
+          <p class="mb-0"><strong>Producto:</strong> pasta celulósica, papel de impresión, papel prensa,
+          cartón, papel de embalaje.</p>
+        </div>
+      </div>
+
+      <div class="callout callout--parcial">
+        <p class="callout__title">✔ La frase que resume la unidad</p>
+        <p class="mb-0">
+          El problema del fabricante de pastas es, textualmente según la cátedra,
+          <strong>«separar las fibras unidas entre sí en la planta en crecimiento de manera tal que el fabricante
+          de papel o cartón pueda a su vez reconstruir las fibras separadas en forma de hojas»</strong>.
+          Todo lo que sigue —pasta mecánica, pasta química, kraft, sulfito— son maneras distintas de
+          resolver ese único problema.
+        </p>
+      </div>
+
+      <h2 id="flujo">Del árbol al papel, etapa por etapa</h2>
+      <p>
+        Este es el recorrido completo de la línea de celulosa y papel tal como lo presenta la cátedra.
+        Tocá cada etapa para ver qué entra, qué sale, con qué equipo se hace y qué variables se controlan.
+      </p>
+
+      <div class="flow" data-flow="flow-master"></div>
+
+      <script type="application/json" id="flow-master">
+      [
+        {
+          "n": "I",
+          "titulo": "Bosque y transporte",
+          "sub": "Materia prima",
+          "cuerpo": "La madera se obtiene <strong>en forma sustentable de bosques cultivados</strong> del país y se traslada en camiones a la fábrica de celulosa, donde se deposita en la <em>cancha de acopio</em> del sector industrial. La cátedra insiste en que por ley es obligatorio replantar más árboles de los que se talan.",
+          "entra": "Árboles en pie de forestación cultivada",
+          "sale": "Rollizos en cancha de acopio",
+          "equipo": "Motosierras, cosechadoras forestales, camiones",
+          "variables": "Especie, diámetro y edad del rollizo; humedad de campo"
+        },
+        {
+          "n": "II",
+          "titulo": "Descortezado",
+          "sub": "Separar corteza",
+          "cuerpo": "Los trozos entran a la fábrica para sacarles la cáscara y la corteza. Los troncos pasan sobre rodillos que arrancan la corteza. <strong>La corteza no se desecha: se usa como combustible</strong> para generar energía en la propia planta.",
+          "entra": "Rollizos con corteza",
+          "sale": "Rollizos limpios + corteza (biomasa)",
+          "equipo": "Descortezador de tambor o de rodillos",
+          "variables": "Tiempo de residencia en el tambor; % de corteza residual"
+        },
+        {
+          "n": "III",
+          "titulo": "Chipeado",
+          "sub": "Astillas",
+          "cuerpo": "La madera es picada en pequeñas partes o astillas por una máquina llamada <strong>chipeadora</strong>. Las astillas se clasifican por tamaño en el <strong>harnero</strong> y se acumulan en grandes pilas a la espera de ser utilizadas. El objetivo es aumentar la superficie de contacto para que el licor penetre parejo.",
+          "entra": "Rollizos descortezados",
+          "sale": "Chips o astillas de tamaño controlado",
+          "equipo": "Chipeadora, cintas transportadoras, harnero (zaranda)",
+          "variables": "Granulometría del chip; finos y sobretamaño a rechazar"
+        },
+        {
+          "n": "IV",
+          "titulo": "Cocción",
+          "sub": "Digestor",
+          "cuerpo": "Las astillas son sumergidas a alta temperatura, <strong>entre 130 y 179 °C</strong>, en un <em>licor</em> compuesto de agua y otros productos químicos —sulfitos y soda cáustica— para separar las fibras de la madera y obtener pasta de celulosa. Acá también se obtienen <strong>lignina y hemicelulosa</strong>, sustancias que se reciclan y se aprovechan en otras partes del proceso.",
+          "entra": "Chips + licor de cocción + vapor",
+          "sale": "Pasta cruda + licor negro (lignina y hemicelulosas disueltas)",
+          "equipo": "Digestor presurizado",
+          "variables": "Temperatura (130–179 °C), presión, tiempo de cocción, carga alcalina"
+        },
+        {
+          "n": "V",
+          "titulo": "Lavado y cribado",
+          "sub": "Depuración",
+          "cuerpo": "La pasta se lava para arrastrar el licor gastado y los químicos residuales, y se criba para retirar nudos, incocidos y material que no llegó a desfibrarse. El licor recuperado vuelve al circuito de recuperación química: es lo que hace que la fábrica de pasta química sea <strong>autosuficiente desde el punto de vista energético</strong>.",
+          "entra": "Pasta cruda + agua de lavado",
+          "sale": "Pasta lavada y depurada + licor negro a recuperación",
+          "equipo": "Lavadores, cribas o depuradores",
+          "variables": "Consistencia de la pasta; arrastre de sólidos; pérdidas de álcali"
+        },
+        {
+          "n": "VI",
+          "titulo": "Blanqueo",
+          "sub": "Quitar color",
+          "cuerpo": "La pasta se deposita en tambores donde se agregan productos químicos para blanquearla: <strong>dióxido de cloro, oxígeno, peróxido y soda cáustica</strong>. Se hace en varias etapas sucesivas y su intensidad depende del grado de blancura que pida el producto final.",
+          "entra": "Pasta depurada + agentes de blanqueo",
+          "sale": "Pasta blanqueada + efluente de blanqueo",
+          "equipo": "Torres y tambores de blanqueo en secuencia",
+          "variables": "Secuencia de reactivos, dosis, pH, temperatura, blancura ISO objetivo"
+        },
+        {
+          "n": "VII",
+          "titulo": "Formación de la hoja",
+          "sub": "Mesa formadora",
+          "cuerpo": "La pulpa blanqueada se mezcla con una enorme cantidad de agua —<strong>más del 95 % de la mezcla es agua</strong>— y aditivos como almidón o caolín para darle opacidad y suavidad. La mezcla se vierte de manera uniforme, desde la <em>caja de entrada</em>, sobre una tela transportadora continua de malla fina en movimiento.",
+          "entra": "Pasta + agua (>95 %) + cargas y aditivos",
+          "sale": "Manto de fibras entrelazadas, todavía empapado",
+          "equipo": "Caja de entrada, mesa formadora, tela sin fin, cajas aspirantes",
+          "variables": "Consistencia de la suspensión, velocidad de la tela, gramaje, formación"
+        },
+        {
+          "n": "VIII",
+          "titulo": "Prensado",
+          "sub": "Agua mecánica",
+          "cuerpo": "La hoja húmeda pasa entre rodillos que la comprimen. El agua se quita por medios mecánicos, que son mucho más baratos que evaporarla. Según la infografía de ASPAPEL de la presentación, el prensado <strong>reduce el contenido de agua al 50 %</strong>.",
+          "entra": "Hoja húmeda de la mesa formadora",
+          "sale": "Hoja compactada, ~50 % de agua",
+          "equipo": "Rodillos prensadores (una o dos etapas), fieltros",
+          "variables": "Presión de línea, cantidad de nips, riesgo de aplastar la hoja"
+        },
+        {
+          "n": "IX",
+          "titulo": "Secado",
+          "sub": "Agua térmica",
+          "cuerpo": "El agua que queda ya no sale por presión: hay que evaporarla. La hoja recorre en <strong>zigzag</strong> una batería de cilindros metálicos calentados con vapor <strong>a más de 100 °C</strong>, complementados con hornos de aire caliente. Es la etapa que más energía consume de toda la máquina.",
+          "entra": "Hoja prensada",
+          "sale": "Hoja de papel seca y continua",
+          "equipo": "Cilindros secadores (batería en serie), campanas de aire caliente",
+          "variables": "Curva de temperatura, velocidad de secado, humedad final de la hoja"
+        },
+        {
+          "n": "X",
+          "titulo": "Estucado y calandrado",
+          "sub": "Acabado superficial",
+          "cuerpo": "Dos operaciones opcionales de acabado. El <strong>estucado</strong> baña el papel con una capa de pigmentos y aditivos —hasta <strong>tres veces</strong> en papeles de imprenta de alta calidad— para mejorar la impresión. El <strong>calandrado</strong> lo pasa por rodillos de acero muy pulidos, las <em>calandrias</em>, que lo alisan y satinan: la comparación de la infografía es «igual que al planchar una camisa».",
+          "entra": "Papel seco",
+          "sale": "Papel liso, satinado, de baja porosidad y alto brillo",
+          "equipo": "Estucadora, calandria (rodillos de acero de gran diámetro)",
+          "variables": "Presión entre rodillos, temperatura, número de pasadas"
+        },
+        {
+          "n": "XI",
+          "titulo": "Corte y embalado",
+          "sub": "Producto final",
+          "cuerpo": "El papel se corta y se enrolla en bobinas, o se corta en hojas y se arma en resmas. Se inspecciona visualmente y se etiqueta. En el caso de las plantas de celulosa que no fabrican papel, la celulosa seca se almacena en <strong>fardos o paquetes</strong> para transportarla a las papeleras.",
+          "entra": "Hoja continua terminada",
+          "sale": "Bobinas, resmas o fardos de celulosa",
+          "equipo": "Bobinadora, mesa de corte, enfardadora, sistemas de etiquetado",
+          "variables": "Ancho y diámetro de bobina, gramaje, control visual de defectos"
+        }
+      ]
+      </script>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Dónde se bifurca el proceso</p>
+        <p class="mb-0">
+          Las etapas <strong>I a III</strong> son idénticas para cualquier tipo de pasta. La bifurcación
+          real está en la etapa IV: si en lugar de cocinar los chips se los tritura mecánicamente, se obtiene
+          <strong>pasta mecánica</strong> y el proceso saltea el digestor. De ahí en adelante, la línea de
+          formación de hoja —etapas VII a XI— es la misma para las dos.
+        </p>
+      </div>
+
+      <h2 id="cifras">Las cifras que hay que saber sí o sí</h2>
+      <p>
+        Son las que se prestan a multiple choice porque son concretas y fáciles de confundir entre sí.
+        En <a href="datos-clave.html">Tabla maestra de datos</a> está la lista completa con su fuente.
+      </p>
+
+      <div class="stats">
+        <div class="stat"><span class="stat__value">50 %</span><span class="stat__label">Celulosa en la madera (rango 40–50 %)</span></div>
+        <div class="stat"><span class="stat__value">30 %</span><span class="stat__label">Lignina (rango 20–30 %)</span></div>
+        <div class="stat"><span class="stat__value">15–25 %</span><span class="stat__label">Hemicelulosa</span></div>
+        <div class="stat"><span class="stat__value">2–15 %</span><span class="stat__label">Extractivos</span></div>
+        <div class="stat"><span class="stat__value">130–179 °C</span><span class="stat__label">Temperatura de cocción</span></div>
+        <div class="stat"><span class="stat__value">95 %</span><span class="stat__label">Rendimiento de la pasta mecánica</span></div>
+        <div class="stat"><span class="stat__value">&gt;95 %</span><span class="stat__label">Agua en la suspensión de formación</span></div>
+        <div class="stat"><span class="stat__value">50 %</span><span class="stat__label">Agua que queda tras el prensado</span></div>
+        <div class="stat"><span class="stat__value">&gt;100 °C</span><span class="stat__label">Cilindros secadores</span></div>
+        <div class="stat"><span class="stat__value">10–20 %</span><span class="stat__label">Agua que retiene la madera en clima templado</span></div>
+        <div class="stat"><span class="stat__value">≈ 17</span><span class="stat__label">Árboles por tonelada de papel blanco</span></div>
+        <div class="stat"><span class="stat__value">≈ 10 L</span><span class="stat__label">Agua por hoja de papel</span></div>
+      </div>
+
+      <h2 id="hilo">El hilo conductor: celulosa contra lignina</h2>
+      <p>
+        Si hay una sola idea que sostiene toda la unidad es esta oposición. Casi cualquier pregunta de
+        parcial se puede contestar razonando desde acá.
+      </p>
+
+      <table>
+        <caption>Los dos protagonistas de la unidad</caption>
+        <thead>
+          <tr><th>&nbsp;</th><th>Celulosa</th><th>Lignina</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Qué es</strong></td><td>Polisacárido estructural formado por unidades de glucosa</td><td>Polímero amorfo de estructura irregular, formado por unidades de fenilpropano</td></tr>
+          <tr><td><strong>Papel en el árbol</strong></td><td>El esqueleto: da resistencia mecánica y mantiene el árbol en pie</td><td>El cemento: pega firmemente las fibras entre sí y protege de hongos, bacterias e insectos</td></tr>
+          <tr><td><strong>Frente al agua</strong></td><td>Altamente <strong>hidrofílica</strong></td><td><strong>Hidrófoba</strong>: sella las paredes celulares</td></tr>
+          <tr><td><strong>Proporción</strong></td><td class="t-num">40–50 %</td><td class="t-num">20–30 %</td></tr>
+          <tr><td><strong>Qué quiere el papelero</strong></td><td><strong>Conservarla</strong> y separarla en fibras individuales</td><td><strong>Eliminarla</strong>, porque mientras esté ahí las fibras siguen pegadas</td></tr>
+          <tr><td><strong>Si queda lignina</strong></td><td>—</td><td>El papel amarillea con el tiempo y es menos resistente</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ La confusión número uno</p>
+        <p class="mb-0">
+          <strong>La lignina no es la que da resistencia al papel: es la que se la saca.</strong>
+          Da rigidez al <em>árbol</em>, pero en el papel es un estorbo. Por eso la pasta química, que la elimina,
+          da papeles más resistentes que la mecánica, que la conserva. Es un clásico de multiple choice.
+        </p>
+      </div>
+
+      <h2 id="mapa">Mapa de las páginas</h2>
+      <p>Cómo está organizado el desarrollo y en qué orden conviene leerlo.</p>
+
+      <div class="grid grid--2">
+        <div class="card">
+          <p class="card__kicker">Bloque 1 · La madera</p>
+          <ul class="mb-0">
+            <li><a href="madera.html">La madera como material</a> — anatomía del tronco y química</li>
+            <li><a href="clasificacion.html">Clasificación</a> — duras, blandas y tableros artificiales</li>
+            <li><a href="obtencion.html">Procesos de obtención</a> — tala, descortezado, aserrado, secado</li>
+            <li><a href="contrachapado.html">Contrachapado</a> — pelado rotativo y prensado</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p class="card__kicker">Bloque 2 · El papel</p>
+          <ul class="mb-0">
+            <li><a href="papel.html">El papel</a> — qué es y qué madera se usa</li>
+            <li><a href="pastas.html">Tipos de pasta</a> — mecánica, química, kraft, sulfito</li>
+            <li><a href="celulosa.html">Producción de celulosa</a> — las siete etapas</li>
+            <li><a href="maquina-papel.html">La máquina de papel</a> — de la suspensión a la bobina</li>
+            <li><a href="bagazo.html">Papel de caña de azúcar</a> — materia prima alternativa</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p class="card__kicker">Bloque 3 · Cierre</p>
+          <ul class="mb-0">
+            <li><a href="ambiente.html">Cuestiones medioambientales</a> — agua, residuos, aire, bosques</li>
+            <li><a href="datos-clave.html">Tabla maestra de datos</a> — todos los números juntos</li>
+            <li><a href="glosario.html">Glosario</a> — el vocabulario completo</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p class="card__kicker">Bloque 4 · Práctica</p>
+          <ul class="mb-0">
+            <li><a href="flashcards.html">Flashcards</a> — memorización por bloque</li>
+            <li><a href="quiz.html">Autoevaluación</a> — multiple choice con corrección</li>
+          </ul>
+          <p class="small text-soft" style="margin-top:.7rem;margin-bottom:0">Dejalos para el final, cuando ya hayas leído el desarrollo.</p>
+        </div>
+      </div>
+
+      <h2 id="trampas">Las cinco trampas clásicas de esta unidad</h2>
+      <ol>
+        <li><strong>Confundir pasta mecánica con pasta química.</strong> La mecánica tiene <em>alto rendimiento y baja calidad</em>; la química, <em>bajo rendimiento y alta calidad</em>. Si en la respuesta aparecen «alto rendimiento» y «alta resistencia» juntos, está mal.</li>
+        <li><strong>Confundir fibra larga con fibra corta.</strong> Blandas = fibra larga = papeles resistentes (embalaje, cartón, diario). Duras = fibra corta = papeles de impresión y escritura.</li>
+        <li><strong>Confundir albura con duramen.</strong> Albura: exterior, clara, <em>fisiológicamente activa</em>, conduce savia bruta. Duramen: interior, oscuro, <em>fisiológicamente muerto</em>, solo sostén.</li>
+        <li><strong>Confundir aglomerado con MDF.</strong> Aglomerado = virutas visibles, poroso, barato, hay que taparlo. MDF = fibras microscópicas, homogéneo, se puede fresar y pintar directo.</li>
+        <li><strong>Creer que la corteza es un residuo.</strong> La cátedra lo dice dos veces: la corteza <em>se usa como combustible</em>. Es un subproducto energético, no un descarte.</li>
+      </ol>
+
+      <nav class="pager"></nav>
+
+      <p class="page-foot">
+        Fuente principal: presentación <em>PAPEL Y MADERA 2026</em> (93 diapositivas), Ing. Vivian N. Coggiola,
+        UTN FRC · Procesos Industriales. Complementada con las transcripciones de los videos de la
+        Universidad Virtual y con la infografía de ASPAPEL incluida en la presentación.
+      </p>
+
+    </main>
+    <aside class="toc" aria-label="Contenido de la página"></aside>
+  </div>
+</div>
+
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/study.js"></script>
+</body>
+</html>

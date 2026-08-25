@@ -1,0 +1,31 @@
+# ---------------------------------------------------------------------------
+# Este repositorio publica ÚNICAMENTE el sitio de apuntes (web/) y su
+# documentación. El material de la cátedra —presentaciones, notas y
+# reglamento— es de autoría de los docentes y NO se sube.
+# ---------------------------------------------------------------------------
+
+# Ignorar todo por defecto
+/*
+
+# Permitir explícitamente lo que sí se publica
+!/web/
+!/CLAUDE.md
+!/README.md
+!/.gitignore
+!/.github/
+
+# Nunca, bajo ninguna circunstancia, material de la cátedra
+*.pdf
+*.ppt
+*.pptx
+*.doc
+*.docx
+*.xls
+*.xlsx
+
+# Basura del sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+*.tmp
+*~
