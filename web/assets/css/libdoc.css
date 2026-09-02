@@ -730,3 +730,60 @@ a.unit:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border
 .mb-0 { margin-bottom: 0 !important; }
 .text-soft { color: var(--c-text-soft); }
 .small { font-size: .85rem; }
+
+/* =========================================================================
+   Figuras (fotos e ilustraciones de Instalaciones Industriales)
+   ========================================================================= */
+.figure {
+  margin: 1.6rem 0; padding: .9rem .9rem .8rem;
+  border: 1px solid var(--c-border); border-radius: var(--radius);
+  background: var(--c-surface); box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+.figure img, .figure svg { display: block; margin: 0 auto; border-radius: 4px; }
+.figure--alta img { max-height: 520px; width: auto; }
+.figure figcaption {
+  margin-top: .6rem; text-align: left; font-size: .86rem;
+  color: var(--c-text-soft); line-height: 1.5;
+}
+.figure-row {
+  display: grid; gap: 1rem; margin: 1.6rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.figure-row .figure { margin: 0; }
+
+/* =========================================================================
+   Calculadoras interactivas (Instalaciones Industriales)
+   ========================================================================= */
+.calc {
+  margin: 1.6rem 0; padding: 1.1rem 1.2rem;
+  border: 1px solid var(--c-border); border-radius: var(--radius);
+  background: var(--c-bg-soft); box-shadow: var(--shadow-sm);
+}
+.calc > h4 { margin-top: 0; }
+.calc .ayuda { color: var(--c-text-soft); font-size: .86rem; }
+.calc .campos {
+  display: grid; gap: .8rem; margin: .9rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+.calc .campo label { display: block; font-size: .8rem; color: var(--c-text-soft); margin-bottom: .25rem; }
+.calc .campo input {
+  width: 100%; padding: .45rem .6rem; border: 1px solid var(--c-border-strong);
+  border-radius: 6px; background: var(--c-surface); color: var(--c-text); font: inherit;
+}
+.calc .salida { border-top: 1px solid var(--c-border); margin-top: .9rem; padding-top: .9rem; }
+.calc .linea { display: flex; justify-content: space-between; gap: 1rem; padding: .2rem 0; }
+.calc .linea.total {
+  font-weight: 700; border-top: 1px dashed var(--c-border-strong);
+  margin-top: .4rem; padding-top: .5rem;
+}
+.calc .barrita {
+  display: flex; height: 10px; border-radius: 5px; overflow: hidden;
+  margin: .7rem 0 .4rem; background: var(--c-bg-sunken);
+}
+.calc .barrita i { display: block; height: 100%; }
+.calc .leyendaBarra { display: flex; flex-wrap: wrap; gap: 1rem; font-size: .82rem; color: var(--c-text-soft); }
+.calc .leyendaBarra i {
+  display: inline-block; width: 10px; height: 10px; border-radius: 2px;
+  margin-right: .35rem; vertical-align: middle;
+}

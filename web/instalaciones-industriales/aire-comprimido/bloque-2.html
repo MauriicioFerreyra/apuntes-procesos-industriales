@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tratamiento del aire comprimido · Bloque 2 · Aire Comprimido</title>
+<meta name="description" content="Post-enfriador, secado y filtrado del aire comprimido. Bloque 2 de la unidad de Aire Comprimido, Instalaciones Industriales, UTN FRC.">
+<link rel="stylesheet" href="../../assets/css/libdoc.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💨</text></svg>">
+<script>window.SITE_ROOT = "../../";</script>
+</head>
+<body data-materia="instalaciones-industriales" data-unidad="aire-comprimido">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header id="site-header"></header>
+<div class="scrim"></div>
+
+<div class="layout">
+  <nav class="sidebar" aria-label="Navegación de la unidad"></nav>
+
+  <div class="main-wrap">
+    <main class="content" id="main">
+
+      <nav class="breadcrumb" aria-label="Ruta"></nav>
+
+      <h1>Tratamiento del aire comprimido</h1>
+      <p class="lead">
+        Post-enfriador, secado y filtrado: cómo se lleva el aire desde la descarga del compresor hasta
+        la calidad que pide el consumo.
+      </p>
+      <p class="text-soft small">Bloque 2 · Apunte de cátedra, páginas 32 a 48 · Ing. Luciano Manavella · Instalaciones Industriales, UTN FRC</p>
+
+      <div class="flow" data-flow="flow-tren"></div>
+      <script type="application/json" id="flow-tren">
+[
+  { "n":"1","titulo":"Compresor","sub":"Bloque 1","cuerpo":"Entrega el aire a presión, pero caliente y con toda el agua que aspiró junto con el aire atmosférico.","entra":"Aire atmosférico","sale":"8 bar · 80 °C · HR ≈ 3 %","equipo":"Compresor (bloque 1)","variables":"Presión y temperatura de descarga" },
+  { "n":"2","titulo":"Post-enfriador","sub":"+ separador","cuerpo":"Enfría el aire caliente que sale del compresor para precipitar el grueso del agua de condensación, con un separador y purga automática.","entra":"8 bar · 80 °C","sale":"≈30 °C · HR 100 %","equipo":"Refrigerador posterior agua-aire o aire-aire, con separador de humedad","variables":"Temperatura de salida (≈10 °C por encima del refrigerante) · retira 80-90 % del agua" },
+  { "n":"3","titulo":"Depósito","sub":"Bloque 3","cuerpo":"Pulmón que compensa la diferencia entre el caudal generado y el consumido. El aire llega saturado, sigue enfriándose un poco y sigue apareciendo condensado.","entra":"Aire saturado a ≈30 °C","sale":"30 °C · sigue saturado","equipo":"Depósito o pulmón, con purga automática","variables":"Capacidad del depósito (bloque 3)" },
+  { "n":"4","titulo":"Pre-filtro coalescente","sub":"aerosoles","cuerpo":"Le saca los aerosoles de aceite al aire antes del secador, para que no arruinen el desecante ni ensucien el intercambiador.","entra":"Aire con aerosoles de aceite","sale":"Aire sin aerosoles, listo para el secador","equipo":"Filtro coalescente","variables":"Eficiencia de coalescencia" },
+  { "n":"5","titulo":"Secador","sub":"fija el PRP","cuerpo":"Fija el punto de rocío a presión de toda la red aguas abajo. Recibe aire ya frío y libre de agua líquida, condición que el apunte exige explícitamente para el de adsorción.","entra":"Aire frío, sin agua líquida","sale":"PRP +3 °C (refrigeración) o hasta −40 °C (adsorción)","equipo":"Secador frigorífico, por absorción, por adsorción, sobrecompresión o membrana","variables":"Punto de rocío a presión (PRP) objetivo" },
+  { "n":"6","titulo":"Filtro final","sub":"partículas, carbón activo","cuerpo":"Retiene el polvo que suelta el secador (si es de adsorción) y ajusta la calidad del aire a la clase ISO que pide el consumo. Si hay carbón activo, el filtro de polvo va después de él.","entra":"Aire seco con partículas del desecante","sale":"Aire a la clase ISO exigida","equipo":"Filtro de partículas ± carbón activo","variables":"Clase ISO 8573-1 requerida por el consumo" },
+  { "n":"7","titulo":"Consumo","sub":"Bloque 4","cuerpo":"El aire llega al punto de uso con la presión, temperatura, sequedad y limpieza que este bloque le fue dando.","entra":"Aire tratado","sale":"Aire de uso (bloque 4)","equipo":"Red y consumos (bloques 3 y 4)","variables":"—" }
+]
+      </script>
+      <p class="text-soft small">
+        El tren completo. El Bloque 1 terminó en la primera caja y el Bloque 3 arranca en la tercera.
+        Todo lo que hay en el medio es este bloque. Tocá cualquier etapa para ver qué entra, qué sale,
+        con qué equipo se hace y qué variables se controlan.
+      </p>
+
+      <div class="card">
+        <p class="card__kicker">Objetivos de aprendizaje</p>
+        <ul class="mb-0">
+          <li>Explicar por qué el aire que sale del compresor no sirve tal cual, y qué le falta.</li>
+          <li>Manejar sin dudar la diferencia entre punto de rocío atmosférico y punto de rocío a presión, y saber convertir uno en otro.</li>
+          <li>Describir qué hace el refrigerador posterior, cuánta agua saca y por qué no alcanza.</li>
+          <li>Enumerar las cinco técnicas de secado, decir qué PRP alcanza cada una y cuándo se usa.</li>
+          <li>Distinguir absorción de adsorción, y las cuatro formas de regenerar el desecante con sus consumos.</li>
+          <li>Explicar los tres mecanismos de captura de partículas y por qué existe un tamaño más difícil de filtrar.</li>
+          <li>Ordenar correctamente los equipos del tren y justificar cada posición.</li>
+        </ul>
+      </div>
+
+      <div class="grid grid--3">
+        <div class="card"><p class="card__kicker">Lo que traés del bloque 0</p><p class="mb-0">Aire húmedo, humedad relativa, punto de rocío, condensado, clases ISO 8573-1.</p></div>
+        <div class="card"><p class="card__kicker">Lo que traés del bloque 1</p><p class="mb-0">El compresor entrega aire caliente, a presión, con aceite y con toda el agua que aspiró.</p></div>
+        <div class="card"><p class="card__kicker">Lo que falta</p><p class="mb-0">Bajarle la temperatura, sacarle el agua, sacarle el aceite y las partículas.</p></div>
+      </div>
+      <div class="grid grid--3">
+        <div class="card"><p class="card__kicker">Enfriar</p><p class="mb-0">Refrigerador posterior: precipita el grueso del agua apenas sale del compresor.</p></div>
+        <div class="card"><p class="card__kicker">Secar</p><p class="mb-0">Cinco técnicas. Todas hacen lo mismo: fijar un punto de rocío a presión.</p></div>
+        <div class="card"><p class="card__kicker">Filtrar</p><p class="mb-0">Partículas, aerosoles y vapores, cada uno con su mecanismo.</p></div>
+      </div>
+
+      <h2 id="s1">De dónde venimos y qué resuelve este bloque</h2>
+
+      <p>En el bloque 1 el aire salió del compresor a <span class="val">8 bar</span> y a unos <span class="val">80 °C</span>. Está a presión, que es lo que queríamos, pero viene con tres cosas que nadie pidió: el calor de la compresión, toda el agua que el compresor aspiró junto con el aire, y el aceite y las partículas que arrastró en el camino.</p>
+
+      <p>El agua es el problema central de este bloque, y conviene ver por qué con la cadena causal completa, porque es exactamente lo que te van a pedir que expliques.</p>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ La cadena causal del agua</p>
+        <p>El compresor aspira aire atmosférico con vapor de agua. Ese vapor no se comprime aparte: viaja con el aire y se comprime con él. Al reducir el volumen ocho veces, la presión parcial del vapor también se multiplica por ocho, o sea que el aire queda con una concentración de agua ocho veces mayor.</p>
+        <p>Sin embargo, <strong>durante la compresión no se condensa nada</strong>. La temperatura sube tanto que la presión de saturación crece mucho más rápido que la presión parcial del vapor, y el aire termina la compresión más lejos de la saturación que cuando entró. Por eso a la salida del compresor la humedad relativa es bajísima, del orden del 3 %.</p>
+        <p class="mb-0">El agua aparece cuando el aire se enfría. Y se va a enfriar sí o sí: en el refrigerador posterior si lo pusiste, o en la cañería de la red si no lo pusiste. La única pregunta es dónde querés que aparezca.</p>
+      </div>
+
+      <figure class="figure">
+        <img src="fig/g_humedad.svg" alt="Humedad relativa del aire en cinco puntos del circuito: 70 % en aspiración, 3 % en la descarga del compresor, 100 % a la salida del post-enfriador y del secador, y 22 % una vez recalentado en la red.">
+        <figcaption>La humedad relativa a lo largo del circuito. El compresor la derrumba porque calienta; el post-enfriador y el secador la llevan al 100 % porque enfrían, y por eso en esos dos equipos hay agua líquida. Recién cuando el aire se recalienta en la red vuelve a bajar, y ahí es donde el aire deja de mojar la instalación.</figcaption>
+      </figure>
+
+      <p>Esa figura resume el bloque entero. El tratamiento consiste en provocar la condensación en el lugar controlado, sacarla, y dejar el aire lo suficientemente seco como para que en ningún punto de la red vuelva a alcanzar la saturación.</p>
+
+      <h2 id="s2">El vocabulario del agua</h2>
+
+      <p>Antes de hablar de equipos hay que fijar tres términos, porque el apunte los usa todo el tiempo y en el parcial se confunden.</p>
+
+      <h3>Humedad relativa</h3>
+      <p>Es el grado de saturación del aire con vapor de agua a una temperatura dada, expresado en porcentaje. Dice qué tan cerca está el aire de no poder retener más vapor. No dice cuánta agua hay: 100 % de humedad relativa a −20 °C es muchísima menos agua que 50 % a 40 °C.</p>
+
+      <h3>Punto de rocío</h3>
+      <p>Es la temperatura a la que el aire se satura con vapor de agua. Si la temperatura baja de ahí, se condensa. Es la forma útil de medir cuánta agua hay, porque es una temperatura y se compara directamente con la temperatura de la instalación.</p>
+
+      <h3>Punto de rocío a presión, <span class="term">PRP</span></h3>
+      <p>Es el punto de rocío del aire <em>a la presión de trabajo</em>. Es el que importa en aire comprimido, porque la red está a presión y lo que uno quiere saber es si en la cañería, a 8 bar y a la temperatura que haga, va a haber agua líquida o no.</p>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Por qué el PRP cambia con la presión</p>
+        <p>Si comprimís el aire sin sacarle nada de agua, la cantidad de vapor por kilo de aire seco no cambia, pero la presión parcial del vapor sube en la misma proporción que la presión total. Una presión parcial más alta se satura a una temperatura más alta. Entonces <strong>comprimir sube el punto de rocío</strong> aunque no hayas agregado una sola gota de agua.</p>
+        <p class="mb-0">Al revés: si expandís el aire a la atmósfera, la presión parcial del vapor cae y el punto de rocío baja. Por eso un mismo aire, medido a 7 bar, tiene un punto de rocío mucho más alto que medido en atmósfera.</p>
+      </div>
+
+      <p>El apunte da el ejemplo directo: un PRP de <span class="val">+2 °C a 7 bar</span> equivale a <span class="val">−25 °C</span> a presión atmosférica, y un PRP de <span class="val">+2 °C a 3 bar</span> equivale a <span class="val">−15 °C</span> atmosféricos.</p>
+
+      <figure class="figure">
+        <img src="fig/g_equivalencia.svg" alt="Gráfico de equivalencia entre punto de rocío a presión y punto de rocío referido a presión atmosférica, para presión atmosférica, 3 bar manométricos y 7 bar manométricos.">
+        <figcaption>Equivalencia entre las dos formas de expresar el punto de rocío. Reconstrucción de la <strong>Fig. 28</strong> del apunte con los dos ejemplos del texto marcados. A igual contenido de agua, cuanto mayor es la presión de trabajo, más alto queda el punto de rocío medido a esa presión.</figcaption>
+      </figure>
+
+      <figure class="figure">
+        <img src="fig/f28_prp.jpg" alt="Figura 28 del apunte: gráfico de punto de rocío a presión contra punto de rocío a presión atmosférica.">
+        <figcaption><strong>Fig. 28</strong> del apunte, tal como está en el original.</figcaption>
+      </figure>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ Error frecuente</p>
+        <p class="mb-0">Comparar dos secadores usando puntos de rocío referidos a presiones distintas. Un secador que promete “−25 °C” medidos en atmósfera y otro que promete “+2 °C a 7 bar” están ofreciendo exactamente lo mismo. El apunte lo dice explícitamente: el punto de rocío atmosférico no se puede comparar con el PRP al cotejar secadores diferentes.</p>
+      </div>
+
+      <div class="calc">
+        <h4>Conversor de punto de rocío</h4>
+        <p class="ayuda">Poné el PRP y la presión de trabajo y te devuelve el punto de rocío equivalente medido en atmósfera. Sirve para comprobar los dos ejemplos del apunte.</p>
+        <div class="campos">
+          <div class="campo"><label for="c1prp">PRP [°C]</label><input id="c1prp" type="number" value="2" step="1"></div>
+          <div class="campo"><label for="c1p">Presión manométrica [bar]</label><input id="c1p" type="number" value="7" step="0.5"></div>
+        </div>
+        <div class="salida">
+          <div class="linea total"><span>Punto de rocío a presión atmosférica</span><b id="c1out">−25 °C</b></div>
+          <p class="ayuda mb-0" style="margin-top:.7rem">El apunte lee estos valores sobre el gráfico de la Fig. 28, así que puede haber un grado de diferencia con el cálculo.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <p class="card__kicker">El criterio económico</p>
+        <p class="mb-0">Cuanto menor sea el punto de rocío necesario, mayores son los costos de inversión y de operación del secador. No se especifica el aire más seco posible: se especifica el aire que la aplicación necesita, y ni un grado menos. La norma que ordena esa decisión es la ISO 8573-1 que viste en el bloque 0.</p>
+      </div>
+
+      <h2 id="s3">Refrigerador posterior (post-enfriador)</h2>
+
+      <p>Es un intercambiador de calor que enfría el aire comprimido caliente que sale del compresor, para precipitar el agua que, si no, se condensaría en las tuberías. Va <strong>inmediatamente después del compresor</strong>, y viene dotado generalmente de un separador de humedad con purga automática.</p>
+
+      <p>La lógica de ubicarlo ahí es la de la cadena causal: el aire se va a enfriar en algún lado. Si lo enfriás vos, en un equipo con separador y purga, el agua sale por un caño de desagote. Si lo dejás enfriar solo en la red, el agua aparece dentro de las cañerías, moja los consumos y oxida todo desde adentro.</p>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Los tres números del post-enfriador</p>
+        <ul class="mb-0">
+          <li>La temperatura de salida es aproximadamente <span class="val">10 °C</span> por encima de la temperatura del refrigerante, aunque varía según el tipo de refrigerador.</li>
+          <li>Elimina entre el <span class="val">80 y el 90 %</span> del agua de condensación.</li>
+          <li>Se usa prácticamente en todas las instalaciones estacionarias. Los compresores modernos lo llevan integrado de fábrica.</li>
+        </ul>
+      </div>
+
+      <h3>Los dos tipos, según el refrigerante</h3>
+      <p>Se clasifican por el fluido que hace el enfriamiento:</p>
+      <ul>
+        <li><strong>Agua-aire</strong>: el refrigerante es agua. Da temperaturas de salida más bajas y más estables, porque el agua de red no depende de la temperatura del día. Es el que aparece en las Fig. 29 a 31.</li>
+        <li><strong>Aire-aire</strong>: el refrigerante es el aire atmosférico, movido por un ventilador. Más simple, sin consumo de agua, pero la temperatura de salida queda atada a la temperatura ambiente, y en verano eso se nota.</li>
+      </ul>
+
+      <div class="figure-row">
+        <figure class="figure">
+          <img src="fig/f29a_seccion.jpg" alt="Sección de un refrigerador posterior de agua, modelo horizontal, con el haz tubular visible.">
+          <figcaption>Sección de un refrigerador posterior de agua, modelo horizontal. Se ve el haz tubular por el que circula el agua y el separador de humedad a la salida.</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="fig/f29_aguaaire.jpg" alt="Figura 29 del apunte: refrigerador posterior agua-aire con separador de humedad y purga de condensado.">
+          <figcaption><strong>Fig. 29</strong> Refrigerador posterior agua-aire. El aire caliente entra por la izquierda, cruza el haz, y el separador de la derecha manda el condensado al desagote.</figcaption>
+        </figure>
+      </div>
+
+      <div class="figure-row">
+        <figure class="figure">
+          <img src="fig/f30_horizontal.jpg" alt="Figura 30 del apunte: refrigerador posterior horizontal agua-aire.">
+          <figcaption><strong>Fig. 30</strong> Modelo horizontal.</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="fig/f31_vertical.jpg" alt="Figura 31 del apunte: refrigerador posterior vertical agua-aire con la referencia de sus partes.">
+          <figcaption><strong>Fig. 31</strong> Modelo vertical, con carcasa cilíndrica, haz tubular interno y separador de condensados con purga automática.</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="fig/f32_aireaire.jpg" alt="Figura 32 del apunte: refrigerador posterior aire-aire con ventilador.">
+          <figcaption><strong>Fig. 32</strong> Refrigerador posterior aire-aire. El ventilador y las aletas reemplazan al circuito de agua.</figcaption>
+        </figure>
+      </div>
+
+      <h3>Cuánta agua saca realmente</h3>
+      <p>Conviene ver el número con un caso concreto, porque el 80 a 90 % del apunte depende bastante de a qué temperatura logres enfriar.</p>
+
+      <figure class="figure">
+        <img src="fig/g_cascada.svg" alt="Gráfico de barras con el agua que sigue viajando con el aire en cinco puntos: aire aspirado, salida del compresor, post-enfriador, secador frigorífico y secador de adsorción.">
+        <figcaption>Cascada del agua para <span class="val">1000 m³/h</span> aspirados a 25 °C y 70 % de humedad relativa, comprimidos a 8 bar absolutos. La segunda barra es igual a la primera: durante la compresión no condensa nada. El post-enfriador hace el grueso del trabajo y el secador se ocupa del resto.</figcaption>
+      </figure>
+
+      <p>Con ese caso, un post-enfriador que entregue el aire a 30 °C retira el 76 % del agua. Si el agua de refrigeración es fría y la salida queda en 25 °C, sube al 82 %. Si es un aire-aire trabajando un día de verano y la salida queda en 40 °C, baja al 58 %. Ahí está el rango del apunte y también el motivo por el que el número se mueve.</p>
+
+      <div class="callout callout--duda">
+        <p class="callout__title">◆ Cuidado con lo que dice el apunte</p>
+        <p class="mb-0">El “80 a 90 % del agua de condensación” es un valor típico, no una constante del equipo. Sale de suponer un post-enfriador con agua de refrigeración razonablemente fría. Con un aire-aire en verano el rendimiento cae bastante, y eso no significa que el equipo esté mal: significa que la temperatura de salida quedó alta porque el ambiente estaba caliente. Si en el parcial te piden el número, dá el del apunte, pero si te piden justificarlo, la variable de la que depende es la temperatura de salida.</p>
+      </div>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ Error frecuente</p>
+        <p class="mb-0">Decir que el post-enfriador “seca el aire”. No lo seca: lo enfría y le saca el agua que sobra a esa temperatura. El aire sale del post-enfriador <strong>saturado, con 100 % de humedad relativa</strong> a la temperatura de salida. Cualquier enfriamiento posterior, aunque sea de un par de grados en un tramo de cañería que pasa a la sombra, vuelve a condensar. Por eso después del post-enfriador hace falta un secador, y no son equipos redundantes.</p>
+      </div>
+
+      <h2 id="s4">Secado del aire comprimido</h2>
+
+      <p>El aire atmosférico contiene vapor de agua, más cuanto más alta es la temperatura. Cuando se comprime, aumenta la concentración de agua. Para evitar la precipitación de agua en las tuberías y en los equipos conectados, el aire comprimido se debe secar.</p>
+
+      <p>Existen <strong>cinco técnicas</strong> para eliminar la humedad del aire comprimido: refrigeración, absorción, adsorción, sobrecompresión y membrana. Las cinco terminan en lo mismo, que es fijar un punto de rocío a presión, pero lo consiguen por caminos físicos distintos y cuestan cosas muy distintas.</p>
+
+      <figure class="figure">
+        <img src="fig/g_tecnicas.svg" alt="Gráfico de barras horizontales con el punto de rocío a presión alcanzable por cada una de las cinco técnicas de secado.">
+        <figcaption>El rango de PRP de cada técnica. La línea del 0 °C es la frontera que separa a la refrigeración de todo lo demás: por debajo de esa temperatura el condensado congela y la refrigeración deja de ser una opción.</figcaption>
+      </figure>
+
+      <h3 id="s41">4.1 Secador frigorífico</h3>
+
+      <p>Es el que más se usa. El aire comprimido se enfría, con lo cual se condensa una gran cantidad de agua que se puede separar. Después el aire comprimido se vuelve a calentar hasta aproximadamente la temperatura ambiente, para que no se forme condensación en el exterior de las tuberías. Estos equipos pueden usarse a diferentes presiones y <strong>no consumen aire comprimido procesado</strong>.</p>
+
+      <p>Se utilizan para puntos de rocío de entre <span class="val">+2 °C y +10 °C</span>, y tienen un límite inferior claro: el punto de congelación del agua de condensado. Por debajo de 0 °C el agua que se separó se convierte en hielo dentro del intercambiador y lo tapa.</p>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Para qué sirve el recalentamiento de la salida</p>
+        <p>El aire sale del intercambiador frío y saturado. Si entrara así a la red, la cañería quedaría más fría que el ambiente y transpiraría por afuera, como un vaso de agua helada. Recalentándolo hasta cerca de la temperatura ambiente se evita eso, y de paso la humedad relativa cae, porque el contenido de agua ya no cambia pero la capacidad del aire sube.</p>
+        <p class="mb-0">El truco es que ese recalentamiento sale gratis: se hace en el intercambiador aire/aire de la entrada, con el aire caliente que está entrando. Con el mismo equipo se precalienta la salida y se preenfría la entrada, y el circuito de refrigerante tiene que hacer menos trabajo.</p>
+      </div>
+
+      <h4>Los tipos que hay en el mercado</h4>
+      <ul>
+        <li><strong>De expansión directa.</strong> Se subdividen en tres: los <em>no cíclicos de velocidad fija</em>, que funcionan de forma continua con independencia de la carga; los <em>cíclicos de velocidad fija</em>, que se detienen cuando desciende la carga para ahorrar energía y vuelven a arrancar cuando es necesario; y los de <em>velocidad variable</em>, que ofrecen la máxima eficiencia energética porque varían automáticamente la velocidad del compresor de refrigerante para adaptarse a la carga.</li>
+        <li><strong>De masa térmica.</strong> Tienen un intercambiador que contiene una masa térmica líquida para almacenar la energía fría. Se detienen cuando hay poco aire o cuando desciende la carga.</li>
+        <li><strong>Scroll digitales.</strong> Tienen un compresor de refrigerante tipo scroll que carga o descarga según la demanda. Son de alta eficiencia energética.</li>
+      </ul>
+
+      <figure class="figure">
+        <img src="fig/f33_frigo.jpg" alt="Figura 33 del apunte: principio de funcionamiento de un secador frigorífico de expansión directa, con circuito de aire y circuito de refrigerante.">
+        <figcaption><strong>Fig. 33</strong> Principio de funcionamiento típico de los secadores de expansión directa.</figcaption>
+      </figure>
+
+      <table>
+        <caption>Los nueve componentes de la Fig. 33 y Fig. 34, agrupados por circuito.</caption>
+        <thead><tr><th style="width:3rem">N.º</th><th>Componente</th><th>Qué hace</th></tr></thead>
+        <tbody>
+          <tr><td colspan="3"><strong>Circuito de aire</strong></td></tr>
+          <tr><td>1</td><td>Intercambiador aire/aire</td><td>El aire de entrada es enfriado por el aire seco y frío de salida. Es el que recupera energía en las dos direcciones.</td></tr>
+          <tr><td>2</td><td>Intercambiador aire-refrigerante</td><td>El aire es enfriado por el circuito de refrigerante hasta el punto de rocío deseado. El vapor de agua se condensa en gotitas.</td></tr>
+          <tr><td>3</td><td>Separador de agua integrado</td><td>La humedad se recoge y se evacúa por un purgador electrónico.</td></tr>
+          <tr><td colspan="3"><strong>Circuito de refrigerante</strong></td></tr>
+          <tr><td>4</td><td>Compresor de refrigerante</td><td>Comprime el gas refrigerante a una presión mayor.</td></tr>
+          <tr><td>5</td><td>Dispositivo de regulación</td><td>La válvula de derivación de gas caliente regula el secador para evitar la congelación en condiciones de baja carga.</td></tr>
+          <tr><td>6</td><td>Condensador de refrigerante</td><td>Enfría el gas refrigerante para que pase de gas a líquido.</td></tr>
+          <tr><td>7</td><td>Filtro de refrigerante</td><td>Protege al dispositivo de expansión contra partículas dañinas.</td></tr>
+          <tr><td>8</td><td>Válvula de expansión termostática</td><td>La expansión reduce la presión y sigue enfriando el refrigerante.</td></tr>
+          <tr><td>9</td><td>Separador de líquido</td><td>Garantiza que al compresor sólo pueda entrar gas refrigerante.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="card">
+        <p class="card__kicker">Por qué existe la válvula de gas caliente</p>
+        <p class="mb-0">Es el componente 5 y es el que más se pregunta, porque su motivo no es obvio. El circuito de refrigerante está dimensionado para el caudal nominal de aire. Si la demanda baja y por el secador pasa poco aire, el evaporador sigue teniendo la misma potencia frigorífica pero mucha menos carga térmica que sacar, así que se enfría de más y el condensado congela. La válvula deriva gas caliente al evaporador para sostener la temperatura por encima de 0 °C. Es un regulador de carga parcial, no un elemento de seguridad.</p>
+      </div>
+
+      <div class="figure-row">
+        <figure class="figure">
+          <img src="fig/f34_fx13.jpg" alt="Figura 34 del apunte: secador frigorífico Atlas Copco modelo FX13.">
+          <figcaption><strong>Fig. 34</strong> Secador frigorífico Atlas Copco, modelo FX13.</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="fig/f35_evolucion.jpg" alt="Figura 35 del apunte: evolución de la presión, temperatura, humedad específica y humedad relativa a lo largo del circuito con compresor, refrigerador posterior y secador frigorífico.">
+          <figcaption><strong>Fig. 35</strong> Evolución de presión, temperatura, humedad específica y humedad relativa en un circuito con compresor, refrigerador posterior y secador frigorífico. Es la misma historia que el gráfico de la sección "De dónde venimos", en la versión del apunte.</figcaption>
+        </figure>
+      </div>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ Error frecuente</p>
+        <p class="mb-0">Pensar que el secador “extrae el vapor de agua” del aire. Ni el frigorífico ni ninguno por refrigeración hacen eso. Lo que hacen es <strong>enfriar hasta el PRP que se quiere y condensar todo lo que sobra a esa temperatura</strong>. El aire sale saturado a esa temperatura, con 100 % de humedad relativa. La garantía que da el equipo no es “aire sin agua”, es “aire que no va a condensar mientras no lo enfríes por debajo del PRP”.</p>
+      </div>
+
+      <h3 id="s42">4.2 Secador por absorción</h3>
+
+      <p>Es un <strong>proceso químico</strong>. El aire circula a través de un agente secante, yeso o cloruro de magnesio, que reacciona químicamente con la humedad y forma una solución que se drena al fondo del depósito. Es de bajo costo y el PRP típico que se alcanza es <span class="val">+5 °C</span>.</p>
+
+      <p>El agente se consume en la reacción, así que hay que reponerlo periódicamente. No se regenera: se gasta.</p>
+
+      <figure class="figure">
+        <img src="fig/f36_absorcion.jpg" alt="Figura 36 del apunte: esquema del secador por absorción, con el agente secador y el condensado drenado al fondo.">
+        <figcaption><strong>Fig. 36</strong> Secador por absorción. El aire húmedo entra por abajo, atraviesa la masa de agente secador, y el agua queda incorporada a una solución que se drena.</figcaption>
+      </figure>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ Error frecuente: <span class="term">absorción</span> no es <span class="term">adsorción</span></p>
+        <p>Las dos palabras se diferencian en una letra y describen fenómenos distintos.</p>
+        <ul>
+          <li><strong>Absorción</strong>: el agua <em>entra</em> en la masa del material y reacciona con él. Es química. El material se consume y hay que reponerlo.</li>
+          <li><strong>Adsorción</strong>: el agua se <em>pega a la superficie</em> del material sin reaccionar. Es física. El material no se consume, se satura, y se regenera.</li>
+        </ul>
+        <p class="mb-0">Regla para acordarse: ab-sorción, el agua se <em>absorbe</em> hacia adentro; ad-sorción, el agua se queda <em>adherida</em> afuera.</p>
+      </div>
+
+      <h3 id="s43">4.3 Secador por adsorción</h3>
+
+      <p>El principio es simple: el aire húmedo fluye sobre un material higroscópico (silicagel, tamices moleculares, alúmina activada) y se seca. Es un <strong>proceso físico</strong>.</p>
+
+      <p>El vapor de agua pasa del aire comprimido al material higroscópico o desecante, que se satura gradualmente con el agua adsorbida. Por eso el desecante se debe regenerar periódicamente para recuperar su capacidad de secado. Los secadores de adsorción constan generalmente de <strong>dos torres</strong>: la primera seca el aire comprimido de entrada mientras la segunda se regenera, y alternan la función cuando la que se estaba regenerando termina.</p>
+
+      <figure class="figure">
+        <img src="fig/f37_adsorcion.jpg" alt="Figura 37 del apunte: esquema de un secador por adsorción de dos torres, con la torre B1 en adsorción y la torre B2 en regeneración.">
+        <figcaption><strong>Fig. 37</strong> Secador por adsorción de dos torres. Una está adsorbiendo y la otra regenerándose. Las válvulas invierten los caminos cuando se cumple el ciclo.</figcaption>
+      </figure>
+
+      <h4>Las cuatro formas de regenerar el desecante</h4>
+      <p>El método de regeneración es lo que define el tipo de secador de adsorción. Los más eficientes energéticamente suelen ser más complejos y por tanto más caros.</p>
+
+      <table>
+        <caption>Los cuatro tipos de secador por adsorción, según cómo regeneran.</caption>
+        <thead><tr><th>Tipo</th><th>Cómo regenera</th><th>Aire de purga</th><th>Energía</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Regenerado por purga</strong><br><span class="text-soft small">o “regenerado en frío”</span></td><td>Con aire comprimido expandido. Es el más adecuado para caudales de aire pequeños.</td><td>15 a 20 % de la capacidad nominal, a 7 bar(M)</td><td>referencia</td></tr>
+          <tr><td><strong>Purga caliente</strong></td><td>Calienta el aire de purga expandido con un calentador eléctrico, y así necesita menos caudal de purga.</td><td>≈ 8 %</td><td>−25 %</td></tr>
+          <tr><td><strong>Regenerado por soplante</strong></td><td>El aire ambiente pasa sobre un calentador eléctrico y toma contacto con el desecante húmedo. No usa aire comprimido.</td><td>no usa</td><td>−40 %</td></tr>
+          <tr><td><strong>HOC</strong><br><span class="text-soft small">reactivado por el calor de compresión</span></td><td>Usa el calor disponible del compresor en vez de evacuarlo en el refrigerador posterior.</td><td>no usa</td><td>PRP de −20 °C sin agregar energía</td></tr>
+        </tbody>
+      </table>
+
+      <figure class="figure">
+        <img src="fig/g_regeneracion.svg" alt="Gráfico comparativo del aire de purga y la energía consumida por los cuatro tipos de regeneración del desecante.">
+        <figcaption>Los dos costos de regenerar, uno al lado del otro. La purga fría es la más barata de comprar y la más cara de operar, porque tira a la atmósfera hasta la quinta parte del aire que el compresor produjo. El HOC no gasta nada de eso porque aprovecha calor que de otro modo se tiraba.</figcaption>
+      </figure>
+
+      <p>El PRP típico que se alcanza por adsorción es de <span class="val">−40 °C</span>, lo que hace a estos equipos idóneos para aire muy seco en aplicaciones críticas. El apunte agrega un dato de consumo: un secador de adsorción con una capacidad de 1000 l/s requiere sólo 120 W.</p>
+
+      <div class="callout callout--duda">
+        <p class="callout__title">◆ Cuidado con lo que dice el apunte</p>
+        <p class="mb-0">Los 120 W para 1000 l/s aparecen justo después del párrafo del HOC, y hay que leerlos ahí: es el consumo eléctrico auxiliar de un secador que se regenera con calor que el compresor ya produjo. No es el costo energético total de secar. En un secador regenerado por purga fría el costo real no es eléctrico, es el 15 a 20 % del caudal de aire comprimido que se tira, y ese aire ya costó energía de compresión. Si en el parcial te piden comparar consumos, la comparación honesta es la de la tabla de arriba, no la de los 120 W.</p>
+      </div>
+
+      <h4>Qué necesita antes y qué necesita después</h4>
+      <p>El apunte es explícito y esto entra siempre:</p>
+      <ul>
+        <li>A la entrada del secador de adsorción se debe disponer <strong>siempre</strong> de un sistema que garantice la separación y el drenaje del agua condensada. El agua líquida arruina el desecante.</li>
+        <li>Si el aire se produjo con compresores lubricados con aceite, hay que instalar un <strong>filtro coalescente antes</strong> del secador. El aceite tapa los poros del desecante y no se va con la regeneración.</li>
+        <li>En la mayoría de los casos hace falta un <strong>filtro de partículas a la salida</strong>, porque el desecante se va desgranando y suelta polvo a la corriente de aire.</li>
+      </ul>
+
+      <figure class="figure figure--alta">
+        <img src="fig/f38_ad480.jpg" alt="Figura 38 del apunte: secador por adsorción Atlas Copco modelo AD480, con sus dos torres A y B.">
+        <figcaption><strong>Fig. 38</strong> Secador por adsorción Atlas Copco, modelo AD480. Se ven las dos torres, rotuladas A y B, que es la característica visual que los identifica a simple vista.</figcaption>
+      </figure>
+
+      <h3 id="s44">4.4 Sobrecompresión</h3>
+
+      <p>Es quizás el método más sencillo. El aire se comprime primero a una presión mayor que la presión de trabajo prevista, lo cual hace que aumente la concentración de vapor de agua. Después el aire se enfría y como resultado se separa el agua. Finalmente se permite que el aire se expanda hasta la presión de trabajo, y se obtiene un punto de rocío a presión más bajo.</p>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Por qué funciona</p>
+        <p>Es la lógica de la sección "El vocabulario del agua" aplicada al revés. Comprimir de más sube la presión parcial del vapor, con lo cual el aire se satura a una temperatura más alta y con el mismo enfriamiento se logra sacar más agua. Después, al expandir hasta la presión de trabajo, la presión parcial del vapor que quedó cae en la misma proporción, y con ella cae el punto de rocío.</p>
+        <p class="mb-0">El precio es evidente: estás comprimiendo a una presión que no necesitás sólo para tirar la diferencia. Por eso sólo resulta adecuado para caudales de aire muy pequeños, debido a su elevado consumo de energía.</p>
+      </div>
+
+      <h3 id="s45">4.5 Secador de membrana</h3>
+
+      <p>Utiliza la permeabilidad selectiva de miles de diminutas fibras huecas de polímero con un revestimiento interior. Esas fibras dejan pasar el vapor de agua y no el aire.</p>
+
+      <p>A medida que el aire comprimido filtrado y húmedo entra en el cilindro, el recubrimiento de la membrana permite que el vapor de agua penetre y se deposite entre las fibras, mientras el aire seco continúa su trayectoria <strong>casi a la misma presión</strong> que el aire húmedo de entrada. El agua separada se libera a la atmósfera.</p>
+
+      <p>La permeación se produce por la <strong>diferencia de presión parcial</strong> del gas entre el interior y el exterior de la fibra hueca. Esa es la fuerza impulsora: no hay bomba ni frío, hay un desequilibrio de presiones parciales que empuja el vapor hacia afuera.</p>
+
+      <figure class="figure">
+        <img src="fig/f39_membrana.jpg" alt="Figura 39 del apunte: esquema de un secador de membrana, con entrada de aire húmedo, eliminación de agua y salida de aire seco.">
+        <figcaption><strong>Fig. 39</strong> Secador de membrana. El aire húmedo entra por la izquierda, el vapor atraviesa la pared de las fibras y se elimina hacia abajo, y el aire seco sale por la derecha prácticamente a la misma presión.</figcaption>
+      </figure>
+
+      <p>Son fáciles de usar, silenciosos, no tienen piezas móviles, consumen poca energía y requieren un mantenimiento mínimo, que consiste principalmente en los filtros aguas arriba del secador. Además de eliminar el agua, con una membrana se pueden separar componentes de un gas según el material de la fibra: la separación se logra por las diferencias de tamaño molecular y de solubilidad del gas en la membrana.</p>
+
+      <h3 id="s46">4.6 Las cinco, una al lado de la otra</h3>
+
+      <table>
+        <caption>Comparación de las cinco técnicas de secado. Los PRP son los que da el apunte.</caption>
+        <thead><tr><th>Técnica</th><th>Naturaleza del proceso</th><th>PRP típico</th><th>Dónde conviene</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Refrigeración</strong></td><td>Físico: enfría y condensa</td><td>+2 a +10 °C</td><td>El caso general de la industria. No consume aire procesado.</td></tr>
+          <tr><td><strong>Absorción</strong></td><td>Químico: el agente se consume</td><td>+5 °C</td><td>Instalaciones chicas y de bajo costo inicial.</td></tr>
+          <tr><td><strong>Adsorción</strong></td><td>Físico: el desecante se regenera</td><td>−40 °C</td><td>Aplicaciones críticas que exigen aire muy seco.</td></tr>
+          <tr><td><strong>Sobrecompresión</strong></td><td>Físico: comprime de más y expande</td><td>bajo, según cuánto sobrecomprima</td><td>Sólo caudales muy pequeños. Consumo de energía elevado.</td></tr>
+          <tr><td><strong>Membrana</strong></td><td>Físico: permeabilidad selectiva</td><td>bajo, sin partes móviles</td><td>Caudales chicos, uso intermitente, lugares sin mantenimiento.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="calc">
+        <h4>Balance de agua de una instalación</h4>
+        <p class="ayuda">Movete los valores y mirá cómo se reparte el agua entre el post-enfriador y el secador. Es el mismo cálculo del gráfico de la sección "Refrigerador posterior", con tus números.</p>
+        <div class="campos">
+          <div class="campo"><label for="q">Caudal aspirado [m³/h]</label><input id="q" type="number" value="1000" step="50"></div>
+          <div class="campo"><label for="t1">T de aspiración [°C]</label><input id="t1" type="number" value="25" step="1"></div>
+          <div class="campo"><label for="hr">Humedad relativa [%]</label><input id="hr" type="number" value="70" step="5"></div>
+          <div class="campo"><label for="pm">Presión manométrica [bar]</label><input id="pm" type="number" value="7" step="0.5"></div>
+          <div class="campo"><label for="tpe">T salida post-enfriador [°C]</label><input id="tpe" type="number" value="30" step="1"></div>
+          <div class="campo"><label for="prp">PRP del secador [°C]</label><input id="prp" type="number" value="3" step="1"></div>
+        </div>
+        <div class="salida">
+          <div class="linea"><span>Agua que entra con el aire aspirado</span><b id="oIn">—</b></div>
+          <div class="linea"><span>Retira el post-enfriador</span><b id="oPe">—</b></div>
+          <div class="linea"><span>Retira el secador</span><b id="oSe">—</b></div>
+          <div class="linea total"><span>Queda viajando por la red</span><b id="oQ">—</b></div>
+          <div class="barrita">
+            <i id="bPe" style="background:var(--c-blue);width:0"></i>
+            <i id="bSe" style="background:var(--c-green);width:0"></i>
+            <i id="bQ"  style="background:var(--c-accent);width:0"></i>
+          </div>
+          <div class="leyendaBarra">
+            <span><i style="background:var(--c-blue)"></i>post-enfriador <b id="pPe">—</b></span>
+            <span><i style="background:var(--c-green)"></i>secador <b id="pSe">—</b></span>
+            <span><i style="background:var(--c-accent)"></i>queda en el aire <b id="pQ">—</b></span>
+          </div>
+          <p class="ayuda mb-0" id="aviso" style="margin-top:.8rem"></p>
+        </div>
+      </div>
+
+      <h2 id="s5">Filtrado del aire comprimido</h2>
+
+      <p>Sacarle el agua al aire no lo deja limpio. En el aire comprimido se encuentran <strong>tres contaminantes principales</strong>, y cada uno se saca con un mecanismo distinto.</p>
+
+      <h3 id="s51">5.1 Los tres contaminantes</h3>
+
+      <table>
+        <thead><tr><th style="width:8rem">Contaminante</th><th>Qué es</th><th>De dónde viene</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Partículas</strong></td><td>Pequeños trozos de material sólido.</td><td>Polvo, suciedad o polen del aire ambiente, y partículas metálicas sueltas que pueden provenir de la corrosión de las tuberías.</td></tr>
+          <tr><td><strong>Aerosoles</strong></td><td>Pequeñas gotas de líquido en suspensión.</td><td>Sobre todo del lubricante, en instalaciones con compresores de inyección de aceite.</td></tr>
+          <tr><td><strong>Vapores</strong></td><td>Lubricantes y cualquier otro líquido que se haya convertido en gas.</td><td>Del aceite del compresor, evaporado por la temperatura de compresión.</td></tr>
+        </tbody>
+      </table>
+
+      <p>La distinción entre aerosol y vapor parece un detalle y es la clave de toda la sección: <strong>un aerosol es líquido y se puede atrapar; un vapor es gas y hay que adsorberlo</strong>. Un filtro coalescente, por bueno que sea, no saca vapores.</p>
+
+      <h3 id="s52">5.2 Extracción de partículas secas</h3>
+
+      <p>Se utilizan tres mecanismos principales para eliminar partículas sólidas de todos los tamaños. En los tres, el resultado es que la partícula queda adherida a las fibras del elemento filtrante. Lo que cambia es cómo llega hasta la fibra, y eso depende del tamaño.</p>
+
+      <h4>Impacto, para partículas de 2 µm o superiores</h4>
+      <p>Una partícula que viaja en un gas tiene su propio impulso, y a mayor masa o velocidad, mayor impulso. Ante los cambios de dirección de la corriente de gas, la partícula tiende a seguir su dirección inicial, por lo que impacta y queda atrapada entre las fibras del filtro. Cuanto más grandes sean las partículas, más fácil será separarlas.</p>
+
+      <h4>Intercepción, entre 0,2 y 2 µm</h4>
+      <p>Las partículas más pequeñas ya no tienen inercia suficiente y siguen la corriente de aire. Pero si el diámetro de la partícula es mayor que los poros del material del filtro, quedan atrapadas igual. Es un mecanismo puramente geométrico: la partícula pasa donde no entra.</p>
+
+      <h4>Difusión, para partículas menores a 0,2 µm</h4>
+      <p>Se produce cuando las partículas pequeñas se mueven erráticamente por toda la superficie, en lugar de seguir la corriente de aire comprimido. Colisionan con las moléculas de gas, lo que retrasa su paso por el filtro. Como pueden moverse con libertad, es mucho más fácil y más probable que sean interceptadas por los materiales del filtro y retiradas de la corriente.</p>
+
+      <div class="figure-row">
+        <figure class="figure">
+          <img src="fig/f40_impacto.jpg" alt="Figura 40 del apunte: mecanismo de impacto directo, para partículas de 2 micrómetros y mayores.">
+          <figcaption><strong>Fig. 40</strong> Impacto directo: 2 µm y mayores. La partícula no logra doblar y choca.</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="fig/f41_intercep.jpg" alt="Figura 41 del apunte: mecanismo de intercepción, para partículas de 0,2 a 2 micrómetros.">
+          <figcaption><strong>Fig. 41</strong> Intercepción: 0,2 a 2 µm. La partícula sigue la corriente pero no entra por el poro.</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="fig/f42_difusion.jpg" alt="Figura 42 del apunte: mecanismo de difusión, para partículas de 0,001 a 0,2 micrómetros.">
+          <figcaption><strong>Fig. 42</strong> Difusión: 0,001 a 0,2 µm. El movimiento errático la lleva contra la fibra.</figcaption>
+        </figure>
+      </div>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Por qué hay un tamaño que cuesta más filtrar</p>
+        <p>La capacidad de separación de un filtro es el resultado de los tres procesos juntos. Y los tres empeoran hacia el mismo lado: el impacto necesita inercia y se cae cuando la partícula es chica; la difusión necesita agitación térmica y se cae cuando la partícula es grande. En el medio hay una franja donde la partícula ya es demasiado chica para tener inercia y todavía demasiado grande para moverse erráticamente.</p>
+        <p class="mb-0">Esa franja es la de <span class="val">0,1 a 0,2 µm</span>, y es el tamaño de partícula más penetrante. El apunte lo dice sin rodeos: en realidad no hay un filtro que sea efectivo para todo el rango de tamaños, e incluso el efecto de la velocidad del flujo no es un factor decisivo para la capacidad de separación.</p>
+      </div>
+
+      <figure class="figure">
+        <img src="fig/g_eficiencia.svg" alt="Gráfico de la eficiencia de captura contra el tamaño de partícula, con las curvas de difusión, intercepción, impacto y la eficiencia total.">
+        <figcaption>Los tres mecanismos y la curva total, reconstruidos sobre la <strong>Fig. 43</strong> del apunte. El mínimo de la curva total, señalado en la franja sombreada, es el tamaño más penetrante. Un filtro que promete 99,97 % de eficiencia lo promete en un rango de tamaños, no en todos.</figcaption>
+      </figure>
+
+      <figure class="figure">
+        <img src="fig/f43_eficiencia.jpg" alt="Figura 43 del apunte: eficiencia del filtro en función del tamaño de partícula.">
+        <figcaption><strong>Fig. 43</strong> El gráfico del apunte, con las mismas cuatro curvas.</figcaption>
+      </figure>
+
+      <h3 id="s53">5.3 Extracción de aerosoles y vapores</h3>
+
+      <p>Se emplean dos tipos de filtros: los <strong>coalescentes</strong> para eliminar gotas de líquido, es decir aerosoles, así como algunas partículas, y los <strong>filtros de vapor</strong>, que emplean la adsorción.</p>
+
+      <h4>Coalescencia</h4>
+      <p>El proceso consiste en unir pequeñas gotas de líquido para formar gotas grandes. Cuando las gotas aumentan de tamaño, caen del filtro a un colector de humedad, lo que produce una corriente de aire comprimido más limpio y seco. Los filtros coalescentes eliminan aerosoles y partículas, pero <strong>no son eficaces para eliminar vapores</strong>.</p>
+
+      <figure class="figure">
+        <img src="fig/f44_coalesc.jpg" alt="Figura 44 del apunte: proceso de coalescencia, con gotas pequeñas que se unen formando gotas grandes que caen al colector.">
+        <figcaption><strong>Fig. 44</strong> Coalescencia. Las gotitas chicas se unen a medida que atraviesan el medio filtrante, y cuando pesan lo suficiente caen por gravedad al colector.</figcaption>
+      </figure>
+
+      <h4>Adsorción</h4>
+      <p>Es un proceso químico que se utiliza para eliminar lubricantes gaseosos o vapores. Los vapores se pegan a la superficie de los materiales adsorbentes, como el carbón vegetal activado, que se usa comúnmente por su gran superficie y por su atracción por los vapores de aceite.</p>
+      <p>Dos consecuencias prácticas, que entran las dos:</p>
+      <ul>
+        <li>Como los vapores de aceite cubren la superficie del carbón a lo largo del tiempo, <strong>es esencial cambiarlo antes de que esté completamente saturado</strong>. Si no, entra aceite al sistema de aire.</li>
+        <li>Es necesario utilizar un <strong>filtro de polvo después</strong> del filtro de carbón activado, porque podrían fugarse pequeñas partículas de carbón y entrar en la corriente de aire.</li>
+      </ul>
+
+      <h3 id="s54">5.4 Tipos de filtros según la aplicación</h3>
+
+      <table>
+        <thead><tr><th style="width:11rem">Tipo</th><th>Para qué</th><th>Números del apunte</th></tr></thead>
+        <tbody>
+          <tr><td><strong>De partículas</strong></td><td>Retener sólidos como el óxido de la tubería, arrastrados por el aire a lo largo de las cañerías.</td><td>El parámetro característico es la amplitud de los poros, que determina el tamaño mínimo de partícula retenida.</td></tr>
+          <tr><td><strong>De carbón activo</strong></td><td>Eliminar vapores y olores de aceite. No los eliminan completamente, pero el residuo es muy pequeño.</td><td>Residuo medio de <span class="val">0,003 mg/m³</span>.</td></tr>
+          <tr><td><strong>Coalescentes</strong></td><td>Eliminar partículas submicrónicas o nieblas de aceite y agua menores a 2 µm. Los filtros comunes no llegan: capturan partículas mayores a 2 µm.</td><td>Eficiencia del <span class="val">99,97 %</span> entre 0,3 y 0,6 µm. Reducen de 20 ppm a <span class="val">0,004 ppm</span>.</td></tr>
+          <tr><td><strong>Catalizadores</strong></td><td>Sistemas de respiración humana, para eliminar el monóxido de carbono.</td><td>Eliminación de CO.</td></tr>
+          <tr><td><strong>Bactericidas</strong></td><td>Aplicaciones medicinales y laboratorios, para eliminar determinadas bacterias.</td><td>Requieren esterilización periódica con vapor o autoclave. Vida útil muy corta, dada por el número máximo de esterilizaciones admitidas.</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="s55">5.5 Clasificación por ubicación en la red</h3>
+
+      <div class="grid grid--3">
+        <div class="card"><p class="card__kicker">Pre-filtros</p><p class="mb-0">Los primeros después de los compresores. Eliminan las partículas gruesas y protegen a toda la red de filtrado que viene después. Suelen ofrecerse con capacidad coalescente. Filtrado superior a 1 µm y 1 mg/m³ de aceite.</p></div>
+        <div class="card"><p class="card__kicker">Filtros intermedios</p><p class="mb-0">Van a continuación de los pre-filtros. Protegen los accesorios y equipos instalados en la red. Sus características se determinan en función de la calidad de aire requerida.</p></div>
+        <div class="card"><p class="card__kicker">Filtros finales</p><p class="mb-0">Todos los filtros específicos de protección del sistema antes de su uso final.</p></div>
+      </div>
+
+      <div class="callout callout--duda">
+        <p class="callout__title">◆ Cuidado con lo que dice el apunte</p>
+        <p>Sobre los pre-filtros, el texto dice que su misión es eliminar las partículas gruesas “que podrían ser aspiradas por el compresor”, pero al mismo tiempo los ubica <em>después</em> de los compresores. Las dos cosas no pueden ser ciertas a la vez: si el filtro está después, ya no puede evitar que el compresor aspire nada.</p>
+        <p class="mb-0">Lo que hace un pre-filtro en esa posición es retener lo que el compresor efectivamente aspiró, más lo que el propio compresor aportó. El filtro que protege la aspiración es otro, es el filtro de aire de admisión, y en el apunte aparece listado aparte cuando enumera los componentes de la producción. Si te preguntan por la función del pre-filtro, la respuesta segura es la segunda mitad de la definición: es el filtro protector de la red de filtrado que se instale a continuación.</p>
+      </div>
+
+      <figure class="figure">
+        <img src="fig/f45_tipos.jpg" alt="Figura 45 del apunte: distintos tipos de filtros de aire comprimido.">
+        <figcaption><strong>Fig. 45</strong> Diferentes tipos de filtros. Los cuerpos son parecidos entre sí; lo que cambia es el elemento filtrante que va adentro.</figcaption>
+      </figure>
+
+      <h3 id="s56">5.6 Partes constitutivas de un filtro</h3>
+
+      <p>La estructura de los filtros es muy similar entre fabricantes. Lo que cambia es principalmente el diseño interno, para mejorar las pérdidas de carga, la calidad de los materiales del elemento filtrante, el grado de eficiencia y el diseño del propio elemento.</p>
+
+      <table>
+        <caption>Las seis partes de la Fig. 46.</caption>
+        <thead><tr><th style="width:3rem">N.º</th><th style="width:13rem">Parte</th><th>Qué hay que saber</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><strong>El cuerpo</strong></td><td>Suele ser de fundición de aluminio o de plástico, y también se fabrica en acero y en ejecuciones especiales de acero inoxidable. Está dividido en dos partes: la superior incluye las conexiones a la tubería y la inferior es desmontable para poder cambiar el elemento filtrante.</td></tr>
+          <tr><td>2</td><td><strong>Elemento filtrante</strong></td><td>Es la parte clave del filtro. Según su diseño podrá usarse para diferentes trabajos. Es muy importante conocer su eficiencia, el tamaño de partículas y su capacidad.</td></tr>
+          <tr><td>3</td><td><strong>Sistema de purga del condensado</strong></td><td>En la figura se ve una purga interna de boya, que actúa por flotación sobre el condensado acumulado en la parte inferior. También se suministran con purgas electrónicas, capacitivas o manuales.</td></tr>
+          <tr><td>4</td><td><strong>Manómetro de presión diferencial</strong></td><td>Indica el nivel de suciedad del elemento filtrante. Hay modelos con contactos libres de tensión para alarmas o con transmisión del valor por señal de <span class="val">4 a 20 mA</span>.</td></tr>
+          <tr><td>5</td><td><strong>Sistema de conexión modular</strong></td><td>Útil cuando en una misma instalación se juntan dos tipos de filtros diferentes. Facilita el montaje y reduce las pérdidas de carga.</td></tr>
+          <tr><td>6</td><td><strong>Indicador de nivel de líquido</strong></td><td>Sirve para ver si el sistema de purga está funcionando correctamente.</td></tr>
+        </tbody>
+      </table>
+
+      <figure class="figure figure--alta">
+        <img src="fig/f46_partes.jpg" alt="Figura 46 del apunte: corte de un filtro de aire comprimido con sus partes numeradas.">
+        <figcaption><strong>Fig. 46</strong> Corte de un filtro con sus partes numeradas.</figcaption>
+      </figure>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Por qué el manómetro diferencial no es un accesorio decorativo</p>
+        <p>Un elemento filtrante se ensucia y su pérdida de carga aumenta. Esa pérdida de carga es presión que el compresor tuvo que generar y que el consumo nunca ve, así que se paga en energía todos los días. El manómetro diferencial es el que dice cuándo el elemento dejó de convenir: no se cambia cuando se rompe, se cambia cuando el Δp que provoca cuesta más que el repuesto.</p>
+        <p class="mb-0">El otro extremo también existe. Un elemento que se pasa de tiempo termina dejando pasar lo que debía retener, o directamente rompiéndose, y entonces el filtro deja de proteger a lo que estaba protegiendo.</p>
+      </div>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ Error frecuente</p>
+        <p class="mb-0">Mezclar los tres tipos de filtro. Conviene fijarlo así: el <strong>coalescente</strong> junta gotas, así que saca aerosoles y algo de partículas, y no saca vapores. El de <strong>carbón activo</strong> adsorbe, así que saca vapores de aceite, y no está pensado para partículas ni para gotas. El de <strong>partículas</strong> retiene sólidos y nada más. Por eso no se elige un filtro, se arma una secuencia.</p>
+      </div>
+
+      <h2 id="s6">El orden del tren</h2>
+
+      <p>Todo lo anterior son equipos sueltos. Lo que se pregunta después es en qué orden van, y ese orden no es arbitrario: cada posición se justifica con lo que dice el apunte de cada equipo.</p>
+
+      <table>
+        <caption>El orden del apunte y la justificación de cada posición.</caption>
+        <thead><tr><th style="width:3rem">Orden</th><th style="width:13rem">Equipo</th><th>Por qué va ahí</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><strong>Compresor</strong></td><td>Es el origen. Entrega aire caliente, a presión y sucio.</td></tr>
+          <tr><td>2</td><td><strong>Refrigerador posterior</strong><br><span class="text-soft small">con separador y purga</span></td><td>Inmediatamente después del compresor, para que el agua condense donde hay un separador y no dentro de la red.</td></tr>
+          <tr><td>3</td><td><strong>Depósito o pulmón</strong><br><span class="text-soft small">con purga automática</span></td><td>Compensa la diferencia entre el caudal generado y el consumido. Como el aire llega saturado y en el depósito se enfría un poco más, sigue apareciendo condensado, y por eso lleva purga.</td></tr>
+          <tr><td>4</td><td><strong>Pre-filtro coalescente</strong></td><td>Antes del secador. Le saca los aerosoles de aceite que arruinarían el desecante o ensuciarían el intercambiador.</td></tr>
+          <tr><td>5</td><td><strong>Secador</strong></td><td>Fija el PRP de toda la red aguas abajo. Recibe aire ya frío y ya libre de agua líquida, que es la condición que el apunte exige explícitamente para el de adsorción.</td></tr>
+          <tr><td>6</td><td><strong>Filtro final</strong></td><td>Después del secador. Retiene el polvo del desecante si el secador es de adsorción, y ajusta la calidad a la clase ISO que pide el consumo. Si hay carbón activo, el filtro de polvo va después de él.</td></tr>
+          <tr><td>7</td><td><strong>Red y consumos</strong></td><td>Es el bloque 3 y el bloque 4.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Las tres reglas de posición que hay que poder justificar</p>
+        <ol class="mb-0">
+          <li><strong>El post-enfriador va inmediatamente después del compresor.</strong> El apunte lo dice textual. Si lo corrés más lejos, el agua condensa en el tramo intermedio.</li>
+          <li><strong>El coalescente va antes del secador de adsorción</strong>, siempre que el compresor sea lubricado con aceite, y un separador de agua condensada va antes en todos los casos.</li>
+          <li><strong>El filtro de partículas va después</strong> del secador de adsorción y después del carbón activo. En los dos casos por lo mismo: el equipo anterior suelta polvo.</li>
+        </ol>
+      </div>
+
+      <div class="callout callout--parcial">
+        <p class="callout__title">✔ Para conectar con lo que ya sabés</p>
+        <p class="mb-0">Fijate que el tren entero es una sola idea aplicada tres veces. El post-enfriador y el secador frigorífico hacen lo mismo, enfriar hasta una temperatura y sacar lo que condensa, sólo que a temperaturas distintas y por eso a niveles de exigencia distintos. La adsorción y el carbón activo también hacen lo mismo entre sí, pegar moléculas a una superficie, uno con agua y el otro con vapores de aceite. Si te acordás de esos dos pares, la mitad del bloque se reconstruye sola.</p>
+      </div>
+
+      <h2 id="resumen">Resumen de una carilla</h2>
+
+      <p>Todo lo que hay que tener en la cabeza al entrar al parcial, en una sola pantalla.</p>
+
+      <table>
+        <caption>Los números del bloque 2.</caption>
+        <thead><tr><th style="width:15rem">Tema</th><th>Valor</th></tr></thead>
+        <tbody>
+          <tr><td>Salida del post-enfriador</td><td>≈ 10 °C por encima de la temperatura del refrigerante</td></tr>
+          <tr><td>Agua que retira el post-enfriador</td><td>80 a 90 % del agua de condensación</td></tr>
+          <tr><td>Equivalencia de PRP</td><td>+2 °C a 7 bar ≡ −25 °C atmosférico · +2 °C a 3 bar ≡ −15 °C atmosférico</td></tr>
+          <tr><td>Secador frigorífico</td><td>PRP de +2 a +10 °C. Límite inferior: congelación del condensado</td></tr>
+          <tr><td>Secador por absorción</td><td>PRP típico +5 °C. Agentes: yeso, cloruro de magnesio</td></tr>
+          <tr><td>Secador por adsorción</td><td>PRP típico −40 °C. Desecantes: silicagel, tamices moleculares, alúmina activada</td></tr>
+          <tr><td>Regeneración por purga fría</td><td>15 a 20 % de la capacidad nominal, a 7 bar(M)</td></tr>
+          <tr><td>Regeneración por purga caliente</td><td>≈ 8 % de purga, 25 % menos de energía</td></tr>
+          <tr><td>Regeneración por soplante</td><td>Sin aire comprimido, 40 % menos de energía</td></tr>
+          <tr><td>Regeneración HOC</td><td>PRP de −20 °C sin agregar energía. 1000 l/s con 120 W</td></tr>
+          <tr><td>Mecanismos de captura</td><td>Impacto ≥ 2 µm · Intercepción 0,2 a 2 µm · Difusión &lt; 0,2 µm</td></tr>
+          <tr><td>Tamaño más penetrante</td><td>0,1 a 0,2 µm</td></tr>
+          <tr><td>Filtros coalescentes</td><td>99,97 % entre 0,3 y 0,6 µm. De 20 ppm a 0,004 ppm. Nieblas &lt; 2 µm</td></tr>
+          <tr><td>Filtros de carbón activo</td><td>Residuo medio 0,003 mg/m³</td></tr>
+          <tr><td>Pre-filtros</td><td>Capacidad superior a 1 µm y 1 mg/m³ de aceite</td></tr>
+          <tr><td>Manómetro diferencial</td><td>Señal de 4 a 20 mA</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Lo que te pueden pedir que expliques</h3>
+      <ul>
+        <li>Por qué el aire condensa en el post-enfriador y no durante la compresión.</li>
+        <li>Por qué el punto de rocío a presión y el atmosférico no se pueden comparar entre sí.</li>
+        <li>Por qué el post-enfriador no reemplaza al secador.</li>
+        <li>Las cinco técnicas de secado, con el PRP de cada una.</li>
+        <li>La diferencia entre absorción y adsorción, con el destino del material secante en cada caso.</li>
+        <li>Las cuatro regeneraciones del desecante y su costo comparado.</li>
+        <li>Para qué está la válvula de gas caliente del secador frigorífico.</li>
+        <li>Los tres mecanismos de captura de partículas y por qué existe un tamaño más penetrante.</li>
+        <li>Qué saca y qué no saca cada tipo de filtro.</li>
+        <li>El orden del tren, justificando al menos tres posiciones.</li>
+      </ul>
+
+      <div class="grid grid--2">
+        <div class="card"><p class="card__kicker">Enfriar</p><p class="mb-0">Post-enfriador. Saca el 80 a 90 %. Deja el aire saturado.</p></div>
+        <div class="card"><p class="card__kicker">Secar</p><p class="mb-0">Cinco técnicas. Fijan el PRP. Refrigeración hasta +2 °C, adsorción hasta −40 °C.</p></div>
+        <div class="card"><p class="card__kicker">Filtrar</p><p class="mb-0">Tres contaminantes, tres mecanismos, una secuencia de filtros.</p></div>
+        <div class="card"><p class="card__kicker">Ordenar</p><p class="mb-0">Cada equipo protege al siguiente. El orden es parte del diseño.</p></div>
+      </div>
+
+      <h2 id="s8">Conexión con el bloque 3</h2>
+
+      <p>Con este bloque el aire ya está a presión, frío, seco a un PRP conocido y limpio a una clase ISO conocida. Lo que falta es llevarlo hasta donde se usa sin arruinar nada de eso.</p>
+
+      <p>El bloque 3 arranca en el depósito, que es la tercera caja del tren de arriba, y sigue con las cañerías. Ahí van a aparecer tres cosas que este bloque dejó planteadas y no resolvió: el condensado que se sigue juntando en los puntos bajos de la red y cómo se purga, la pérdida de carga que come la presión que tanto costó generar, y la razón por la que la toma de aire comprimido se hace siempre desde la parte superior de la tubería.</p>
+
+      <nav class="pager"></nav>
+
+      <p class="page-foot">
+        Bloque 2 de la unidad de Aire Comprimido · Instalaciones Industriales · Ing. Luciano Manavella · UTN Facultad Regional Córdoba.<br>
+        Figuras 28 a 46 del apunte de cátedra, reproducidas con fines de estudio. Los gráficos en color son de elaboración propia sobre los datos del apunte.
+      </p>
+
+    </main>
+    <aside class="toc" aria-label="Contenido de la página"></aside>
+  </div>
+</div>
+
+<script src="../../assets/js/site.js"></script>
+<script src="../../assets/js/study.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- utilidades psicrométricas ---------- */
+  var PATM = 1.013;          // bar
+  var RV   = 461.5;          // J/(kg K)
+
+  function ps(T) {            // presion de saturacion [bar], Magnus
+    return 0.0061094 * Math.exp(17.625 * T / (T + 243.04));
+  }
+  function rocio(p) {         // inversa de Magnus, p en bar -> T en C
+    var a = Math.log(p / 0.0061094) / 17.625;
+    return 243.04 * a / (1 - a);
+  }
+  function num(v, d) {
+    return v.toLocaleString("es-AR", { minimumFractionDigits: d, maximumFractionDigits: d });
+  }
+
+  /* ---------- conversor de punto de rocio ---------- */
+  var c1prp = document.getElementById("c1prp");
+  var c1p   = document.getElementById("c1p");
+  var c1out = document.getElementById("c1out");
+
+  function convertir() {
+    var prp = parseFloat(c1prp.value);
+    var pm  = parseFloat(c1p.value);
+    if (!isFinite(prp) || !isFinite(pm) || pm < 0) { c1out.textContent = "—"; return; }
+    var pabs = pm + PATM;
+    var pv   = ps(prp) * PATM / pabs;
+    var t    = rocio(pv);
+    c1out.textContent = num(t, 0).replace("-", "−") + " °C";
+  }
+  if (c1prp && c1p && c1out) {
+    [c1prp, c1p].forEach(function (el) { el.addEventListener("input", convertir); });
+    convertir();
+  }
+
+  /* ---------- balance de agua ---------- */
+  var ids = ["q", "t1", "hr", "pm", "tpe", "prp"];
+  var el  = {};
+  ids.forEach(function (i) { el[i] = document.getElementById(i); });
+
+  var out = {};
+  ["oIn", "oPe", "oSe", "oQ", "pPe", "pSe", "pQ", "bPe", "bSe", "bQ", "aviso"].forEach(function (i) {
+    out[i] = document.getElementById(i);
+  });
+
+  function balance() {
+    var Q   = parseFloat(el.q.value);
+    var T1  = parseFloat(el.t1.value);
+    var HR  = parseFloat(el.hr.value) / 100;
+    var P2  = parseFloat(el.pm.value) + PATM;
+    var Tpe = parseFloat(el.tpe.value);
+    var Tpr = parseFloat(el.prp.value);
+
+    if ([Q, T1, HR, P2, Tpe, Tpr].some(function (v) { return !isFinite(v); }) || Q <= 0 || P2 <= PATM) {
+      out.aviso.textContent = "Revisá los valores: el caudal y la presión tienen que ser positivos.";
+      return;
+    }
+
+    // agua que entra, kg/h
+    var mIn = ps(T1) * HR * 1e5 / (RV * (T1 + 273.15)) * Q / 1000;
+
+    // agua que queda a temperatura T y presion P2
+    function queda(T) {
+      var Q2 = Q * (PATM / P2) * (T + 273.15) / (T1 + 273.15);
+      var m  = ps(T) * 1e5 / (RV * (T + 273.15)) * Q2 / 1000;
+      return Math.min(m, mIn);
+    }
+
+    var trasPe = queda(Tpe);
+    var trasSe = Math.min(trasPe, queda(Tpr));
+
+    var qPe = mIn - trasPe;
+    var qSe = trasPe - trasSe;
+    var qQ  = trasSe;
+
+    out.oIn.textContent = num(mIn, 2) + " kg/h";
+    out.oPe.textContent = num(qPe, 2) + " kg/h";
+    out.oSe.textContent = num(qSe, 2) + " kg/h";
+    out.oQ.textContent  = num(qQ, 3) + " kg/h";
+
+    var p1 = 100 * qPe / mIn, p2 = 100 * qSe / mIn, p3 = 100 * qQ / mIn;
+    out.bPe.style.width = p1 + "%";
+    out.bSe.style.width = p2 + "%";
+    out.bQ.style.width  = p3 + "%";
+    out.pPe.textContent = num(p1, 0) + " %";
+    out.pSe.textContent = num(p2, 0) + " %";
+    out.pQ.textContent  = num(p3, 1) + " %";
+
+    var avisos = [];
+    if (Tpr >= Tpe) avisos.push("Con el PRP igual o mayor que la salida del post-enfriador el secador no tiene nada que hacer: el post-enfriador ya dejó el aire más seco que eso.");
+    if (Tpr < 0 && Tpr > -80) avisos.push("Un PRP bajo cero descarta el secador frigorífico: a esa temperatura el condensado congela. Va adsorción.");
+    if (Tpe < T1 - 10) avisos.push("Cuidado con la temperatura de salida del post-enfriador: no puede quedar muy por debajo del refrigerante disponible.");
+    out.aviso.textContent = avisos.join(" ");
+  }
+  if (el.q) {
+    ids.forEach(function (i) { el[i].addEventListener("input", balance); });
+    balance();
+  }
+})();
+</script>
+</body>
+</html>

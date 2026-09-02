@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instalaciones Industriales · Apuntes</title>
+<meta name="description" content="Apuntes de Instalaciones Industriales — UTN Facultad Regional Córdoba, Ingeniería Industrial.">
+<link rel="stylesheet" href="../assets/css/libdoc.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💨</text></svg>">
+<script>window.SITE_ROOT = "../";</script>
+</head>
+<body data-materia="instalaciones-industriales">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header id="site-header"></header>
+<div class="scrim"></div>
+
+<div class="layout">
+  <nav class="sidebar" aria-label="Navegación de la materia"></nav>
+
+  <div class="main-wrap">
+    <main class="content" id="main">
+
+      <nav class="breadcrumb" aria-label="Ruta"></nav>
+
+      <h1>Instalaciones Industriales</h1>
+      <p class="lead">
+        Instalaciones de servicio de la planta: aire comprimido, y lo que se vaya sumando a medida que
+        avanza la cursada. Cada tema tiene su propio desarrollo, con las mismas convenciones que el resto
+        del sitio.
+      </p>
+
+      <h2 id="temas">Temas de la materia</h2>
+      <div class="unit-grid" id="unit-grid"></div>
+
+      <p class="page-foot">
+        UTN Facultad Regional Córdoba · Ingeniería Industrial · Instalaciones Industriales.<br>
+        Material de estudio de elaboración propia. No reemplaza a las clases ni al material oficial de la cátedra.
+      </p>
+
+    </main>
+    <aside class="toc" aria-label="Contenido de la página"></aside>
+  </div>
+</div>
+
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/study.js"></script>
+<script>
+(function () {
+  var host = document.getElementById("unit-grid");
+  if (!host || !window.SITE) return;
+  var materia = window.SITE.materias.filter(function (m) { return m.id === "instalaciones-industriales"; })[0];
+  host.innerHTML = materia.unidades.map(function (u) {
+    var listo = u.estado === "listo";
+    var tag = listo
+      ? '<span class="badge badge--ok">En desarrollo</span>'
+      : '<span class="badge badge--pending">Pendiente</span>';
+    var meta = listo
+      ? (u.paginas.length + " páginas" + (u.docente ? " · " + u.docente : ""))
+      : "Sin material cargado todavía";
+    var inner =
+      '<div class="unit__top"><span class="unit__icon" aria-hidden="true">' + u.icono + "</span>" + tag + "</div>" +
+      "<h3>" + u.nombre + "</h3>" +
+      "<p>" + u.resumen + "</p>" +
+      '<span class="unit__meta">' + meta + "</span>";
+    return listo
+      ? '<a class="unit" href="' + u.id + '/index.html">' + inner + "</a>"
+      : '<div class="unit unit--pending">' + inner + "</div>";
+  }).join("");
+})();
+</script>
+</body>
+</html>
