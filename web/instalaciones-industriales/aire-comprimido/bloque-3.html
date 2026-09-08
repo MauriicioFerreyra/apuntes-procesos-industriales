@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Acumulación: el depósito o pulmón · Bloque 3 · Aire Comprimido</title>
+<meta name="description" content="El depósito o pulmón de aire comprimido: sus tres funciones, el cálculo de su volumen, el caudal Normal y los tipos de purga. Bloque 3 de la unidad de Aire Comprimido, Instalaciones Industriales, UTN FRC.">
+<link rel="stylesheet" href="../../assets/css/libdoc.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💨</text></svg>">
+<script>window.SITE_ROOT = "../../";</script>
+</head>
+<body data-materia="instalaciones-industriales" data-unidad="aire-comprimido">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header id="site-header"></header>
+<div class="scrim"></div>
+
+<div class="layout">
+  <nav class="sidebar" aria-label="Navegación de la unidad"></nav>
+
+  <div class="main-wrap">
+    <main class="content" id="main">
+
+      <nav class="breadcrumb" aria-label="Ruta"></nav>
+
+      <h1>Acumulación: el depósito o pulmón</h1>
+      <p class="lead">
+        El compresor entrega un caudal fijo; la planta consume un caudal variable. El depósito
+        desacopla ambos ritmos, atenúa las pulsaciones, separa condensado y fija en qué unidades
+        se miden los caudales de aire comprimido.
+      </p>
+      <p class="text-soft small">Bloque 3 · Apunte de cátedra, páginas 48 a 53 · Ing. Luciano Manavella · Instalaciones Industriales, UTN FRC</p>
+
+      <div class="card">
+        <p class="card__kicker">De dónde venimos y a dónde vamos</p>
+        <p>En el Bloque 2 dejamos el aire <span class="term">limpio</span>, <span class="term">frío</span> y <span class="term">seco</span>. Salió del refrigerador posterior, pasó por el secador y por el tren de filtros, y ahora cumple con la clase ISO 8573-1 que el proceso exige.</p>
+        <p>Pero todavía tenemos un problema que no es de calidad sino de <strong>caudal</strong>: el compresor entrega un caudal fijo y la planta consume un caudal variable. Nadie usa las herramientas neumáticas de forma pareja durante ocho horas. Hay picos, hay valles, hay minutos en los que no se consume nada.</p>
+        <p class="mb-0">Ese desajuste entre lo que se produce y lo que se consume es lo que resuelve este bloque. El componente que lo resuelve es el <strong>depósito, pulmón o tanque de aire comprimido</strong>.</p>
+      </div>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Lo que tenés que traer del bloque anterior</p>
+        <p>Tres cosas del Bloque 2 se usan acá todo el tiempo:</p>
+        <ol class="mb-0">
+          <li><strong>El condensado existe y es un problema mecánico</strong>, no una molestia estética. Si llega a las herramientas, oxida, arrastra aceite y arruina juntas.</li>
+          <li><strong>La presión absoluta no es la manométrica.</strong> En todas las fórmulas de este bloque, <span class="term">P<sub>0</sub></span> es la presión atmosférica absoluta (1,013 bar) y las presiones de trabajo se manejan en absolutas.</li>
+          <li><strong>El aire es compresible.</strong> Un metro cúbico de aire no dice nada si no aclarás a qué presión y temperatura está medido. De ahí sale el concepto de caudal Normal que se formaliza en este bloque.</li>
+        </ol>
+      </div>
+
+      <div class="callout callout--parcial">
+        <p class="callout__title">✔ Cómo estudiar este bloque para un parcial de opción múltiple</p>
+        <p>El parcial es de <strong>opción múltiple</strong>, no de desarrollo. Eso cambia la estrategia de estudio:</p>
+        <ul class="mb-0">
+          <li>No hace falta que sepas <em>escribir</em> la deducción del volumen del pulmón. Sí hace falta que sepas <strong>qué pasa con J si cambia cada variable</strong>, porque eso es exactamente lo que se pregunta en un ítem de opción múltiple.</li>
+          <li>Los <strong>números concretos</strong> valen oro: «entre 10 y 50 veces», «0 °C y 1,013 bar», «0,5 a 2 %». Los distractores de un ítem MC casi siempre son el mismo número cambiado.</li>
+          <li>Las <strong>listas cerradas</strong> (las tres funciones del pulmón, los tres tipos de purga) son material de pregunta directa. Hay que saberlas completas y sin agregados.</li>
+          <li>Prestá atención a los <strong>pares confundibles</strong>: Normal vs. FAD, purga de flotador vs. electrónica, atenuar pulsaciones vs. acumular energía. Ahí es donde se arma el distractor bueno.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <p class="card__kicker">Objetivos de aprendizaje</p>
+        <p class="text-soft small">Al terminar este bloque deberías poder, sin consultar material:</p>
+        <ul class="mb-0">
+          <li>Enunciar las tres funciones del pulmón y explicar el mecanismo físico de cada una.</li>
+          <li>Justificar por qué el aire entra al pulmón por abajo y en forma tangencial.</li>
+          <li>Recordar la regla de dimensionamiento por pulsaciones (10 a 50 veces el volumen del cilindro de la última etapa) y saber a qué tipo de compresor aplica.</li>
+          <li>Reconstruir el sentido de la fórmula del volumen del depósito y predecir el efecto de variar Δp, a y x.</li>
+          <li>Identificar para qué valor de x el pulmón necesario es máximo, y por qué.</li>
+          <li>Definir las tres condiciones de referencia del caudal Normal y convertir un caudal medido a Normal.</li>
+          <li>Distinguir purga manual, de flotador y electrónica por su principio de accionamiento y por si requieren energía externa.</li>
+        </ul>
+      </div>
+
+      <h2 id="s1">Mapa de entrada</h2>
+      <p>Cuatro preguntas resumen el bloque entero. Conviene tenerlas presentes antes de entrar al detalle.</p>
+      <div class="grid grid--2">
+        <div class="card"><p class="card__kicker">¿Por qué existe?</p><p class="mb-0">El caudal generado es fijo; el consumido, variable. Hay que almacenar la diferencia en algún lado.</p></div>
+        <div class="card"><p class="card__kicker">¿Qué hace?</p><p class="mb-0">Atenúa las pulsaciones · separa condensado · acumula energía. Las tres, siempre y a la vez.</p></div>
+        <div class="card"><p class="card__kicker">¿De qué tamaño?</p><p class="mb-0">Balance de energía → J = P₀V₀ / (aΔp) · x(1−x) → máximo en x = 0,5.</p></div>
+        <div class="card"><p class="card__kicker">¿En qué unidades?</p><p class="mb-0">Caudal Normal: 0 °C, 1,013 bar, seco. Adelanto del FAD, que se usa en el Bloque 6.</p></div>
+      </div>
+      <p class="text-soft small">Una quinta rama, menor, cuelga de «¿Qué hace?»: las <strong>purgas</strong> — manual, de flotador o electrónica — que sacan el condensado que el pulmón separó.</p>
+
+      <h2 id="s2">1. El problema que resuelve el pulmón</h2>
+
+      <p>Un compresor de desplazamiento positivo entrega, para un régimen de giro dado, un <strong>caudal fijo</strong>. No sabe modular. La planta, en cambio, consume de forma errática: se accionan tres llaves de impacto a la vez y después nadie usa nada durante dos minutos.</p>
+
+      <p>Hay solo tres formas de resolver ese desajuste:</p>
+      <ol>
+        <li>Poner un compresor tan grande como el pico máximo y dejarlo trabajar contra una válvula la mayor parte del tiempo. Carísimo en energía.</li>
+        <li>Hacer que el compresor arranque y pare siguiendo el consumo. Inviable: los arranques del motor eléctrico tienen un límite físico por hora.</li>
+        <li><strong>Poner un volumen intermedio que absorba la diferencia.</strong> El compresor trabaja a su ritmo, el consumo al suyo, y el pulmón hace de amortiguador entre los dos.</li>
+      </ol>
+      <p>La tercera es la solución de ingeniería, y es la razón de existir del depósito.</p>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ La idea de fondo</p>
+        <p class="mb-0">El pulmón <strong>no genera aire</strong>. Lo que hace es desacoplar en el tiempo la producción del consumo. Es el equivalente neumático de un tanque de agua elevado o de un stock intermedio en una línea de producción: convierte un problema de sincronización en un problema de capacidad de almacenamiento.</p>
+      </div>
+
+      <p>Además, el pulmón debe estar <strong>diseñado para soportar la presión de trabajo</strong> y contar con los elementos de seguridad y medición correspondientes: <span class="term">válvula de seguridad</span> y <span class="term">manómetro</span>. No es un recipiente cualquiera: es un recipiente sometido a presión.</p>
+
+      <h2 id="s3">2. Las tres funciones del pulmón</h2>
+      <p>El apunte enuncia tres funciones. Son una lista cerrada y son material de pregunta directa.</p>
+
+      <h3 id="s31">2.1 Atenuar las corrientes pulsantes</h3>
+      <p>El pulmón se intercala <strong>entre la cámara del compresor y el consumo</strong>, de manera de amortiguar los picos de presión para que no se produzcan daños en los consumos.</p>
+      <p>Esta función tiene sentido sobre todo en <strong>compresores alternativos a pistón</strong>, porque son los que entregan el aire en pulsos: cada carrera de descarga es un golpe de presión, no un flujo continuo. Un compresor de tornillo o un centrífugo entregan un flujo mucho más parejo, así que esta función pesa mucho menos en ellos.</p>
+
+      <div class="card">
+        <p class="card__kicker">Regla de dimensionamiento por pulsaciones</p>
+        <p class="mb-0">El tamaño del depósito debe ser <span class="val">entre 10 y 50 veces</span> el volumen del cilindro de la <strong>última etapa</strong> del compresor. La finalidad es no transmitir la onda de presión a los consumos.</p>
+      </div>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ El detalle que se olvida</p>
+        <p class="mb-0">No es «10 a 50 veces el volumen del cilindro». Es <strong>el volumen del cilindro de la última etapa</strong>. En un compresor de dos etapas, el cilindro de baja es mucho más grande que el de alta; si tomás el de baja te sale un tanque enorme y equivocado. La onda de presión que llega al pulmón es la que sale de la última etapa, así que esa es la referencia.</p>
+      </div>
+
+      <h3 id="s32">2.2 Separar el condensado y las impurezas</h3>
+      <p>El compresor introduce en el pulmón aire con <strong>aceite lubricante y residuos</strong>. Se procura que esos condensados no circulen por las cañerías.</p>
+      <p>El mecanismo es puramente geométrico y funciona así: el chorro de aire <strong>se introduce por abajo</strong> y luego <strong>se traslada tangencialmente</strong>, de modo que se produce un <strong>efecto ciclón o torbellino</strong>. Al tocar el aire las <strong>paredes frías</strong> del pulmón, los residuos se condensan y caen, liberándose después mediante una trampa. De ahí que sea necesaria la <strong>purga periódica</strong> del pulmón.</p>
+      <p>Durante el torbellino también se produce el <strong>enfriamiento del aire</strong>, que es un efecto secundario útil: aire más frío significa más condensado separado ahí y menos agua viajando por la red.</p>
+
+      <figure class="figure">
+        <img src="fig/g_ciclon.svg" alt="Esquema del efecto ciclón dentro del pulmón: el aire entra tangencialmente por abajo, gira en espiral ascendente proyectando las gotas contra la pared, y el condensado cae al fondo y se elimina por la purga.">
+        <figcaption>Corte esquemático del pulmón. El aire entra tangencialmente por la parte inferior, gira en espiral y proyecta las gotas contra la pared por inercia; el condensado decanta al fondo y sale por la purga. El aire ya limpio sale por arriba.</figcaption>
+      </figure>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Por qué entra por abajo y en tangencial</p>
+        <p>Son dos decisiones separadas que se combinan:</p>
+        <ul>
+          <li><strong>Tangencial</strong> para que el aire gire. Al girar, las gotas y partículas, que tienen mucha más densidad que el aire, son lanzadas contra la pared por inercia. Es el mismo principio del separador ciclónico del Bloque 2.</li>
+          <li><strong>Por abajo</strong> para que el agua ya separada caiga al fondo por gravedad y quede lejos de la salida, que está arriba. Si el aire entrara por arriba, arrastraría hacia la salida lo que ya había decantado.</li>
+        </ul>
+        <p class="mb-0">Y las paredes están frías simplemente porque el tanque es una superficie grande de acero en contacto con el aire del ambiente: actúa como un intercambiador pasivo.</p>
+      </div>
+
+      <h3 id="s33">2.3 Acumular energía</h3>
+      <p>Los compresores producen un caudal fijo. Si el consumo fuera perfectamente constante e igual al caudal generado, <strong>no haría falta pulmón</strong>. Pero cuando el consumo cae, el pulmón <strong>retiene el aire sobrante</strong>; cuando el consumo supera al caudal generado, lo devuelve.</p>
+      <p>Esta es la función que se traduce en una fórmula de dimensionamiento, y es la que se desarrolla en la sección siguiente.</p>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ Las tres funciones no compiten: coexisten</p>
+        <p class="mb-0">Un error típico en opción múltiple es elegir «acumular energía» como <em>la</em> función del pulmón y descartar las otras dos. Las tres ocurren siempre y simultáneamente en el mismo recipiente. Lo que cambia es cuál <strong>domina el dimensionamiento</strong>: en un compresor a pistón chico, la regla de las 10 a 50 veces puede dar un tanque más grande que el que sale del balance energético, y en ese caso manda la regla de pulsaciones.</p>
+      </div>
+
+      <h2 id="s4">3. Cálculo del volumen del depósito</h2>
+      <p>El apunte deduce el volumen a partir de un <strong>balance de energía</strong> entre lo que produce el compresor y lo que absorben los consumos. Vale la pena seguir la deducción, aunque en el parcial no la tengas que escribir, porque la fórmula final se entiende sola si viste de dónde sale.</p>
+
+      <h3 id="s41">3.1 Las variables</h3>
+      <table>
+        <thead><tr><th style="width:5rem">Símbolo</th><th>Significado</th><th style="width:9rem">Unidad</th></tr></thead>
+        <tbody>
+          <tr><td>J</td><td>Volumen del depósito</td><td>m³</td></tr>
+          <tr><td>P<sub>0</sub></td><td>Presión atmosférica</td><td>bar</td></tr>
+          <tr><td>Δp</td><td>Diferencia entre presión mínima y máxima de trabajo</td><td>bar</td></tr>
+          <tr><td>V<sub>0</sub></td><td>Caudal entregado por el compresor</td><td>N m³/h</td></tr>
+          <tr><td>V<sub>1</sub></td><td>Caudal absorbido por los consumos</td><td>N m³/h</td></tr>
+          <tr><td>Z<sub>1</sub></td><td>Tiempo con el compresor en marcha</td><td>h</td></tr>
+          <tr><td>Z<sub>2</sub></td><td>Tiempo con el compresor detenido</td><td>h</td></tr>
+          <tr><td>Z</td><td>Duración total de un ciclo, Z = Z<sub>1</sub> + Z<sub>2</sub></td><td>h</td></tr>
+          <tr><td>a</td><td>Cantidad de ciclos de arranque y parada por hora</td><td>1/h</td></tr>
+          <tr><td>x</td><td>Relación entre caudal consumido y caudal generado, x = V<sub>1</sub>/V<sub>0</sub> ≤ 1</td><td>—</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="s42">3.2 La deducción, paso a paso</h3>
+      <p><strong>Fase 1: el compresor está en marcha.</strong> Durante un tiempo Z<sub>1</sub>, entrega Z<sub>1</sub>V<sub>0</sub>P<sub>0</sub> y los consumos absorben Z<sub>1</sub>V<sub>1</sub>P<sub>0</sub>. Como los caudales son distintos, la diferencia se almacena en el depósito:</p>
+      <p class="text-soft" style="text-align:center">Δp · J = Z<sub>1</sub>V<sub>0</sub>P<sub>0</sub> − Z<sub>1</sub>V<sub>1</sub>P<sub>0</sub> = Z<sub>1</sub>P<sub>0</sub>(V<sub>0</sub> − V<sub>1</sub>)</p>
+
+      <p><strong>Fase 2: el compresor se detiene.</strong> Ahora nadie repone y los consumos vacían el tanque durante un tiempo Z<sub>2</sub>:</p>
+      <p class="text-soft" style="text-align:center">Δp · J = Z<sub>2</sub>V<sub>1</sub>P<sub>0</sub></p>
+
+      <p>Despejando cada tiempo y sumando el ciclo completo, e introduciendo la relación de caudales x = V<sub>1</sub>/V<sub>0</sub>, el álgebra se simplifica a un único factor x(1 − x). Si el compresor hace <strong>a</strong> ciclos por hora, cada ciclo dura Z = 1/a, y se llega a la fórmula final.</p>
+
+      <div class="card">
+        <p class="card__kicker">Fórmula · volumen del depósito</p>
+        <p class="mb-0" style="font-size:1.2rem;text-align:center"><strong>J&nbsp; = &nbsp;(P<sub>0</sub> · V<sub>0</sub>) / (a · Δp)&nbsp; · &nbsp;x(1 − x)</strong></p>
+        <p class="text-soft small mb-0" style="text-align:center">J en m³ · P₀ y Δp en bar · V₀ en N m³/h · a en ciclos por hora</p>
+      </div>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ Un detalle de la deducción del apunte</p>
+        <p>En la página 50 el apunte escribe el símbolo de la relación de caudales de una forma que en algunas líneas se lee ambigua. Es una variable, no un producto: acá la llamamos <strong>x</strong>. Si en el parcial ves esa notación, interpretala como la relación V<sub>1</sub>/V<sub>0</sub>.</p>
+        <p class="mb-0">Además, en el enunciado de la página 50 dice «relación entre caudal generado y caudal consumido», pero la definición matemática que escribe inmediatamente después es x = V<sub>1</sub>/V<sub>0</sub>, es decir, <strong>consumido sobre generado</strong>. Vale la definición matemática. Si un ítem del parcial pregunta qué es x, la respuesta correcta es «caudal consumido dividido caudal generado», que además es la única que respeta la condición x ≤ 1.</p>
+      </div>
+
+      <h3 id="s43">3.3 Cómo leer la fórmula (esto es lo que se pregunta)</h3>
+      <p>La fórmula tiene cuatro perillas. Entender cada una vale más que memorizar la expresión.</p>
+      <table>
+        <thead><tr><th>Si aumenta…</th><th>El volumen J…</th><th>Por qué</th></tr></thead>
+        <tbody>
+          <tr><td>V<sub>0</sub> (caudal del compresor)</td><td><strong>aumenta</strong></td><td>Un compresor más grande mueve más aire por ciclo, y ese aire tiene que caber en algún lado.</td></tr>
+          <tr><td>Δp (banda de presión permitida)</td><td><strong>disminuye</strong></td><td>Si dejás que la presión oscile más, cada metro cúbico de tanque almacena más aire. Un tanque chico con banda ancha guarda lo mismo que uno grande con banda angosta.</td></tr>
+          <tr><td>a (arranques por hora permitidos)</td><td><strong>disminuye</strong></td><td>Si tolerás más arranques del motor, cada ciclo puede ser más corto y el tanque puede ser más chico.</td></tr>
+          <tr><td>x hacia 0,5</td><td><strong>aumenta</strong></td><td>El producto x(1−x) es máximo en 0,5.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ El caso peor está en x = 0,5</p>
+        <p>El factor x(1−x) es una parábola invertida que vale cero en x=0 y en x=1, y alcanza su <strong>máximo en x = 0,5</strong>, donde vale 0,25. Entonces J<sub>máx</sub> = P<sub>0</sub>V<sub>0</sub> / (4·a·Δp).</p>
+        <p>El significado físico es elegante. Si el consumo es casi nulo (x → 0), el compresor llena el tanque enseguida y después está parado mucho tiempo: la carga es rapidísima. Si el consumo casi iguala a la producción (x → 1), el compresor casi no para y la descarga es lentísima. En los dos extremos, <strong>uno de los dos tramos del ciclo se vuelve muy corto</strong>, así que el ciclo entero es corto y alcanza con poco tanque.</p>
+        <p class="mb-0">El caso incómodo es el intermedio: cuando el consumo es <strong>exactamente la mitad</strong> de lo que produce el compresor, los tiempos de carga y de descarga son iguales y el ciclo es lo más largo posible. Ahí es donde hace falta el tanque más grande. Esto no está escrito en el apunte, pero sale directo de la fórmula y es exactamente el tipo de pregunta que se hace en opción múltiple.</p>
+      </div>
+
+      <figure class="figure">
+        <img src="fig/g_x1x.svg" alt="Curva de x por (1 menos x) en función de x, con el máximo marcado en x=0,5, valor 0,25.">
+        <figcaption>El factor x(1−x). Vale cero en los extremos y es máximo en x = 0,5, que es el caso de dimensionamiento más exigente.</figcaption>
+      </figure>
+
+      <h3 id="s44">3.4 Un caso numérico</h3>
+      <p>Tomemos una planta que necesita <span class="val">600 N m³/h</span> (es el mismo caso que va a arrastrarse hasta el Bloque 6), con una banda de presión de trabajo de <span class="val">2 bar</span> (por ejemplo, arranca a 6 bar y para a 8 bar) y un motor que admite <span class="val">15 arranques por hora</span>.</p>
+      <p class="text-soft" style="text-align:center">J<sub>máx</sub> = (1,013 × 600) / (15 × 2) × 0,25 = 5,07 m³</p>
+
+      <p>Y ahora mirá cómo se reparte el ciclo según el consumo real. El ciclo dura siempre 4 minutos, porque a = 15 ciclos/h lo impone; lo que cambia es cómo se reparte entre marcha y parada, y el tanque más grande es el que necesita el reparto simétrico.</p>
+
+      <table>
+        <thead><tr><th>x</th><th>V₁ [N m³/h]</th><th>x(1−x)</th><th>J [m³]</th><th>Z₁ (marcha)</th><th>Z₂ (parada)</th><th>Ciclo</th></tr></thead>
+        <tbody>
+          <tr><td>0,2</td><td>120</td><td>0,16</td><td>3,24</td><td>0,8 min</td><td>3,2 min</td><td>4 min</td></tr>
+          <tr><td><strong>0,5</strong></td><td>300</td><td>0,25</td><td><strong>5,07</strong></td><td>2,0 min</td><td>2,0 min</td><td>4 min</td></tr>
+          <tr><td>0,8</td><td>480</td><td>0,16</td><td>3,24</td><td>3,2 min</td><td>0,8 min</td><td>4 min</td></tr>
+        </tbody>
+      </table>
+
+      <figure class="figure">
+        <img src="fig/g_ciclo.svg" alt="Diagrama de presión contra tiempo del ciclo del pulmón para x=0,2, 0,5 y 0,8, mostrando los tramos de compresor en marcha y compresor parado.">
+        <figcaption>El mismo ciclo de 4 minutos, repartido distinto según x. Con x = 0,5 los dos tramos son iguales y el ciclo es el más «estirado» posible entre sus dos presiones límite.</figcaption>
+      </figure>
+
+      <div class="calc">
+        <h4>Calculadora de volumen de pulmón</h4>
+        <p class="ayuda">Poné el caudal del compresor, la banda de presión, los arranques por hora admitidos y la relación de caudales, y obtené el volumen necesario. P₀ queda fija en 1,013 bar.</p>
+        <div class="campos">
+          <div class="campo"><label for="pv0">V₀ · caudal del compresor [N m³/h]</label><input id="pv0" type="number" value="600" step="10" min="1"></div>
+          <div class="campo"><label for="pdp">Δp · banda de presión [bar]</label><input id="pdp" type="number" value="2" step="0.1" min="0.1"></div>
+          <div class="campo"><label for="pa">a · arranques por hora [1/h]</label><input id="pa" type="number" value="15" step="1" min="1"></div>
+          <div class="campo"><label for="px">x · V₁/V₀ [0 a 1]</label><input id="px" type="number" value="0.5" step="0.05" min="0.01" max="0.99"></div>
+        </div>
+        <div class="salida">
+          <div class="linea"><span>Volumen del depósito, J</span><b id="pJ">—</b></div>
+          <div class="linea"><span>En litros</span><b id="pJl">—</b></div>
+          <div class="linea"><span>J máximo posible (con este V₀, Δp y a, en x=0,5)</span><b id="pJmax">—</b></div>
+          <div class="linea total"><span>Ciclo: Z₁ (marcha) + Z₂ (parada) = Z</span><b id="pZ">—</b></div>
+          <p class="ayuda mb-0" style="margin-top:.7rem" id="pAviso"></p>
+        </div>
+      </div>
+
+      <h3 id="s45">3.5 El camino gráfico</h3>
+      <p>El apunte aclara que <strong>también existen gráficos</strong> que permiten determinar el volumen del depósito sin usar la fórmula (Fig. 48, p. 51). Son ábacos de fabricante: entrás con el caudal, la banda de presión y los arranques por hora, y leés el volumen. En un parcial de opción múltiple, lo que importa es saber que <strong>las dos vías existen y son equivalentes</strong>, no reproducir el ábaco.</p>
+
+      <h2 id="s5">4. Unidades: el caudal Normal</h2>
+      <p>Acá el apunte hace una advertencia que conviene tomarse en serio: <strong>hay que ser cuidadoso con las unidades del caudal porque estamos frente a un fluido compresible</strong>.</p>
+      <p>Cuando en un catálogo ves «N m³/h» o «N l/s», esa <strong>N</strong> no es decorativa: significa que el caudal está expresado en <span class="term">condiciones Normales</span> de presión y temperatura.</p>
+
+      <div class="card">
+        <p class="card__kicker">Condiciones normales de referencia</p>
+        <ul class="mb-0">
+          <li>Medido a <strong>nivel del mar</strong>, es decir, con presión absoluta de <span class="val">1,013 bar (a)</span>.</li>
+          <li><strong>Seco</strong>: el valor de caudal <strong>no incluye el vapor de agua</strong>.</li>
+          <li>Temperatura <span class="val">0 °C</span>.</li>
+        </ul>
+      </div>
+
+      <p>La conversión de un caudal medido en condiciones cualesquiera a caudal Normal es:</p>
+      <p class="text-soft" style="text-align:center">Q<sub>N</sub> &nbsp;= &nbsp;Q &nbsp;×&nbsp; [273 / (273 + T)] &nbsp;×&nbsp; [P / 1,013]</p>
+      <p class="text-soft small">donde Q es el caudal volumétrico dato en l/s, T la temperatura dato en °C y P la presión de trabajo dato en <strong>bar absolutos</strong>.</p>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Qué está haciendo realmente esa fórmula</p>
+        <p>No está convirtiendo unidades de volumen. Está <strong>convirtiendo un volumen en una masa disfrazada de volumen</strong>.</p>
+        <p>Un metro cúbico de aire a 7 bar contiene siete veces más moléculas que un metro cúbico a 1 bar. Si dos catálogos dan caudales medidos a presiones distintas, no se pueden sumar ni comparar. La condición Normal es simplemente un acuerdo: «digamos todos cuánto ocuparía esa misma masa de aire si estuviera a 0 °C y 1,013 bar, seca». A partir de ahí, los números son comparables y sumables.</p>
+        <p class="mb-0">Es la ley de los gases ideales, PV/T = cte, escrita como regla de conversión.</p>
+      </div>
+
+      <p><strong>Ejemplo.</strong> Un caudalímetro marca 100 l/s en una línea a 7 bar absolutos y 30 °C:</p>
+      <p class="text-soft" style="text-align:center">Q<sub>N</sub> = 100 × (273/303) × (7/1,013) = 100 × 0,901 × 6,910 = <strong>622,6 N l/s</strong></p>
+      <p>El mismo aire, expresado en condiciones normales, «ocupa» más de seis veces más. Tiene sentido: al llevarlo de 7 bar a 1,013 bar, se expande.</p>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ Los dos errores de signo que se cometen siempre</p>
+        <ol class="mb-0">
+          <li><strong>La temperatura va invertida y la presión derecha.</strong> Multiplicás por 273/(273+T) (0 °C arriba) y por P/1,013 (la presión dato arriba). Si te confundís y lo ponés al revés, el resultado sale mal por un factor que a 30 °C es de 1,23. En un ítem MC ese número mal calculado suele estar entre las opciones.</li>
+          <li><strong>La presión tiene que ser absoluta.</strong> Si el manómetro marca 7 bar, la presión absoluta es 8,013 bar, no 7. El apunte plantea la fórmula con «presión de trabajo dato (bar Abs.)»: leelo literal.</li>
+        </ol>
+      </div>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Ampliación <span class="badge badge--accent">Ampliación</span> — Normal no es lo mismo que FAD</p>
+        <p>En el Bloque 6, cuando haya que seleccionar el compresor, aparece una segunda referencia: el <strong>FAD</strong> (<em>Free Air Delivery</em>, aire libre suministrado), definido a <span class="val">20 °C y 1,00 bar</span> según ISO 1217.</p>
+        <p>La relación entre ambos es Q<sub>FAD</sub> = Q<sub>N</sub> × (293/273) × (1,013/1,00) ≈ <strong>1,087 · Q<sub>N</sub></strong>.</p>
+        <p class="mb-0">O sea que el número en FAD siempre es aproximadamente un <strong>9 % mayor</strong> que el mismo aire expresado en Normal, porque el aire de referencia FAD está más caliente y a menor presión, y por lo tanto ocupa más volumen. Misma masa, distinto número. Confundir Normal con FAD es la trampa clásica de este tema, y aparece tanto acá como en el Bloque 6.</p>
+      </div>
+
+      <h2 id="s6">5. Purgas</h2>
+      <p>El pulmón separa condensado. Alguien tiene que sacarlo. Ese alguien es la <span class="term">purga</span>, y el apunte distingue tres tipos.</p>
+
+      <h3 id="s61">5.1 Purga manual</h3>
+      <p>Un operario debe accionarla para que libere el condensado. Típicamente es un <strong>botón pulsador</strong>: se aprieta, sale el condensado; se suelta, el purgador se cierra (Fig. 49, p. 52). Ventaja: simplicidad y costo nulo de operación. Desventaja evidente: depende de que alguien se acuerde.</p>
+
+      <h3 id="s62">5.2 Purga automática de flotador</h3>
+      <p>Se acciona sola cuando el condensado alcanza un <strong>nivel determinado</strong> (Fig. 50, p. 52). El flotador sube con el líquido y abre el drenaje.</p>
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ La ventaja distintiva del flotador</p>
+        <p class="mb-0"><strong>No requiere energía para su accionamiento.</strong> Trabaja únicamente con el empuje del propio líquido y con la presión de la línea. Este es el dato que hay que retener: es lo que la separa de la purga electrónica y es material de pregunta directa.</p>
+      </div>
+
+      <h3 id="s63">5.3 Purga electrónica</h3>
+      <p>A diferencia de la anterior, <strong>sí requiere energía eléctrica</strong> (Fig. 51, p. 53). El circuito de funcionamiento que describe el apunte es:</p>
+      <ol>
+        <li>El condensado entra en el <strong>depósito colector (2)</strong> por el <strong>conducto de entrada (1)</strong>.</li>
+        <li>El <strong>sensor de nivel (3)</strong> avisa al sistema de control cuando se alcanza el <strong>nivel máximo</strong>.</li>
+        <li>El control abre la <strong>válvula solenoide (4)</strong> y el <strong>conducto piloto (6)</strong>.</li>
+        <li>La compensación de presión resultante hace que se abra la <strong>membrana de la válvula (5)</strong>.</li>
+        <li>El condensado sale del depósito colector por el <strong>conducto de salida (8)</strong> al exterior del drenaje.</li>
+        <li>Al alcanzarse el <strong>nivel mínimo</strong>, el control cierra la solenoide; cambian las presiones sobre la membrana, que <strong>se vuelve a cerrar por acción del resorte (7)</strong>.</li>
+      </ol>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Ampliación <span class="badge badge--accent">Ampliación</span> — Por qué se paga una purga electrónica si el flotador es gratis</p>
+        <p>Porque el flotador es un elemento mecánico sumergido en un líquido sucio, con aceite y partículas. Se traba. Cuando se traba abierto, se está fugando aire comprimido las 24 horas, que es la fuga más cara que puede tener una planta; cuando se traba cerrado, el condensado se acumula y termina viajando por la red.</p>
+        <p class="mb-0">La purga electrónica, al usar un sensor de nivel y una solenoide, abre solo el tiempo necesario y puede reportar falla. En instalaciones grandes, la diferencia de costo se paga sola con el aire que no se pierde. En el Bloque 6 vas a ver que el apunte fija un tope de fugas del 5 al 10 % de la capacidad instalada: las purgas trabadas son uno de los responsables habituales de superar ese número.</p>
+      </div>
+
+      <h2 id="s7">6. Datos duros para memorizar</h2>
+      <p>Esta es la tabla que conviene tener leída el día antes del parcial.</p>
+      <table>
+        <thead><tr><th>Dato</th><th>Valor</th><th>Contexto</th></tr></thead>
+        <tbody>
+          <tr><td>Tamaño del depósito por pulsaciones</td><td><strong>10 a 50 veces</strong> el volumen del cilindro de la <strong>última etapa</strong></td><td>Sobre todo en compresores alternativos a pistón</td></tr>
+          <tr><td>Presión atmosférica de referencia</td><td><strong>1,013 bar (a)</strong></td><td>P₀ en la fórmula del pulmón</td></tr>
+          <tr><td>Condiciones Normales</td><td><strong>0 °C</strong>, <strong>1,013 bar (a)</strong>, <strong>seco</strong></td><td>Referencia del caudal N m³</td></tr>
+          <tr><td>Condiciones FAD (ISO 1217)</td><td><strong>20 °C</strong>, <strong>1,00 bar (a)</strong></td><td>Se usa en Bloque 6</td></tr>
+          <tr><td>Relación FAD / Normal</td><td>Q<sub>FAD</sub> ≈ 1,087 · Q<sub>N</sub></td><td>FAD siempre da un número mayor</td></tr>
+          <tr><td>Valor de x que exige el mayor pulmón</td><td><strong>x = 0,5</strong>, donde x(1−x)=0,25</td><td>Caso de dimensionamiento</td></tr>
+          <tr><td>Funciones del pulmón</td><td><strong>Tres</strong>: atenuar pulsaciones, separar condensado, acumular energía</td><td>Lista cerrada</td></tr>
+          <tr><td>Elementos de seguridad y medición</td><td><strong>Válvula de seguridad</strong> y <strong>manómetro</strong></td><td>Recipiente sometido a presión</td></tr>
+          <tr><td>Purga que no requiere energía</td><td><strong>De flotador</strong></td><td>La electrónica sí requiere</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="s8">7. Trampas típicas de opción múltiple</h2>
+      <table>
+        <thead><tr><th>Se confunde…</th><th>Con…</th><th>Cómo distinguirlos</th></tr></thead>
+        <tbody>
+          <tr><td>Caudal Normal</td><td>Caudal FAD</td><td>Normal: 0 °C y 1,013 bar. FAD: 20 °C y 1,00 bar. FAD da un número ~9 % mayor.</td></tr>
+          <tr><td>Volumen del cilindro de la última etapa</td><td>Volumen del cilindro (a secas) o cilindrada total</td><td>La regla 10–50 se aplica al de la <strong>última</strong> etapa.</td></tr>
+          <tr><td>x = V₁/V₀</td><td>x = V₀/V₁</td><td>Tiene que ser ≤ 1: el consumo va arriba.</td></tr>
+          <tr><td>«Aumenta Δp ⇒ tanque más grande»</td><td>Lo correcto: más chico</td><td>Δp está en el denominador.</td></tr>
+          <tr><td>«Aumenta a ⇒ tanque más grande»</td><td>Lo correcto: más chico</td><td>a está en el denominador.</td></tr>
+          <tr><td>Atenuar pulsaciones</td><td>Acumular energía</td><td>La primera es un problema de <strong>onda de presión</strong>; la segunda, de <strong>balance de caudal</strong>.</td></tr>
+          <tr><td>Purga de flotador</td><td>Purga electrónica</td><td>El flotador <strong>no</strong> consume energía; la electrónica <strong>sí</strong>.</td></tr>
+          <tr><td>El aire entra al pulmón por arriba</td><td>Entra <strong>por abajo</strong> y tangencialmente</td><td>Para que el agua decante lejos de la salida y para generar el efecto ciclón.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="resumen">En resumen</h2>
+      <p>El compresor entrega caudal fijo; la planta consume caudal variable. El <strong>pulmón</strong> desacopla ambos ritmos.</p>
+      <p>Cumple <strong>tres funciones simultáneas</strong>. <strong>Atenúa las corrientes pulsantes</strong>, sobre todo en compresores a pistón, y por eso se recomienda un volumen de <span class="val">10 a 50 veces</span> el del cilindro de la última etapa. <strong>Separa condensado e impurezas</strong>: el aire entra por abajo y en forma tangencial, gira en efecto ciclón, choca contra las paredes frías, y lo que condensa cae al fondo y se elimina por purga periódica. <strong>Acumula energía</strong>: retiene el aire sobrante cuando el consumo cae y lo devuelve cuando el consumo sube.</p>
+      <p>El volumen se calcula por <strong>balance de energía</strong> entre lo producido y lo consumido: J = P₀V₀/(aΔp) · x(1−x). Se lee así: <strong>más caudal ⇒ más tanque</strong>; <strong>más banda de presión permitida ⇒ menos tanque</strong>; <strong>más arranques por hora tolerados ⇒ menos tanque</strong>. El factor x(1−x) es máximo en x=0,5, así que el caso de dimensionamiento es aquel en que el consumo vale la mitad de la producción, porque ahí el ciclo de carga y descarga es el más largo posible.</p>
+      <p>Los caudales se manejan en <strong>condiciones Normales</strong>: 0 °C, 1,013 bar absolutos, aire seco. Se convierte con Q<sub>N</sub> = Q·[273/(273+T)]·[P/1,013], con P en absolutas.</p>
+      <p>El condensado separado se elimina con <strong>purgas</strong>: manuales (botón pulsador), automáticas de <strong>flotador</strong> (no requieren energía) o <strong>electrónicas</strong> (sensor de nivel, solenoide, membrana; sí requieren energía eléctrica).</p>
+      <p class="mb-0">Y el pulmón, por ser un recipiente sometido a presión, lleva siempre <strong>válvula de seguridad y manómetro</strong>.</p>
+
+      <h2 id="s9">Banco de preguntas de opción múltiple</h2>
+      <p class="text-soft small">Formato tipo parcial. Respondé una a la vez: el feedback aparece apenas elegís una opción.</p>
+      <div id="quiz"></div>
+      <script type="application/json" id="quiz-data">
+[
+  { "tema": "Bloque 3", "q": "La regla que recomienda un depósito de 10 a 50 veces cierto volumen se refiere al volumen…", "opts": ["total desplazado por el compresor en una hora", "del cilindro de la primera etapa", "del cilindro de la última etapa", "de la cañería principal"], "ok": 2, "fb": " El objetivo es amortiguar la onda de presión que llega al pulmón, y esa onda la genera la última etapa." },
+  { "tema": "Bloque 3", "q": "¿Cuál de estas funciones NO corresponde al pulmón según el apunte?", "opts": ["Atenuar las corrientes pulsantes", "Separar el condensado y las impurezas", "Acumular energía", "Secar el aire hasta el punto de rocío exigido por la norma"], "ok": 3, "fb": " Secar es tarea del secador (Bloque 2). El pulmón separa condensado ya formado, no baja el punto de rocío a presión." },
+  { "tema": "Bloque 3", "q": "El aire ingresa al depósito por la parte inferior y en dirección tangencial para…", "opts": ["reducir la velocidad de entrada", "generar un efecto ciclón que separe condensado e impurezas", "evitar la formación de hielo", "aumentar la presión de trabajo"], "ok": 1, "fb": " El giro lanza las gotas y partículas contra la pared por inercia, y al tocar las paredes frías condensan y caen." },
+  { "tema": "Bloque 3", "q": "En J = P₀V₀/(aΔp) · x(1−x), si se aumenta la banda de presión Δp manteniendo todo lo demás constante, el volumen necesario del depósito…", "opts": ["aumenta proporcionalmente", "disminuye", "no cambia", "aumenta con el cuadrado de Δp"], "ok": 1, "fb": " Δp está en el denominador: si tolerás una oscilación mayor de presión, cada m³ de tanque almacena más aire útil." },
+  { "tema": "Bloque 3", "q": "El volumen de depósito requerido es máximo cuando la relación x = V₁/V₀ vale…", "opts": ["0", "0,25", "0,5", "1"], "ok": 2, "fb": " x(1−x) es máximo en 0,5, donde vale 0,25. Ahí los tiempos de carga y descarga se igualan y el ciclo es el más largo." },
+  { "tema": "Bloque 3", "q": "Las condiciones NORMALES de referencia para expresar un caudal de aire son…", "opts": ["20 °C, 1,00 bar (a), aire saturado", "0 °C, 1,013 bar (a), aire seco", "15 °C, 1,013 bar (a), 60 % de humedad relativa", "0 °C, 1,00 bar (a), aire seco"], "ok": 1, "fb": " Nivel del mar (1,013 bar abs), 0 °C y sin vapor de agua." },
+  { "tema": "Bloque 3", "q": "Para un mismo caudal másico de aire, el valor numérico expresado en FAD respecto del expresado en Normal es…", "opts": ["igual", "mayor, del orden del 9 %", "menor, del orden del 9 %", "exactamente el doble"], "ok": 1, "fb": " (293/273)(1,013/1,00) = 1,087. El aire de referencia FAD está más caliente y a menor presión, así que ocupa más volumen." },
+  { "tema": "Bloque 3", "q": "Un caudalímetro indica 100 l/s en una línea a 7 bar absolutos y 30 °C. El caudal en condiciones normales es aproximadamente…", "opts": ["90 N l/s", "111 N l/s", "623 N l/s", "690 N l/s"], "ok": 2, "fb": " 100 × (273/303) × (7/1,013) = 622,6 N l/s." },
+  { "tema": "Bloque 3", "q": "La purga automática que NO requiere energía externa para accionarse es la…", "opts": ["electrónica temporizada", "de flotador", "por solenoide", "por sensor capacitivo"], "ok": 1, "fb": " El flotador trabaja solo con el empuje del líquido y la presión de línea." },
+  { "tema": "Bloque 3", "q": "En una purga electrónica, la apertura de la membrana principal se produce…", "opts": ["por acción directa del resorte", "por la compensación de presión que provoca la apertura de la solenoide y el conducto piloto", "por el peso del condensado acumulado", "por el empuje del flotador"], "ok": 1, "fb": " El sensor de nivel dispara el control, que abre la solenoide y el piloto; la compensación de presión resultante abre la membrana. El resorte, en cambio, es el que la vuelve a cerrar." },
+  { "tema": "Bloque 3", "q": "Los elementos que el apunte exige en el diseño del depósito, además de que soporte la presión de trabajo, son…", "opts": ["secador y filtro coalescente", "válvula de seguridad y manómetro", "válvula reguladora y lubricador", "purga manual únicamente"], "ok": 1, "fb": " Es un recipiente sometido a presión: seguridad (válvula) y medición (manómetro)." },
+  { "tema": "Bloque 3", "q": "Si el motor del compresor admite más arranques por hora, el volumen necesario del pulmón…", "opts": ["aumenta", "disminuye", "no se ve afectado", "depende únicamente de P₀"], "ok": 1, "fb": " a está en el denominador. Más ciclos permitidos ⇒ ciclos más cortos ⇒ menos volumen a almacenar por ciclo." }
+]
+      </script>
+
+      <h2 id="s10">Conexión con el Bloque 4</h2>
+      <p>Ya tenemos el aire generado (Bloque 1), tratado (Bloque 2) y almacenado a presión estable (este bloque). Falta llevarlo hasta donde se usa.</p>
+      <p>Y ahí aparece un problema nuevo. Hasta acá el aire estuvo quieto o casi quieto dentro de recipientes. En el Bloque 4 va a <strong>circular por kilómetros de cañería</strong>, y circular tiene un costo: <strong>pérdida de carga</strong>. Cada metro de caño, cada codo y cada te se cobran en bar. Además, el condensado que el pulmón no alcanzó a separar va a viajar con el aire, y hay que darle un camino para que se vaya en vez de acumularse en los puntos bajos.</p>
+      <p class="mb-0">El Bloque 4 responde entonces tres preguntas: <strong>cómo se organiza la red</strong> (principal, secundarias, de servicio), <strong>qué topología conviene</strong> (abierta o cerrada) y <strong>de qué material se hace</strong>.</p>
+
+      <div class="callout callout--duda">
+        <p class="callout__title">◆ Figuras del apunte pendientes de incorporar</p>
+        <p class="mb-0">Estas figuras están citadas en el texto pero todavía no se recortaron del PDF de cátedra: Fig. 47 (p. 48, vista general del pulmón), Fig. 48 (p. 51, ábaco para el volumen del depósito), Fig. 49 (p. 52, purga manual), Fig. 50 (p. 52, purga de flotador) y Fig. 51 (p. 53, purga electrónica con las referencias 1 a 8). Los tres gráficos de elaboración propia de este bloque (parábola x(1−x), ciclo de presión y esquema del ciclón) ya están incorporados arriba.</p>
+      </div>
+
+      <nav class="pager"></nav>
+
+      <p class="page-foot">
+        Bloque 3 de la unidad de Aire Comprimido · Instalaciones Industriales · Ing. Luciano Manavella · UTN Facultad Regional Córdoba.<br>
+        Figuras 47 a 51 del apunte de cátedra, pendientes de recortar e incorporar. Los gráficos en color son de elaboración propia.
+      </p>
+
+    </main>
+    <aside class="toc" aria-label="Contenido de la página"></aside>
+  </div>
+</div>
+
+<script src="../../assets/js/site.js"></script>
+<script src="../../assets/js/study.js"></script>
+<script>
+(function () {
+  "use strict";
+  var PATM = 1.013;
+
+  var ids = ["pv0", "pdp", "pa", "px"];
+  var el = {};
+  ids.forEach(function (i) { el[i] = document.getElementById(i); });
+
+  function num(v, d) {
+    return v.toLocaleString("es-AR", { minimumFractionDigits: d, maximumFractionDigits: d });
+  }
+
+  function calcular() {
+    var V0 = parseFloat(el.pv0.value);
+    var dp = parseFloat(el.pdp.value);
+    var a  = parseFloat(el.pa.value);
+    var x  = parseFloat(el.px.value);
+
+    var aviso = document.getElementById("pAviso");
+    if ([V0, dp, a, x].some(function (v) { return !isFinite(v); }) || V0 <= 0 || dp <= 0 || a <= 0 || x <= 0 || x >= 1) {
+      aviso.textContent = "Revisá los valores: V₀, Δp y a tienen que ser positivos, y x tiene que estar entre 0 y 1.";
+      return;
+    }
+    aviso.textContent = "";
+
+    var J = (PATM * V0) / (a * dp) * x * (1 - x);
+    var Jmax = (PATM * V0) / (4 * a * dp);
+    var Zh = 1 / a;              // horas
+    var Zmin = Zh * 60;
+    var Z1 = x * Zmin;
+    var Z2 = (1 - x) * Zmin;
+
+    document.getElementById("pJ").textContent = num(J, 3) + " m³";
+    document.getElementById("pJl").textContent = num(J * 1000, 0) + " l";
+    document.getElementById("pJmax").textContent = num(Jmax, 3) + " m³";
+    document.getElementById("pZ").textContent =
+      num(Z1, 1) + " min + " + num(Z2, 1) + " min = " + num(Zmin, 1) + " min";
+  }
+
+  if (el.pv0) {
+    ids.forEach(function (i) { el[i].addEventListener("input", calcular); });
+    calcular();
+  }
+})();
+</script>
+</body>
+</html>

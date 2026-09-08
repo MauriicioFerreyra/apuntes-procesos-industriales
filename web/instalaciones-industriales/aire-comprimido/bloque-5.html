@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El punto de consumo: la unidad FRL · Bloque 5 · Aire Comprimido</title>
+<meta name="description" content="Filtro, Regulador y Lubricador: el acondicionamiento local del aire comprimido en cada punto de consumo. Bloque 5 de la unidad de Aire Comprimido, Instalaciones Industriales, UTN FRC.">
+<link rel="stylesheet" href="../../assets/css/libdoc.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💨</text></svg>">
+<script>window.SITE_ROOT = "../../";</script>
+</head>
+<body data-materia="instalaciones-industriales" data-unidad="aire-comprimido">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header id="site-header"></header>
+<div class="scrim"></div>
+
+<div class="layout">
+  <nav class="sidebar" aria-label="Navegación de la unidad"></nav>
+
+  <div class="main-wrap">
+    <main class="content" id="main">
+
+      <nav class="breadcrumb" aria-label="Ruta"></nav>
+
+      <h1>El punto de consumo: la unidad FRL</h1>
+      <p class="lead">
+        La red distribuye un aire genérico. Cada consumo necesita su propio acondicionamiento local
+        de presión, limpieza y lubricación, y eso lo hace la unidad de mantenimiento: Filtro,
+        Regulador, Lubricador.
+      </p>
+      <p class="text-soft small">Bloque 5 · Apunte de cátedra, páginas 56 a 61 · Ing. Luciano Manavella · Instalaciones Industriales, UTN FRC</p>
+
+      <div class="card">
+        <p class="card__kicker">De dónde venimos y a dónde vamos</p>
+        <p>El Bloque 4 nos dejó el aire en la bajante, a un metro de la herramienta. Y sin embargo todavía no está listo para entrar.</p>
+        <p>El motivo es que la red distribuye un aire <strong>genérico</strong>. Está a la presión que le conviene a la instalación completa, entre 7 y 8 bar, tratado para la clase de calidad promedio que la planta necesita, y sin aceite, porque ninguna red quiere aceite viajando por sus caños. Pero cada máquina en particular puede necesitar otra cosa: menos presión, lubricación, y una limpieza final que retire lo que la propia cañería le agregó al aire durante el viaje.</p>
+        <p>Ese acondicionamiento último y local es lo que hace la <strong>unidad de mantenimiento</strong>, que cuando trae los tres elementos se llama <span class="term">FRL</span>: Filtro, Regulador, Lubricador.</p>
+        <p class="mb-0">Este es el último bloque de componentes. Después de esto, el aire entra a la herramienta y hace trabajo.</p>
+      </div>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Lo que traés de los bloques anteriores</p>
+        <ul class="mb-0">
+          <li>Del Bloque 2, el principio del separador ciclónico: el filtro del FRL vuelve a usarlo, en versión miniatura.</li>
+          <li>Del Bloque 4, la tubería de servicio o bajante, que es donde físicamente se monta el FRL, junto con el acople rápido.</li>
+          <li>Del Bloque 4 también, el cuello de cisne: la unidad de mantenimiento va después de la toma superior, nunca antes.</li>
+        </ul>
+      </div>
+
+      <div class="callout callout--parcial">
+        <p class="callout__title">✔ Cómo estudiar este bloque para opción múltiple</p>
+        <p>Este bloque es descriptivo: son tres componentes y sus mecanismos internos. Lo que se puede preguntar es de tres clases.</p>
+        <ol>
+          <li><strong>Función de cada elemento.</strong> Qué hace el filtro, qué hace el regulador, qué hace el lubricador, y en qué orden van. Preguntas directas.</li>
+          <li><strong>Piezas y letras.</strong> El apunte describe la operación con referencias literales (A, B, C…). Un ítem puede pedir «el elemento que produce la depresión que aspira el aceite es…». No hace falta memorizar la letra, sí el rol de cada pieza.</li>
+          <li><strong>Condición de uso.</strong> Cuándo se coloca regulador y cuándo no. Ese «cuándo» está escrito de forma muy explícita en el apunte y es material de pregunta.</li>
+        </ol>
+        <p class="mb-0">La estrategia rendidora acá es entender cada mecanismo como una <strong>cadena causal corta</strong>. Si entendés que el Venturi genera depresión y la depresión sube el aceite, no necesitás memorizar nada del lubricador.</p>
+      </div>
+
+      <div class="card">
+        <p class="card__kicker">Objetivos de aprendizaje</p>
+        <ul class="mb-0">
+          <li>Explicar por qué el aire de red necesita acondicionamiento local aunque ya haya sido tratado.</li>
+          <li>Enunciar la condición precisa bajo la cual se agrega un regulador.</li>
+          <li>Describir el recorrido del aire dentro del filtro y decir qué separa cada etapa.</li>
+          <li>Explicar cómo el regulador mantiene constante la presión de salida, y qué hace cuando la presión secundaria se pasa del valor fijado.</li>
+          <li>Explicar el principio Venturi del lubricador y por qué la dosificación crece con el caudal.</li>
+          <li>Justificar el orden F → R → L.</li>
+          <li>Distinguir el conjunto Filtro/Regulador del conjunto FRL completo.</li>
+        </ul>
+      </div>
+
+      <h2 id="s1">Mapa de entrada</h2>
+      <div class="grid grid--3">
+        <div class="card"><p class="card__kicker">Filtro</p><p class="mb-0">Deflector → turbulencia → fuerza centrífuga → pared del vaso → gravedad → fondo → dreno. Y el elemento filtrante para lo más chico.</p></div>
+        <div class="card"><p class="card__kicker">Regulador</p><p class="mb-0">Manopla → resorte → diafragma → válvula de asiento → presión secundaria constante. Exceso → orificio de equilibrio → diafragma sube → sangría → atmósfera.</p></div>
+        <div class="card"><p class="card__kicker">Lubricador</p><p class="mb-0">Venturi → depresión → tubo de succión → goteo regulable → pulverización en el flujo.</p></div>
+      </div>
+      <p class="text-soft small">Configuraciones posibles: <strong>individuales</strong> · conjunto <strong>Filtro/Regulador</strong> · <strong>FRL</strong> completo.</p>
+
+      <h2 id="s2">1. Los consumos y su conexión a la red</h2>
+      <p>Los consumos dependen en gran medida del tipo de industria (automotriz, alimenticia, etc.), pero independientemente de eso, cualquiera sea el consumo, para unirlo a la red se utiliza una bajante o tubería de servicio.</p>
+      <p>Y se aplica la regla ya vista en el Bloque 4:</p>
+
+      <div class="callout callout--dato">
+        <p class="callout__title">◆ Regla ya conocida</p>
+        <p class="mb-0">LA TOMA DE AIRE COMPRIMIDO DEBE HACERSE SIEMPRE DESDE LA PARTE SUPERIOR DE LA TUBERÍA, porque el condensado se encuentra en la parte inferior. Para esto se recurre a la acometida llamada <strong>cuello de cisne</strong>.</p>
+      </div>
+
+      <p>Sobre la tubería de servicio, en cada punto de consumo, se colocan las <strong>unidades de mantenimiento</strong>.</p>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ Lo que el apunte dice y lo que conviene entender</p>
+        <p>El apunte, en la página 56, escribe que en cada punto de consumo se colocan unidades de mantenimiento «(filtro y lubricador)», y en el párrafo siguiente agrega que el regulador se suma solo si la presión del consumo es inferior a la de distribución.</p>
+        <p>Es decir: el apunte trata al filtro y al lubricador como la dupla básica, y al regulador como el agregado condicional. Es útil tenerlo presente porque un ítem de opción múltiple puede preguntar exactamente eso: cuál de los tres es el que se agrega según la condición de presión.</p>
+        <p class="mb-0">En la práctica industrial casi siempre se pone el FRL completo, porque casi siempre el consumo trabaja por debajo de la presión de red. Pero para el parcial, atenete a la lógica del apunte.</p>
+      </div>
+
+      <div class="card">
+        <p class="card__kicker">Condición para agregar el regulador</p>
+        <p class="mb-0">Si la presión de funcionamiento del consumo es inferior a la presión de generación y distribución, se debe agregar una válvula reguladora (regulador).</p>
+      </div>
+
+      <p>Estos componentes pueden colocarse individualmente o todos juntos formando una única unidad llamada <strong>FRL</strong> (Filtro-Regulador-Lubricador).</p>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ Una imprecisión de vocabulario en el apunte</p>
+        <p>El apunte llama al regulador «válvula reguladora de caudal». Pero toda la descripción de funcionamiento que da a continuación (páginas 58 y 59) es la de una <strong>válvula reguladora de presión</strong>: lo que se fija con la manopla es la presión secundaria, lo que se compara en el diafragma es presión, y lo que se descarga por la sangría es el exceso de presión.</p>
+        <p>Regular caudal y regular presión son dos cosas distintas. Una válvula reguladora de caudal limita el flujo; un regulador de presión mantiene constante la presión de salida y deja pasar el caudal que haga falta para sostenerla.</p>
+        <p class="mb-0">Para el parcial: si un ítem reproduce la terminología del apunte, respondé según el apunte. Pero si un ítem pregunta qué magnitud mantiene constante el regulador, la respuesta es <strong>la presión</strong>, no el caudal. Es la clase de detalle que se presta a un distractor.</p>
+      </div>
+
+      <h2 id="s3">2. El filtro</h2>
+      <p>Está diseñado para una alta eficiencia en la remoción de humedad. Gracias al sistema de deflectores, el agua y las partículas sólidas contenidas en el aire son totalmente separadas.</p>
+      <p>Una gran superficie del elemento filtrante garantiza baja caída de presión y aumenta su vida útil.</p>
+
+      <h3 id="s31">2.1 Recorrido del aire, paso a paso</h3>
+      <table>
+        <thead><tr><th style="width:3rem">Paso</th><th>Qué ocurre</th><th style="width:5rem">Pieza</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>El aire comprimido entra por el orificio en el cuerpo del filtro</td><td>—</td></tr>
+          <tr><td>2</td><td>Fluye a través del deflector superior, que provoca una acción de turbulencia</td><td>A</td></tr>
+          <tr><td>3</td><td>Por la acción centrífuga del aire turbulento, la humedad y las partículas sólidas son lanzadas contra la pared del vaso</td><td>C</td></tr>
+          <tr><td>4</td><td>Lo lanzado escurre por la pared hacia abajo por gravedad</td><td>—</td></tr>
+          <tr><td>5</td><td>La pantalla asegura que la turbulencia ocurra siempre que el aire pasa directamente a través del elemento filtrante</td><td>B</td></tr>
+          <tr><td>6</td><td>El deflector inferior separa lo depositado en el fondo del vaso y evita que reingrese al sistema</td><td>E</td></tr>
+          <tr><td>7</td><td>Ya sin lo grueso, el aire atraviesa el elemento filtrante, donde quedan retenidas las partículas más pequeñas</td><td>D</td></tr>
+          <tr><td>8</td><td>El aire vuelve al sistema; humedad y sólidos quedan en el fondo del vaso</td><td>—</td></tr>
+          <tr><td>9</td><td>El fondo se drena por dreno manual, accionando un obturador girándolo en sentido antihorario, o por dreno automático cuando el líquido alcanza un nivel predeterminado</td><td>F, G</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ El filtro del FRL hace dos filtrados distintos, no uno</p>
+        <p>Esto es lo que más se pasa por alto y es lo más elegante del componente.</p>
+        <p>Primero separa <strong>por inercia</strong>. El deflector hace girar el aire; las gotas y las partículas grandes tienen mucha más masa que las moléculas de aire, así que no logran seguir la curva y se estrellan contra la pared. Esto no consume vida útil de ningún consumible: es geometría pura, funciona para siempre y no tapa nada.</p>
+        <p>Después filtra <strong>por barrera</strong>. Recién lo que sobrevivió al ciclón llega al elemento filtrante poroso, que retiene lo fino.</p>
+        <p>El orden importa muchísimo. Si el elemento filtrante recibiera todo el chorro, se saturaría de agua y de partículas grandes en horas. Al ponerle un ciclón adelante, le llega solo lo que un poro puede manejar. Es exactamente la misma lógica del tren de filtrado del Bloque 2, en miniatura y dentro de un solo cuerpo.</p>
+        <p class="mb-0">Y por eso el deflector inferior (E) es más importante de lo que parece: sin él, el propio remolino del aire volvería a levantar el agua que ya estaba decantada en el fondo, y todo el trabajo del ciclón se perdería.</p>
+      </div>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ Vaciar el vaso a tiempo</p>
+        <p>El apunte lo dice de forma casi accidental, pero es una condición de funcionamiento: el vaso debe ser drenado antes de que el nivel alcance la altura donde el líquido pueda retornar al flujo de aire.</p>
+        <p class="mb-0">Un vaso lleno no es un filtro con mucha capacidad acumulada: es un filtro que dejó de funcionar y que además está reinyectando a la herramienta todo lo que había separado.</p>
+      </div>
+
+      <h2 id="s4">3. El regulador</h2>
+      <p>Se agrega si la presión de funcionamiento del consumo es inferior a la presión de generación y distribución.</p>
+
+      <h3 id="s41">3.1 Piezas</h3>
+      <table>
+        <thead><tr><th style="width:5rem">Letra</th><th>Pieza</th></tr></thead>
+        <tbody>
+          <tr><td>P / P'</td><td>Entrada / salida de aire comprimido</td></tr>
+          <tr><td>A</td><td>Resorte calibrado de regulación</td></tr>
+          <tr><td>B</td><td>Diafragma</td></tr>
+          <tr><td>C</td><td>Válvula de asiento</td></tr>
+          <tr><td>D</td><td>Manopla</td></tr>
+          <tr><td>E</td><td>Orificio en la tapa del regulador (descarga a la atmósfera)</td></tr>
+          <tr><td>F</td><td>Orificio de sangría, contenido en el diafragma</td></tr>
+          <tr><td>G</td><td>Orificio de equilibrio</td></tr>
+          <tr><td>H</td><td>Paso del flujo hacia la utilización</td></tr>
+          <tr><td>I</td><td>Amortiguador (de resorte o de aire comprimido)</td></tr>
+          <tr><td>J</td><td>Manómetro de presión secundaria</td></tr>
+          <tr><td>C-J</td><td>Dispositivo autocompensador</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="s42">3.2 Cómo funciona</h3>
+      <p>El aire entra por P y solo puede salir por P' si la válvula de asiento está abierta. La sección de paso regulable está situada debajo de la válvula de asiento C.</p>
+      <p><strong>Ajuste inicial.</strong> Girando totalmente la manopla D en sentido antihorario (resorte sin compresión), el conjunto de válvula de asiento C queda cerrado. Girando en sentido horario, se aplica la carga del resorte calibrado A, lo que hace que el diafragma B y la válvula de asiento C se desplacen hacia abajo, permitiendo el paso del aire hacia la utilización H.</p>
+      <p><strong>Régimen.</strong> La presión sobre el diafragma B está balanceada a través del orificio de equilibrio G mientras el regulador está en funcionamiento.</p>
+      <p><strong>Corrección por exceso.</strong> Si la presión secundaria excede el valor regulado, esa presión actúa a través del orificio G sobre el diafragma B, empujándolo hacia arriba contra el resorte A y abriendo el orificio de sangría F contenido en el diafragma. El exceso de aire se fuga hacia la atmósfera a través del orificio E de la tapa. Esto ocurre solamente en reguladores con sangría.</p>
+      <p><strong>Amortiguación.</strong> El proceso de apertura y cierre de la válvula de asiento C ocasiona cierta vibración. Puede evitarse con reguladores equipados con un amortiguador I, de resorte o de aire comprimido.</p>
+      <p><strong>Autocompensación.</strong> El dispositivo C-J permite montar el regulador en cualquier posición y le confiere un tiempo de respuesta corto.</p>
+      <p><strong>Lectura.</strong> La presión secundaria regulada se registra a través del manómetro J.</p>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ El regulador es una balanza, no una llave</p>
+        <p>La forma más rápida de entenderlo: el diafragma B es el platillo de una balanza con dos fuerzas enfrentadas.</p>
+        <ul>
+          <li>Por arriba empuja el resorte A, cuya carga fijás vos con la manopla. Esa es <strong>la presión que pediste</strong>.</li>
+          <li>Por abajo empuja la presión de salida, que llega al diafragma por el orificio de equilibrio G. Esa es <strong>la presión que hay</strong>.</li>
+        </ul>
+        <p>Si la presión de salida baja (porque la herramienta arrancó y empezó a consumir), el resorte gana, el diafragma baja, la válvula de asiento abre más y entra más aire hasta que se equilibra. Si la presión de salida sube (porque la herramienta paró y el aire quedó encerrado), la presión gana, el diafragma sube y la válvula cierra.</p>
+        <p class="mb-0">Todo el mecanismo es un lazo de realimentación negativa puramente mecánico: la variable que se quiere controlar es la que actúa sobre el elemento que la controla. No hay electrónica, no hay sensor, no hay control. Hay un resorte y una membrana.</p>
+      </div>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Qué agrega la sangría</p>
+        <p>Cerrar la válvula de asiento resuelve el caso de «sube la presión porque estoy metiendo de más». Pero no resuelve el caso de «ya hay aire encerrado aguas abajo a más presión de la que quiero ahora».</p>
+        <p>Eso pasa en dos situaciones reales: cuando bajás el ajuste de la manopla estando el sistema presurizado, y cuando la herramienta devuelve aire hacia el regulador. Sin sangría, ese aire no tiene salida y la presión secundaria se queda alta para siempre.</p>
+        <p>El orificio F en el diafragma es la salida de emergencia: cuando el diafragma se levanta lo suficiente, se destapa y el exceso escapa por E a la atmósfera. Por eso, al bajar el ajuste de un regulador con sangría, se escucha un soplido corto. No es una falla: es el componente haciendo su trabajo.</p>
+        <p class="mb-0">Los reguladores sin sangría existen y son más baratos, pero para bajar la presión hay que despresurizar la línea.</p>
+      </div>
+
+      <h2 id="s5">4. El lubricador</h2>
+      <p>Genera la distribución proporcional del aceite en una larga franja del flujo de aire. El sistema con aguja asegura una distribución de aceite repetitiva y permite el llenado del vaso aun con la línea presurizada.</p>
+
+      <h3 id="s51">4.1 Piezas</h3>
+      <table>
+        <thead><tr><th style="width:5rem">Letra</th><th>Pieza</th></tr></thead>
+        <tbody>
+          <tr><td>A</td><td>Membrana de restricción</td></tr>
+          <tr><td>B</td><td>Orificio Venturi</td></tr>
+          <tr><td>C</td><td>Esfera (asiento de la placa inferior)</td></tr>
+          <tr><td>E</td><td>Tubo de succión</td></tr>
+          <tr><td>F</td><td>Orificio superior</td></tr>
+          <tr><td>G</td><td>Válvula de regulación del goteo</td></tr>
+          <tr><td>H</td><td>Tapón de relleno</td></tr>
+          <tr><td>I</td><td>Paso por donde gotea el aceite</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="s52">4.2 Cómo funciona</h3>
+      <p>El aire fluye a través del lubricador por dos caminos.</p>
+      <p>Con caudales bajos, la mayor parte del flujo va por el orificio Venturi B, y la otra parte fluye deflectando la membrana de restricción A y al mismo tiempo presuriza el vaso a través del asiento tipo esfera de la placa inferior.</p>
+      <p>La velocidad del aire en el Venturi B provoca una depresión en el orificio superior F. Esa depresión, sumada a la presión positiva del vaso transmitida por el tubo de succión E, hace que el aceite suba y se consuma a través del conjunto de goteo.</p>
+      <p>El caudal de aceite se controla con la válvula de regulación G, y el aceite gotea a través del paso I, donde se encuentra con el flujo de aire que pasa por el Venturi B, y ahí se pulveriza.</p>
+      <p>Cuando el flujo de aire aumenta, la membrana de restricción A impide el paso por el camino secundario, forzando a que la mayor parte del aire pase por el Venturi B. Eso asegura que la distribución de aceite aumente linealmente con el incremento del caudal de aire.</p>
+      <p><strong>Llenado en carga.</strong> El vaso puede llenarse sin despresurizar la línea gracias a la esfera C. Cuando se retira el tapón de relleno H, el aire del vaso escapa a la atmósfera y la esfera C impide el paso de aire hacia el vaso, evitando que se vuelva a presurizar. Al reponer el tapón, entra una pequeña porción de aire, y cuando el vaso está totalmente presurizado la lubricación vuelve a la normalidad.</p>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Por qué un Venturi y no una bomba</p>
+        <p>El problema a resolver es: hay que levantar aceite desde el fondo de un vaso y meterlo en una corriente de aire a 6 bar. Poner una bomba sería absurdo para un componente que va colgado de una bajante.</p>
+        <p>La solución es usar el propio aire como bomba. Un Venturi es un estrechamiento: donde la sección se achica, la velocidad sube, y donde la velocidad sube, la presión estática baja (Bernoulli). Esa caída de presión en F es la aspiración.</p>
+        <p class="mb-0">Pero hay un detalle fino que hace que funcione de verdad: el vaso está presurizado por el camino secundario. Entonces el aceite tiene presión de vaso empujándolo desde arriba y depresión del Venturi tirándolo desde el otro extremo. Las dos se suman. Por eso el apunte dice «la depresión sumada a la presión positiva del vaso».</p>
+      </div>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ La membrana de restricción es lo que hace la dosificación proporcional</p>
+        <p>Este es el punto más ingenioso del componente y el más probable de aparecer en un ítem conceptual.</p>
+        <p>Si el lubricador fuera solo un Venturi fijo, la cantidad de aceite dependería de la velocidad del aire de forma no lineal, y a caudal bajo casi no aspiraría nada. El resultado sería una herramienta que se queda sin aceite cuando trabaja despacio y que se ahoga cuando trabaja rápido.</p>
+        <p>La membrana A resuelve eso repartiendo el flujo: a caudal bajo deja pasar aire por el camino secundario, quitándole caudal al Venturi; a caudal alto se cierra y manda todo al Venturi. El efecto neto es que la depresión en F crece de manera controlada y el aceite entregado aumenta linealmente con el caudal de aire.</p>
+        <p class="mb-0">Traducido: la herramienta recibe siempre la misma proporción de aceite por metro cúbico de aire, trabaje rápido o despacio. Eso es lo que el apunte llama «distribución proporcional» y «repetitiva».</p>
+      </div>
+
+      <figure class="figure">
+        <img src="fig/g_lubricacion.svg" alt="Gráfico de aceite entregado en función del caudal de aire: con la membrana de restricción la relación es lineal; sin ella, la curva es cóncava, casi no lubrica a caudal bajo y se satura a caudal alto.">
+        <figcaption>Con la membrana de restricción (petróleo), el aceite entregado crece en línea recta con el caudal de aire: la proporción por m³ es siempre la misma. Sin ella (gris punteado), la relación es cóncava: casi no lubrica a caudal bajo y se aplana a caudal alto.</figcaption>
+      </figure>
+
+      <h2 id="s6">5. Los conjuntos</h2>
+
+      <h3 id="s61">5.1 Conjunto Filtro/Regulador</h3>
+      <p>Hay válvulas reguladoras integradas con filtros, ideales para lugares compactos. Economizan espacio, porque ofrecen filtro y regulador en un solo conjunto para un desempeño óptimo. Combina las características de ambos en un solo elemento (Fig. 58, p. 61).</p>
+
+      <h3 id="s62">5.2 Conjunto Filtro/Regulador/Lubricador (FRL)</h3>
+      <p>Cuando es necesario utilizar los tres elementos, es posible unirlos formando una unidad conocida como FRL. Igual que en el caso anterior, se optimiza el espacio requerido para el montaje (Fig. 59, p. 61).</p>
+
+      <figure class="figure">
+        <img src="fig/g_frl_bloques.svg" alt="Diagrama de bloques del FRL en línea: filtro, regulador y lubricador en orden, con el aire entrando sucio a 7 bar y saliendo limpio, regulado a 5 bar y lubricado.">
+        <figcaption>El FRL en línea. Entra aire sucio a 7 bar; el filtro lo limpia sin cambiar la presión; el regulador lo baja a la presión de trabajo del consumo; el lubricador lo pulveriza con aceite recién al final, justo antes de la herramienta.</figcaption>
+      </figure>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Por qué el orden es F → R → L y no otro</p>
+        <p>El nombre del componente es también el orden del flujo, y cada posición tiene una razón:</p>
+        <p>El <strong>filtro va primero</strong> porque es el único que protege a los otros dos. El regulador tiene un asiento de precisión y un diafragma delgado; una partícula de óxido de la cañería puede trabar el asiento o perforar la membrana. Lo mismo el lubricador, con sus orificios finos. Todo lo sucio se detiene en el primer componente.</p>
+        <p>El <strong>lubricador va último</strong> por dos motivos. Si fuera antes del filtro, el filtro le sacaría el aceite que acabás de agregar, que es justo lo que el filtro está diseñado para hacer. Y si fuera antes del regulador, el aceite pulverizado se depositaría en el asiento y el diafragma, ensuciando el mecanismo de control.</p>
+        <p>El regulador queda en el medio por descarte, pero además es donde tiene sentido: recibe aire limpio, que es lo que necesita para regular con precisión, y entrega aire ya a la presión de trabajo, de modo que el lubricador dosifica sobre el caudal real que va a usar la herramienta.</p>
+        <p class="mb-0">Si te preguntan el orden y dudás, reconstruilo así: <strong>lo que protege va primero, lo que ensucia va último</strong>.</p>
+      </div>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Ampliación <span class="badge badge--accent">Ampliación</span> — cuándo NO se pone lubricador</p>
+        <p>El apunte no lo trata, pero vale la pena saberlo porque explica por qué existen conjuntos Filtro/Regulador sin la L.</p>
+        <p>Hay aplicaciones donde el aceite en el aire es inaceptable: industria alimenticia, farmacéutica, pintura, instrumentación, y en general cualquier proceso donde el aire toca el producto. Ahí se trabaja con aire no lubricado y con herramientas y cilindros de lubricación permanente, que traen su grasa de fábrica sellada.</p>
+        <p>Ese es el caso que conecta con la Clase 0 de la norma ISO 8573-1 que viste en el Bloque 0: no se trata solo de filtrar el aceite del compresor, sino de no volver a agregarlo nunca aguas abajo. Un FRL completo en una línea de aire clase 0 arruinaría todo el tren de tratamiento en el último medio metro.</p>
+        <p class="mb-0">Y hay una regla práctica que se desprende de esto: una vez que lubricás una línea, ya no podés volver atrás. El aceite queda impregnado en las paredes de las mangueras y en los sellos. Por eso la decisión de lubricar o no se toma al proyectar el circuito, no después.</p>
+      </div>
+
+      <figure class="figure">
+        <img src="fig/g_frl_bajante.svg" alt="Esquema de la bajante con cuello de cisne en la parte superior y el conjunto FRL montado debajo, terminando en un acople rápido y la manguera hacia la herramienta.">
+        <figcaption>El montaje completo en la bajante: cuello de cisne arriba (toma superior), el FRL en su orden F-R-L, y el acople rápido con la manguera hacia la herramienta.</figcaption>
+      </figure>
+
+      <h2 id="s7">6. Datos duros para memorizar</h2>
+      <table>
+        <thead><tr><th>Dato</th><th>Valor</th></tr></thead>
+        <tbody>
+          <tr><td>Significado de FRL</td><td><strong>Filtro – Regulador – Lubricador</strong></td></tr>
+          <tr><td>Unidad de mantenimiento básica según el apunte</td><td><strong>Filtro y lubricador</strong></td></tr>
+          <tr><td>Condición para agregar el regulador</td><td>Presión del consumo inferior a la de generación y distribución</td></tr>
+          <tr><td>Dónde se monta el FRL</td><td>Sobre la tubería de servicio (bajante), en cada punto de consumo</td></tr>
+          <tr><td>Cómo se hace la toma de la red</td><td>Por arriba, cuello de cisne</td></tr>
+          <tr><td>Filtro: qué provoca el deflector superior</td><td>Turbulencia ⇒ separación centrífuga</td></tr>
+          <tr><td>Filtro: qué retiene el elemento filtrante</td><td>Las partículas más pequeñas</td></tr>
+          <tr><td>Filtro: función del deflector inferior</td><td>Evitar que lo depositado reingrese al sistema</td></tr>
+          <tr><td>Filtro: sentido de giro del obturador del dreno manual</td><td><strong>Antihorario</strong></td></tr>
+          <tr><td>Filtro: efecto de una gran superficie filtrante</td><td>Baja caída de presión y mayor vida útil</td></tr>
+          <tr><td>Regulador: manopla totalmente antihoraria</td><td>Válvula de asiento cerrada (resorte sin compresión)</td></tr>
+          <tr><td>Regulador: por dónde escapa el exceso</td><td>Sangría F en el diafragma, hacia atmósfera por E</td></tr>
+          <tr><td>Regulador: qué permite el autocompensador C-J</td><td>Montaje en cualquier posición y respuesta rápida</td></tr>
+          <tr><td>Regulador: para qué el amortiguador I</td><td>Evitar la vibración del ciclo de apertura y cierre</td></tr>
+          <tr><td>Lubricador: principio de aspiración</td><td>Venturi (depresión) + presión positiva del vaso</td></tr>
+          <tr><td>Lubricador: qué hace la membrana de restricción A</td><td>Que el aceite aumente linealmente con el caudal de aire</td></tr>
+          <tr><td>Lubricador: qué permite la esfera C</td><td>Llenar el vaso con la línea presurizada</td></tr>
+          <tr><td>Conjunto para lugares compactos sin lubricación</td><td><strong>Filtro/Regulador</strong></td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="s8">7. Trampas típicas de opción múltiple</h2>
+      <table>
+        <thead><tr><th>Se confunde…</th><th>Con…</th><th>Cómo distinguirlos</th></tr></thead>
+        <tbody>
+          <tr><td>El regulador regula presión</td><td>«regula caudal» (como lo llama el apunte)</td><td>Todo el mecanismo compara y ajusta presión secundaria.</td></tr>
+          <tr><td>Sentido antihorario de la manopla ⇒ cerrado</td><td>⇒ abierto</td><td>Antihorario = resorte sin compresión = cerrado.</td></tr>
+          <tr><td>Orificio de equilibrio G</td><td>Orificio de sangría F</td><td>G transmite la presión al diafragma. F descarga el exceso.</td></tr>
+          <tr><td>Orificio E (tapa)</td><td>Orificio F (diafragma)</td><td>F se abre; E es por donde sale a la atmósfera.</td></tr>
+          <tr><td>Deflector superior A</td><td>Deflector inferior E</td><td>A genera la turbulencia; E impide el reingreso de lo decantado.</td></tr>
+          <tr><td>Elemento filtrante D retiene todo</td><td>Retiene solo lo más pequeño</td><td>Lo grueso ya lo sacó el ciclón.</td></tr>
+          <tr><td>Membrana de restricción A del lubricador</td><td>Diafragma B del regulador</td><td>Distintos componentes, misma letra en un caso y letra parecida en el otro. Ojo con esto.</td></tr>
+          <tr><td>El lubricador aspira solo por Venturi</td><td>Venturi más presión del vaso</td><td>El apunte dice explícitamente que se suman.</td></tr>
+          <tr><td>Orden L → R → F</td><td>Orden F → R → L</td><td>Lo que protege va primero, lo que ensucia va último.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="resumen">En resumen</h2>
+      <p>El aire de la red es genérico: viene a 7 u 8 bar, sin aceite, y con lo que la cañería le agregó en el viaje. Cada consumo necesita su propio acondicionamiento, y eso lo hace la unidad de mantenimiento, montada sobre la bajante, después de la toma superior con cuello de cisne.</p>
+      <p>El <strong>filtro</strong> separa en dos etapas. Primero, el deflector superior (A) genera turbulencia y la fuerza centrífuga lanza agua y partículas contra la pared del vaso (C), de donde escurren al fondo; el deflector inferior (E) impide que vuelvan al flujo. Después, el elemento filtrante (D) retiene las partículas más pequeñas. Una gran superficie filtrante significa baja caída de presión y más vida útil. El vaso se drena manualmente con el obturador (G) girando en sentido antihorario, o con dreno automático, y debe vaciarse antes de que el líquido pueda reingresar al flujo.</p>
+      <p>El <strong>regulador</strong> se agrega si la presión del consumo es inferior a la de generación y distribución. Funciona como una balanza: el resorte (A), cargado con la manopla (D), empuja el diafragma (B) hacia abajo abriendo la válvula de asiento (C); la presión de salida, transmitida por el orificio de equilibrio (G), empuja hacia arriba. Si la presión secundaria se pasa, el diafragma sube, se abre la sangría (F) y el exceso escapa a la atmósfera por (E). El amortiguador (I) evita vibraciones, el dispositivo autocompensador (C-J) permite montarlo en cualquier posición con respuesta rápida, y el manómetro (J) indica la presión regulada.</p>
+      <p>El <strong>lubricador</strong> usa un Venturi (B): la velocidad del aire genera una depresión en (F) que, sumada a la presión del vaso transmitida por el tubo de succión (E), hace subir el aceite. El goteo se ajusta con la válvula (G) y el aceite se pulveriza al encontrarse con el aire. La membrana de restricción (A) cierra el camino secundario cuando sube el caudal, forzando todo el flujo por el Venturi y logrando que el aceite entregado crezca linealmente con el caudal de aire. La esfera (C) permite rellenar el vaso sin despresurizar la línea.</p>
+      <p class="mb-0">Los tres pueden montarse por separado, como conjunto Filtro/Regulador para lugares compactos, o como FRL completo. El orden de flujo es siempre <strong>F → R → L</strong>.</p>
+
+      <h2 id="s9">Banco de preguntas de opción múltiple</h2>
+      <p class="text-soft small">Formato tipo parcial. Respondé una a la vez: el feedback aparece apenas elegís una opción.</p>
+      <div id="quiz"></div>
+      <script type="application/json" id="quiz-data">
+[
+  { "tema": "Bloque 5", "q": "Las siglas FRL corresponden a…", "opts": ["Flujo–Regulación–Limpieza", "Filtro–Regulador–Lubricador", "Filtro–Refrigerador–Lubricador", "Filtro–Regulador–Limitador"], "ok": 1, "fb": " Y el orden del nombre es también el orden del flujo." },
+  { "tema": "Bloque 5", "q": "Según el apunte, el regulador se agrega cuando…", "opts": ["el caudal del consumo supera al de la red", "la presión de funcionamiento del consumo es inferior a la de generación y distribución", "la herramienta requiere lubricación", "siempre, sin excepción"], "ok": 1, "fb": " Filtro y lubricador son la dupla básica; el regulador es el agregado condicional." },
+  { "tema": "Bloque 5", "q": "En el filtro, la separación de las gotas de agua y las partículas grandes se produce por…", "opts": ["adsorción sobre el elemento filtrante", "condensación sobre una superficie fría", "acción centrífuga del aire puesto en turbulencia por el deflector", "decantación en un tanque de reposo"], "ok": 2, "fb": " El deflector superior hace girar el aire y la inercia lanza las gotas contra la pared del vaso." },
+  { "tema": "Bloque 5", "q": "La función del deflector inferior del filtro es…", "opts": ["aumentar la turbulencia del aire entrante", "sostener el elemento filtrante", "separar la humedad y partículas depositadas en el fondo, evitando su reingreso al sistema", "accionar el dreno automático"], "ok": 2, "fb": " Sin él, el propio remolino levantaría lo que ya había decantado." },
+  { "tema": "Bloque 5", "q": "Una gran superficie del elemento filtrante garantiza…", "opts": ["mayor presión de salida", "baja caída de presión y mayor vida útil", "mayor caudal de aceite", "menor consumo de aire"], "ok": 1, "fb": " Es la razón de que el elemento sea plegado y no una simple placa." },
+  { "tema": "Bloque 5", "q": "Girando totalmente la manopla del regulador en sentido antihorario, la válvula de asiento queda…", "opts": ["totalmente abierta", "cerrada", "en posición intermedia", "bloqueada mecánicamente"], "ok": 1, "fb": " Antihorario significa resorte sin compresión, y sin carga del resorte el asiento no abre." },
+  { "tema": "Bloque 5", "q": "Cuando la presión secundaria excede el valor regulado, en un regulador con sangría…", "opts": ["se cierra el orificio de equilibrio y se detiene el flujo", "el diafragma se desplaza hacia arriba, abre el orificio de sangría y el exceso escapa a la atmósfera", "actúa la válvula de seguridad del pulmón", "el amortiguador absorbe el exceso de presión"], "ok": 1, "fb": " El exceso sale por el orificio de la tapa. Por eso se escucha un soplido al bajar el ajuste." },
+  { "tema": "Bloque 5", "q": "El dispositivo autocompensador del regulador permite…", "opts": ["regular el caudal de aceite", "evitar la vibración del asiento", "montar el regulador en cualquier posición y obtener un tiempo de respuesta corto", "medir la presión secundaria"], "ok": 2, "fb": " Medir es tarea del manómetro; evitar la vibración, del amortiguador." },
+  { "tema": "Bloque 5", "q": "El principio de funcionamiento del lubricador se basa en…", "opts": ["una bomba de émbolo accionada por el aire", "la depresión generada por un orificio Venturi, sumada a la presión positiva del vaso", "la capilaridad del tubo de succión", "la gravedad del aceite sobre el flujo de aire"], "ok": 1, "fb": " El aire actúa como su propia bomba." },
+  { "tema": "Bloque 5", "q": "La membrana de restricción del lubricador tiene por función…", "opts": ["impedir la entrada de condensado al vaso", "regular el caudal de goteo del aceite", "desviar el flujo de modo que la distribución de aceite aumente linealmente con el caudal de aire", "permitir el llenado con la línea presurizada"], "ok": 2, "fb": " El goteo lo regula la válvula G; el llenado en carga lo permite la esfera C." },
+  { "tema": "Bloque 5", "q": "La esfera del lubricador permite…", "opts": ["cerrar el paso de aceite cuando el vaso se vacía", "llenar el vaso de aceite sin despresurizar la línea de aire", "amortiguar la vibración del flujo", "filtrar el aceite antes de pulverizarlo"], "ok": 1, "fb": " Al retirar el tapón de relleno, la esfera impide que el aire vuelva a presurizar el vaso." },
+  { "tema": "Bloque 5", "q": "El orden correcto en el que el aire atraviesa una unidad FRL es…", "opts": ["Lubricador → Regulador → Filtro", "Regulador → Filtro → Lubricador", "Filtro → Regulador → Lubricador", "Filtro → Lubricador → Regulador"], "ok": 2, "fb": " El filtro protege a los otros dos; el lubricador va último para que su aceite no sea retenido ni ensucie el regulador." },
+  { "tema": "Bloque 5", "q": "El conjunto Filtro/Regulador, sin lubricador, se utiliza principalmente…", "opts": ["cuando el consumo trabaja a mayor presión que la red", "cuando se dispone de poco espacio de montaje y se busca un solo elemento", "cuando el aire ya viene lubricado desde el compresor", "únicamente en redes cerradas"], "ok": 1, "fb": " El apunte lo justifica por economía de espacio y desempeño óptimo en un solo cuerpo." },
+  { "tema": "Bloque 5", "q": "La magnitud que el «regulador» del FRL mantiene efectivamente constante es…", "opts": ["el caudal de aire entregado", "la presión de salida (secundaria)", "la temperatura del aire", "la dosificación de aceite"], "ok": 1, "fb": " Aunque el apunte lo denomina «válvula reguladora de caudal», toda su descripción de funcionamiento corresponde a un regulador de presión." }
+]
+      </script>
+
+      <h2 id="s10">Conexión con el Bloque 6</h2>
+      <p>Con esto queda descripto el sistema completo, componente por componente: se genera el aire, se lo trata, se lo almacena, se lo distribuye y se lo acondiciona en cada punto de uso.</p>
+      <p>Lo que falta ahora es lo que convierte a esa descripción en un proyecto: los números.</p>
+      <p>¿Cuánto aire necesita realmente la planta, si nunca funcionan todas las máquinas a la vez? ¿Qué diámetro tiene que tener cada tramo? ¿Cuánta presión se pierde en el camino y cuánta se puede permitir perder? ¿Qué compresor se elige entre los varios que podrían servir? ¿Dónde se lo pone y cómo se ventila la sala?</p>
+      <p class="mb-0">El Bloque 6 responde todo eso, y es donde todos los bloques anteriores se usan al mismo tiempo.</p>
+
+      <div class="callout callout--duda">
+        <p class="callout__title">◆ Figuras del apunte pendientes de incorporar</p>
+        <p class="mb-0">Estas figuras están citadas en el texto pero todavía no se recortaron del PDF de cátedra: Fig. 54 (p. 56, tipos de consumos conectados a la red), Fig. 55 (p. 57, corte del filtro, ref. A a G), Fig. 56 (p. 59, corte del regulador, ref. A a J y P/P'), Fig. 57 (p. 60, corte del lubricador, ref. A a I), Fig. 58 (p. 61, conjunto Filtro/Regulador) y Fig. 59 (p. 61, conjunto FRL). Los tres gráficos de elaboración propia de este bloque (diagrama de bloques F-R-L, recta de dosificación del lubricador y esquema de montaje en la bajante) ya están incorporados arriba.</p>
+      </div>
+
+      <nav class="pager"></nav>
+
+      <p class="page-foot">
+        Bloque 5 de la unidad de Aire Comprimido · Instalaciones Industriales · Ing. Luciano Manavella · UTN Facultad Regional Córdoba.<br>
+        Figuras 54 a 59 del apunte de cátedra, pendientes de recortar e incorporar. Los gráficos en color son de elaboración propia.
+      </p>
+
+    </main>
+    <aside class="toc" aria-label="Contenido de la página"></aside>
+  </div>
+</div>
+
+<script src="../../assets/js/site.js"></script>
+<script src="../../assets/js/study.js"></script>
+</body>
+</html>
