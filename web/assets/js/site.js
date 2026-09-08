@@ -85,7 +85,11 @@
             resumen: "Post-enfriador, secado y filtrado: cómo se lleva el aire desde la descarga del compresor hasta la calidad que pide el consumo.",
             paginas: [
               { url: "index.html",    titulo: "Panorama de la unidad",          desc: "Los siete bloques del tema y cuáles están desarrollados.", claves: "panorama bloques aire comprimido mapa indice" },
-              { url: "bloque-2.html", titulo: "Tratamiento del aire comprimido", desc: "Post-enfriador, las cinco técnicas de secado y el filtrado del aire comprimido.", claves: "post-enfriador secado absorcion adsorcion sobrecompresion membrana filtrado coalescente carbon activo punto de rocio prp tren" }
+              { url: "bloque-2.html", titulo: "Tratamiento del aire comprimido", desc: "Post-enfriador, las cinco técnicas de secado y el filtrado del aire comprimido.", claves: "post-enfriador secado absorcion adsorcion sobrecompresion membrana filtrado coalescente carbon activo punto de rocio prp tren" },
+              { url: "bloque-3.html", titulo: "Acumulación: el depósito o pulmón", desc: "Las tres funciones del pulmón, el cálculo de su volumen, el caudal Normal y los tipos de purga.", claves: "deposito pulmon acumulacion pulsaciones condensado ciclon volumen caudal normal fad purga flotador electronica x(1-x)" },
+              { url: "bloque-4.html", titulo: "Transporte y distribución: la red", desc: "Los tres niveles de tubería, red abierta vs. cerrada, el cuello de cisne, reglas de montaje y los materiales de cañería.", claves: "red principal secundaria servicio bajante abierta cerrada anillo cuello de cisne pendiente acero negro galvanizado inoxidable cobre aluminio termoplastico accesorios racores" },
+              { url: "bloque-5.html", titulo: "El punto de consumo: la unidad FRL", desc: "Filtro, Regulador y Lubricador: el acondicionamiento local del aire comprimido en cada punto de consumo.", claves: "frl filtro regulador lubricador deflector diafragma valvula de asiento sangria venturi membrana de restriccion esfera manopla resorte" },
+              { url: "bloque-6.html", titulo: "Proyecto integral de la instalación", desc: "Consumo medio, diámetro y pérdida de carga, selección de compresor, pulmón, filtros y sala de compresores: el proyecto completo con números.", claves: "consumo medio factor de simultaneidad coeficiente de utilizacion diametro perdida de carga velocidad caudal normal fad selecciona compresor sala de compresores ventilacion caso a b c" }
             ]
           }
         ]

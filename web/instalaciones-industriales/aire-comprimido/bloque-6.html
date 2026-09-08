@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proyecto integral de la instalación · Bloque 6 · Aire Comprimido</title>
+<meta name="description" content="Consumo medio, diámetro y pérdida de carga, selección de compresor, pulmón, filtros y sala de compresores: el proyecto completo con números. Bloque 6 de la unidad de Aire Comprimido, Instalaciones Industriales, UTN FRC.">
+<link rel="stylesheet" href="../../assets/css/libdoc.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💨</text></svg>">
+<script>window.SITE_ROOT = "../../";</script>
+</head>
+<body data-materia="instalaciones-industriales" data-unidad="aire-comprimido">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header id="site-header"></header>
+<div class="scrim"></div>
+
+<div class="layout">
+  <nav class="sidebar" aria-label="Navegación de la unidad"></nav>
+
+  <div class="main-wrap">
+    <main class="content" id="main">
+
+      <nav class="breadcrumb" aria-label="Ruta"></nav>
+
+      <h1>Proyecto integral de la instalación</h1>
+      <p class="lead">
+        Los cinco bloques anteriores describieron el sistema componente por componente. Este bloque
+        pone números: consumo, diámetros, pérdida de carga, selección del compresor y de la sala.
+        Es el que convierte la descripción en un proyecto.
+      </p>
+      <p class="text-soft small">Bloque 6 · Apunte de cátedra, páginas 62 a 69 y 76 a 79 · Ing. Luciano Manavella · Instalaciones Industriales, UTN FRC</p>
+
+      <div class="card">
+        <p class="card__kicker">De dónde venimos y a dónde vamos</p>
+        <p>Los cinco bloques anteriores describieron el sistema componente por componente. Sabemos qué hace un compresor, qué hace un secador, para qué está el pulmón, cómo se organiza la red y qué es un FRL.</p>
+        <p>Este bloque hace otra cosa: pone números. Es el que convierte una descripción en un proyecto.</p>
+        <p>Y el orden en que se hace no es arbitrario, porque cada decisión depende de la anterior:</p>
+        <p class="mb-0"><strong>cuánto aire hace falta → a qué presión y con qué pérdida admisible → con qué calidad → qué diámetro tiene cada tramo → cuánta presión se pierde realmente → qué compresor se elige → qué pulmón → qué filtros → dónde va la sala y cómo se ventila.</strong></p>
+      </div>
+      <p class="text-soft small">Si te preguntan en qué orden se proyecta una instalación de aire comprimido, esa cadena es la respuesta.</p>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Todo lo anterior se usa acá</p>
+        <ul class="mb-0">
+          <li>Del Bloque 0, la calidad ISO 8573-1 que define cuántos equipos de tratamiento hacen falta.</li>
+          <li>Del Bloque 1, el rendimiento del compresor, que acá se traduce en costo operativo.</li>
+          <li>Del Bloque 2, los equipos de tratamiento, que se seleccionan y aportan su propia pérdida de carga.</li>
+          <li>Del Bloque 3, el caudal Normal y la fórmula del pulmón, que se aplican tal cual.</li>
+          <li>Del Bloque 4, la topología, el trazado y los materiales, que fijan la longitud y los accesorios del cálculo.</li>
+          <li>Del Bloque 5, el FRL, que es el consumidor final del caudal que se está calculando.</li>
+        </ul>
+      </div>
+
+      <div class="callout callout--parcial">
+        <p class="callout__title">✔ Cómo estudiar este bloque para opción múltiple</p>
+        <p>Este es el bloque con más valores numéricos aislados de toda la unidad, y por lo tanto el más «fácil» de preguntar en opción múltiple. Casi cada recomendación del apunte es un ítem potencial. Tres consejos concretos:</p>
+        <ol class="mb-0">
+          <li><strong>Memorizá los números que son criterios de diseño</strong>: 7 a 8 bar, fugas del 5 al 10 %, caída de 0,6 bar recomendada y 1 bar máxima, velocidades de 5 a 15 m/s con topes de 8 y 15, pérdidas del 5 al 15 % en el consumo. Son pocos y son casi seguros.</li>
+          <li><strong>No intentes memorizar las fórmulas de memoria exacta, sino sus dependencias.</strong> Que el diámetro va con la raíz del caudal y que la pérdida va con D⁵ en el denominador es más preguntable que la constante 76,35.</li>
+          <li><strong>Los tres casos particulares (A, B y C) son un ejercicio de emparejamiento.</strong> Se preguntan casi siempre así: te dan la situación y tenés que elegir la solución. Entendé la lógica una vez y no los tenés que memorizar.</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <p class="card__kicker">Objetivos de aprendizaje</p>
+        <ul class="mb-0">
+          <li>Enumerar los tres datos requeridos para proyectar una instalación.</li>
+          <li>Ejecutar mentalmente los cinco pasos de la determinación del consumo medio.</li>
+          <li>Distinguir factor de simultaneidad de coeficiente de utilización.</li>
+          <li>Emparejar cada uno de los tres casos particulares con su solución.</li>
+          <li>Calcular un diámetro interior a partir del caudal, la presión y la velocidad, y saber qué velocidad corresponde a cada tipo de tubería.</li>
+          <li>Explicar por qué la fórmula de pérdida de carga trabaja con diferencias de cuadrados de presión.</li>
+          <li>Distinguir caudal Normal de caudal FAD y convertir entre ambos.</li>
+          <li>Explicar por qué, al seleccionar un compresor, el costo operativo pesa más que la amortización.</li>
+          <li>Enumerar las razones para centralizar la sala de compresores y los cuidados del aire de aspiración.</li>
+          <li>Calcular el caudal de ventilación y explicar la diferencia entre refrigeración por aire y por agua.</li>
+        </ul>
+      </div>
+
+      <h2 id="s1">Mapa de entrada</h2>
+      <figure class="figure">
+        <img src="fig/g_flujo_proyecto.svg" alt="Diagrama de flujo lineal de las cinco etapas del proyecto: datos, consumo, red (con lazo iterativo si no entra en 0,6 bar), equipos y sala.">
+        <figcaption>La secuencia de decisiones del proyecto. Es lineal, salvo la etapa 3 (Red), que es iterativa: si la pérdida de carga no entra en el presupuesto de 0,6 bar, se baja la velocidad, se recalcula el diámetro y se vuelve a verificar.</figcaption>
+      </figure>
+
+      <h2 id="s2">1. Punto de partida</h2>
+      <p>Las instalaciones industriales de aire comprimido para neumática utilizan presiones de producción y distribución en el rango de <span class="val">7 a 8 bar</span>.</p>
+      <p>Dependiendo de la calidad del aire requerido, la instalación requerirá de más o menos componentes. El esquema completo del apunte (Fig. 60, p. 62) muestra un sistema con diferentes opciones de refrigeradores posteriores y secadores: esa modularidad es justamente el punto. No hay una instalación «estándar»; hay una instalación que cumple una clase ISO.</p>
+
+      <h3 id="s21">1.1 Los tres datos requeridos</h3>
+      <div class="card">
+        <p class="card__kicker">Datos de entrada del proyecto</p>
+        <ol class="mb-0">
+          <li>Determinación del consumo medio.</li>
+          <li>Presión de trabajo y pérdida de carga admisible.</li>
+          <li>Calidad del aire necesario.</li>
+        </ol>
+      </div>
+
+      <h3 id="s22">1.2 Las dos recomendaciones numéricas de arranque</h3>
+      <p>De la lista de recomendaciones del apunte, dos son cuantitativas y condicionan todo el cálculo. (Las demás, de la C a la L, son reglas de trazado y montaje y están desarrolladas en el <a href="bloque-4.html">Bloque 4</a>.)</p>
+
+      <div class="card">
+        <p class="card__kicker">Recomendaciones A y B</p>
+        <p><strong>A. Pérdidas admisibles de aire.</strong> Una buena práctica es que las fugas no superen entre el <span class="val">5 y el 10 %</span> de la capacidad total de los compresores instalados. Este porcentaje se debe contemplar al definir la capacidad de los compresores.</p>
+        <p class="mb-0"><strong>B. Caída de presión.</strong> Se recomienda que la caída de presión del total de la instalación sea de <span class="val">0,6 bar</span>, con un límite máximo de hasta <span class="val">1 bar</span>.</p>
+      </div>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Por qué 0,6 bar y no cualquier número</p>
+        <p>Porque cada bar de caída se paga dos veces.</p>
+        <p>Se paga una vez en la generación: si la herramienta necesita 6 bar y la red pierde 1 bar, el compresor tiene que generar a 7. Y comprimir a mayor presión cuesta más trabajo, como viste en el Bloque 1 con la curva de trabajo contra relación de compresión.</p>
+        <p>Se paga otra vez en el desempeño: las herramientas neumáticas pierden par y velocidad muy rápido por debajo de su presión nominal. Una llave de impacto a 5,5 bar en vez de 6,3 no trabaja un 13 % peor: puede trabajar un 25 % peor, porque el par depende de la presión de forma más que proporcional en buena parte de su rango.</p>
+        <p class="mb-0">El 0,6 bar es el punto donde el costo de poner un caño más grande se equilibra con el costo de generar a mayor presión durante toda la vida útil. El 1 bar es el límite después del cual la instalación se considera mal proyectada.</p>
+      </div>
+
+      <h2 id="s3">2. Determinación del consumo medio</h2>
+      <p>El apunte lo plantea como una secuencia de cinco pasos. Es una lista ordenada y es muy preguntable.</p>
+
+      <div class="card">
+        <p class="card__kicker">Los cinco pasos</p>
+        <ol class="mb-0">
+          <li>Listar cada una de las herramientas, equipos, etc., con su consumo nominal (Q<sub>nom</sub> y P<sub>trabajo</sub>).</li>
+          <li>Sumar todos los caudales normalizados del listado del punto 1.</li>
+          <li>Determinar el Factor de Simultaneidad (global) o el Coeficiente de Utilización (individual).</li>
+          <li>El producto de la sumatoria del punto 2 por el factor del punto 3 da el caudal que debe suministrar el sistema.</li>
+          <li>Al valor del punto 4 se le adiciona un % por pérdidas (entre 5 y 15 %) y un % extra si se prevé una futura ampliación.</li>
+        </ol>
+        <p class="mb-0" style="margin-top:.6rem">Este último valor obtenido es el <strong>caudal mínimo a suministrar</strong>.</p>
+      </div>
+
+      <h3 id="s31">2.1 Los dos factores</h3>
+      <table>
+        <thead><tr><th></th><th>Factor de simultaneidad</th><th>Coeficiente de utilización</th></tr></thead>
+        <tbody>
+          <tr><td>Alcance</td><td><strong>Global</strong> (toda la instalación)</td><td><strong>Individual</strong> (cada consumo)</td></tr>
+          <tr><td>Definido por</td><td>La cantidad de consumos que funcionan de manera simultánea</td><td>La cantidad de horas de funcionamiento continuo de los consumos</td></tr>
+          <tr><td>Pregunta que responde</td><td>¿Cuántos están prendidos a la vez?</td><td>¿Cuánto tiempo trabaja cada uno?</td></tr>
+          <tr><td>Cuándo no hay datos</td><td>Se recurre a tablas con valores aproximados, si es un proyecto nuevo y no hay experiencia</td><td>—</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Son dos formas de decir lo mismo desde ángulos distintos</p>
+        <p>Las dos atacan el mismo hecho: nadie usa todo al mismo tiempo, todo el tiempo. Si dimensionaras el compresor para la suma de todos los consumos nominales, tendrías una máquina enorme trabajando al 30 % de carga durante toda su vida.</p>
+        <p>La diferencia está en cómo lo modelás:</p>
+        <ul>
+          <li>El factor de simultaneidad mira la planta desde arriba y pregunta cuántas máquinas están andando a la vez. Es un número global que multiplica a la suma total.</li>
+          <li>El coeficiente de utilización mira máquina por máquina y pregunta qué fracción del tiempo trabaja cada una. Es un número individual que multiplica al consumo de cada equipo antes de sumar.</li>
+        </ul>
+        <p class="mb-0">Por eso el apunte dice «o»: son dos caminos alternativos, no dos correcciones que se apliquen una encima de la otra. Aplicar los dos sería contar el mismo descuento dos veces.</p>
+      </div>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ Los porcentajes del paso 5 son dos, no uno</p>
+        <p>Al caudal ya corregido se le suman dos incrementos separados:</p>
+        <ul class="mb-0">
+          <li>Un porcentaje por pérdidas, entre <strong>5 y 15 %</strong>. Ojo con este rango: no es el mismo número que el de la recomendación A, que fija el tope de fugas admisibles en 5 a 10 % de la capacidad instalada. Son dos criterios distintos que hablan de fugas y que se parecen lo suficiente como para armar un buen distractor.</li>
+          <li>Un porcentaje extra por ampliación futura, que no tiene valor fijado y depende del proyecto.</li>
+        </ul>
+      </div>
+
+      <h3 id="s32">2.2 Ejemplo de cálculo</h3>
+      <p>Tomemos un taller con este listado (los consumos son ilustrativos):</p>
+      <table>
+        <thead><tr><th>Equipo</th><th>Cantidad</th><th>Q<sub>nom</sub> unitario [N l/min]</th><th>Total [N l/min]</th></tr></thead>
+        <tbody>
+          <tr><td>Llaves de impacto 3/4"</td><td>6</td><td>900</td><td>5.400</td></tr>
+          <tr><td>Pistolas de soplado</td><td>10</td><td>200</td><td>2.000</td></tr>
+          <tr><td>Lijadoras orbitales</td><td>4</td><td>350</td><td>1.400</td></tr>
+          <tr><td>Taladros neumáticos</td><td>3</td><td>400</td><td>1.200</td></tr>
+          <tr><td>Pistolas de pintar</td><td>2</td><td>300</td><td>600</td></tr>
+          <tr><td colspan="3"><strong>Suma (paso 2)</strong></td><td><strong>10.600</strong></td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>Paso 3 y 4.</strong> Con un factor de simultaneidad de 0,70:</p>
+      <p class="text-soft" style="text-align:center">10.600 × 0,70 = <strong>7.420 N l/min</strong></p>
+      <p><strong>Paso 5.</strong> Con un 10 % por pérdidas y un 15 % por ampliación futura:</p>
+      <p class="text-soft" style="text-align:center">7.420 × 1,10 × 1,15 = <strong>9.386 N l/min = 563 N m³/h</strong></p>
+      <p>Ese es el caudal mínimo a suministrar. Se adopta un compresor de <span class="val">600 N m³/h</span>, que es el valor comercial inmediato superior.</p>
+
+      <div class="calc">
+        <h4>Calculadora de consumo medio</h4>
+        <p class="ayuda">Poné la suma de caudales nominales (paso 2) y los tres factores de corrección, y mirá cómo se reparte la cascada de los cinco pasos.</p>
+        <div class="campos">
+          <div class="campo"><label for="csuma">Suma de Q<sub>nom</sub> (paso 2) [N l/min]</label><input id="csuma" type="number" value="10600" step="100" min="1"></div>
+          <div class="campo"><label for="cfs">Factor de simultaneidad [0,3 a 1,0]</label><input id="cfs" type="number" value="0.70" step="0.05" min="0.3" max="1"></div>
+          <div class="campo"><label for="cperd">% por pérdidas [5 a 15]</label><input id="cperd" type="number" value="10" step="1" min="5" max="15"></div>
+          <div class="campo"><label for="camp">% por ampliación futura</label><input id="camp" type="number" value="15" step="1" min="0"></div>
+        </div>
+        <div class="salida">
+          <div class="linea"><span>Suma bruta (paso 2)</span><b id="cOut1">—</b></div>
+          <div class="linea"><span>Tras el factor de simultaneidad (paso 4)</span><b id="cOut2">—</b></div>
+          <div class="linea"><span>Tras el % de pérdidas</span><b id="cOut3">—</b></div>
+          <div class="linea total"><span>Caudal mínimo a suministrar</span><b id="cOut4">—</b></div>
+          <p class="ayuda mb-0" style="margin-top:.7rem" id="cOutM3h"></p>
+        </div>
+      </div>
+
+      <h2 id="s4">3. Casos particulares con parámetros de consumo variables</h2>
+      <p>El apunte da tres recomendaciones para resolver situaciones en las que los consumos no son homogéneos. Se preguntan por emparejamiento.</p>
+
+      <table>
+        <thead><tr><th style="width:3rem">Caso</th><th>Situación</th><th>Solución</th></tr></thead>
+        <tbody>
+          <tr><td>A</td><td>Gran caudal a alta presión + caudal pequeño a baja presión</td><td><strong>Válvula reductora</strong> en el circuito secundario</td></tr>
+          <tr><td>B</td><td>Gran caudal a baja presión + caudal pequeño a alta presión</td><td><strong>Compresor adicional</strong> en el circuito secundario</td></tr>
+          <tr><td>C</td><td>Gran caudal en tiempo reducido + caudal pequeño durante largos períodos</td><td><strong>Dos circuitos independientes</strong></td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ La lógica detrás de los tres casos</p>
+        <p>No hace falta memorizarlos si entendés el criterio, que es siempre el mismo: no comprimir grandes caudales a presiones que no necesitan.</p>
+        <p><strong>Caso A.</strong> El grueso del aire ya necesita alta presión, así que el compresor genera alta y punto. Al consumo chico que necesita menos, le ponés una reductora. Reducir es barato: se pierde algo de energía en el estrangulamiento, pero sobre un caudal pequeño esa pérdida es despreciable.</p>
+        <p><strong>Caso B.</strong> Acá pasa al revés y es el caso que rompe la intuición. Si el grueso del aire necesita baja presión y solo un consumo chico necesita alta, generar todo a alta presión significaría comprimir de más el caudal grande, que es la mayor parte del aire. Eso sí que cuesta caro. Conviene generar a baja para el grueso y poner un compresor adicional chico dedicado al consumo de alta.</p>
+        <p><strong>Caso C.</strong> El problema no es de presión sino de tiempo. Un pico grande y breve conviviendo con un consumo chico y permanente obliga a un compresor grande que después queda ocioso. Se resuelve separando circuitos: uno chico y continuo, otro dimensionado para el pico.</p>
+        <p class="mb-0"><strong>Regla nemotécnica para el parcial:</strong> si la diferencia es de presión y el grande está arriba, se reduce; si el grande está abajo, se agrega un compresor. Si la diferencia es de tiempo, se separan los circuitos.</p>
+      </div>
+
+      <h2 id="s5">4. Pre-dimensionamiento de las tuberías</h2>
+      <h3 id="s51">4.1 Cálculo del diámetro interior</h3>
+      <p>Se parte de la definición de velocidad, V = Q / (S·P), con S = π D<sub>i</sub>² / 4, y se despeja:</p>
+
+      <div class="card">
+        <p class="card__kicker">Fórmula · diámetro interior</p>
+        <p class="mb-0" style="font-size:1.15rem;text-align:center"><strong>D<sub>i</sub> = √( 4Q / (π · P · V) )</strong></p>
+        <p class="text-soft small mb-0" style="text-align:center">con Q en N m³/s, P en bar absolutos, V en m/s y D<sub>i</sub> en m</p>
+      </div>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ Dos detalles de esta fórmula</p>
+        <p><strong>1. Por qué aparece la presión dividiendo.</strong> Porque Q está en condiciones Normales, no en condiciones reales de la cañería. Adentro del caño, ese mismo aire está comprimido y ocupa menos volumen: aproximadamente Q/P (dividido por la presión en bar). La división por P es lo que convierte el caudal Normal en caudal real circulante antes de calcular la velocidad.</p>
+        <p>Esto implica una aproximación silenciosa: se está tomando P<sub>N</sub> ≈ 1 bar en vez de 1,013. El error es del 1,3 % y para un pre-dimensionamiento es irrelevante, pero conviene saber que está ahí.</p>
+        <p class="mb-0"><strong>2. Una errata del apunte.</strong> En la página 64, la lista de variables dice «D<sub>i</sub> = Diámetro interior de la cañería en m²». Es un error de tipeo: el diámetro es una longitud y va en m. El que va en m² es el área S.</p>
+      </div>
+
+      <h3 id="s52">4.2 Velocidades recomendadas</h3>
+      <div class="card">
+        <p class="card__kicker">Rango general y topes por tipo de tubería</p>
+        <p style="text-align:center"><strong>5 m/s ≤ V ≤ 15 m/s</strong></p>
+        <p>Teniendo en cuenta lo siguiente:</p>
+        <ul class="mb-0">
+          <li>Tubería principal y tuberías secundarias: la máxima velocidad debe ser de <span class="val">8 m/s</span>.</li>
+          <li>Tuberías de servicio: la máxima velocidad debe ser de <span class="val">15 m/s</span>.</li>
+        </ul>
+      </div>
+      <p>Una vez calculado el diámetro interior se debe seleccionar la medida comercial más próxima. Generalmente se elige el inmediato superior.</p>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Por qué la principal admite menos velocidad que la bajante</p>
+        <p>Parece contradictorio: por la principal pasa más caudal, y sin embargo se le permite menos velocidad.</p>
+        <p>La razón es la longitud. La pérdida de carga es proporcional a la longitud del tramo. La tubería principal recorre toda la planta, decenas o cientos de metros; la bajante mide dos o tres metros. Un mismo criterio de velocidad daría una pérdida enorme en la principal y despreciable en la bajante.</p>
+        <p>Además, la pérdida en la principal la sufren todos los consumos de la planta, mientras que la de una bajante la sufre solo la herramienta que cuelga de ella. Se es más exigente donde el error se propaga.</p>
+        <p class="mb-0">Y hay un tercer motivo: el ruido y el arrastre. A velocidades altas, el aire arrastra el condensado del fondo del caño en vez de dejarlo escurrir por la pendiente. Ocho metros por segundo es aproximadamente el límite donde el arrastre empieza a ser notorio.</p>
+      </div>
+
+      <h3 id="s53">4.3 Ejemplo</h3>
+      <p>Para el caso del capítulo 2, con 600 N m³/h a 7 bar absolutos, en la tubería principal (velocidad máxima 8 m/s):</p>
+      <p class="text-soft" style="text-align:center">Q = 600/3600 = 0,1667 N m³/s</p>
+      <p class="text-soft" style="text-align:center">D<sub>i</sub> = √(4 × 0,1667 / (π × 7 × 8)) = √0,00379 = 0,0616 m = <strong>61,6 mm</strong></p>
+      <p>Se adopta la medida comercial inmediata superior: <span class="val">2½"</span>, con diámetro interior aproximado de <span class="val">62,7 mm</span>.</p>
+
+      <h2 id="s6">5. Cálculo de la pérdida de carga</h2>
+      <div class="card">
+        <p class="card__kicker">Fórmula · pérdida de carga en un tramo</p>
+        <p class="mb-0" style="font-size:1.1rem;text-align:center"><strong>P<sub>1</sub>² − P<sub>2</sub>² = 76,35 · L · Q<sup>1,875</sup> / D<sub>i</sub><sup>5</sup></strong></p>
+        <p style="text-align:center">P<sub>2</sub> = √(P<sub>1</sub>² − 76,35·L·Q<sup>1,875</sup>/D<sub>i</sub>⁵) &nbsp;·&nbsp; ΔP = P<sub>1</sub> − P<sub>2</sub></p>
+        <p class="text-soft small mb-0">P<sub>1</sub> y P<sub>2</sub>: presión absoluta en ambos extremos, bar abs · L: longitud, m, incluyendo la longitud equivalente de los accesorios · Q: caudal Normal, N m³/h · D<sub>i</sub>: diámetro interior, mm</p>
+      </div>
+      <p>Si el valor de la pérdida de presión resulta muy elevado, se debe seleccionar una velocidad más baja, recalcular el diámetro interior y recalcular la diferencia de presión. Es un <strong>cálculo iterativo</strong>.</p>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ Las unidades de esta fórmula son mixtas a propósito</p>
+        <p>Es una fórmula empírica, no una deducción teórica. Por eso convive un diámetro en milímetros con presiones en bar y un exponente de 1,875 que no sale de ninguna ley física elemental: sale de ajustar datos experimentales.</p>
+        <p class="mb-0">Consecuencia práctica: no se pueden cambiar las unidades. Si metés el diámetro en metros, el resultado no se escala, se destruye. Y el 76,35 tampoco es convertible: es la constante que hace cerrar ese juego de unidades específico.</p>
+      </div>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Por qué la fórmula trabaja con la diferencia de los cuadrados</p>
+        <p>Esta es la pregunta conceptual más probable de todo el capítulo.</p>
+        <p>En un líquido, la pérdida de carga es simplemente ΔP, proporcional a la longitud. En un gas no puede ser así, y la razón es que el gas se expande a medida que pierde presión.</p>
+        <p>Seguí la cadena: el aire avanza por el caño → pierde presión por fricción → al bajar la presión, se expande → al expandirse, aumenta su velocidad (por continuidad, la misma masa ocupa más volumen en la misma sección) → al aumentar la velocidad, la fricción crece → pierde presión más rápido.</p>
+        <p>O sea que la caída de presión se acelera a lo largo del caño. No es lineal. La forma matemática que captura eso, integrando a lo largo del tramo, es una diferencia de cuadrados de presión, no una diferencia de presiones.</p>
+        <p class="mb-0">Consecuencia práctica: el mismo caño pierde más al final del recorrido que al principio, y por eso conviene calcular tramo por tramo y no aplicar una regla proporcional a la longitud total.</p>
+      </div>
+
+      <div class="callout callout--dato">
+        <p class="callout__title">◆ La sensibilidad al diámetro es brutal</p>
+        <p>Mirá el exponente: D<sub>i</sub>⁵ en el denominador.</p>
+        <p>Eso significa que si aumentás el diámetro un 20 %, el término de pérdidas se divide por 1,2⁵ = 2,49. Si lo duplicás, se divide por <strong>32</strong>.</p>
+        <p>Al revés: elegir un caño un escalón comercial más chico «para ahorrar» puede duplicar la pérdida de carga de la instalación entera. Esta es la razón matemática detrás de todas las recomendaciones del apunte sobre prever ampliaciones y no escatimar en el diámetro de la principal.</p>
+        <p class="mb-0">El caudal, en cambio, entra con exponente 1,875, es decir, casi al cuadrado. Duplicar el caudal multiplica las pérdidas por 2<sup>1,875</sup> = 3,67.</p>
+      </div>
+
+      <figure class="figure">
+        <img src="fig/g_perdida_diametro.svg" alt="Curva de pérdida de carga en función del diámetro interior para el caso de ejemplo, con los diámetros comerciales 2, 2½ y 3 pulgadas marcados y las bandas de 0,6 y 1 bar sombreadas.">
+        <figcaption>La caída con D⁵ de un vistazo: para 600 N m³/h en 100 m, pasar de 2" a 2½" reduce la pérdida de 0,22 a 0,09 bar; a 3" queda en 0,03 bar. Un escalón comercial de diferencia cambia el resultado varias veces.</figcaption>
+      </figure>
+
+      <h3 id="s61">5.1 Longitudes equivalentes</h3>
+      <p>En L se incluye la longitud equivalente de los accesorios. Cada codo, curva, te, válvula o reducción se traduce en los metros de caño recto que producirían la misma pérdida. Los valores se obtienen de tablas como la Fig. 61 (p. 66).</p>
+      <p>Esta es la conexión numérica con la recomendación D del <a href="bloque-4.html">Bloque 4</a>: cada accesorio que sacás del trazado es longitud que le restás al cálculo.</p>
+
+      <h3 id="s62">5.2 El nomograma</h3>
+      <p>Como alternativa a la fórmula, para calcular el diámetro de la tubería se puede usar un nomograma (Fig. 62, p. 67). Para usarlo hay que conocer el caudal, la presión, la caída de presión permitida y la longitud de la tubería.</p>
+
+      <h3 id="s63">5.3 Ejemplo continuado</h3>
+      <p>Siguiendo con los 600 N m³/h en la principal de 2½" (D<sub>i</sub> = 62,7 mm), sobre un tramo de 100 m incluyendo accesorios, partiendo de P<sub>1</sub> = 7 bar abs:</p>
+      <p class="text-soft" style="text-align:center">P<sub>1</sub>² − P<sub>2</sub>² = 76,35 × 100 × 1,618×10⁵ / 9,69×10⁸ = 1,275</p>
+      <p class="text-soft" style="text-align:center">P<sub>2</sub> = √(49 − 1,275) = √47,725 = 6,908 bar abs</p>
+      <p class="text-soft" style="text-align:center">ΔP = 7 − 6,908 = <strong>0,092 bar</strong></p>
+      <p>Menos de 0,1 bar en 100 metros de principal. Sobra margen dentro de los 0,6 bar totales, que todavía tienen que absorber las secundarias, las bajantes y los equipos de tratamiento.</p>
+
+      <figure class="figure">
+        <img src="fig/g_presupuesto_06bar.svg" alt="Barra apilada ilustrativa del presupuesto de 0,6 bar, repartido entre principal, secundarias, bajantes, secador y filtros.">
+        <figcaption>Cómo se reparte, con valores ilustrativos, el presupuesto total de 0,6 bar entre los tramos de cañería y los equipos de tratamiento. La cañería (principal + secundarias + bajantes) suele ser la porción menor; el secador y los filtros se llevan la parte más grande.</figcaption>
+      </figure>
+
+      <div class="calc">
+        <h4>Calculadora de diámetro y pérdida de carga</h4>
+        <p class="ayuda">Etapa 1: calculá el diámetro necesario y elegí la medida comercial. Etapa 2: con ese diámetro comercial, calculá la pérdida de carga en el tramo.</p>
+        <div class="campos">
+          <div class="campo"><label for="rq">Q · caudal [N m³/h]</label><input id="rq" type="number" value="600" step="10" min="1"></div>
+          <div class="campo"><label for="rp1">P₁ · presión absoluta [bar abs]</label><input id="rp1" type="number" value="7" step="0.5" min="1.1"></div>
+          <div class="campo"><label for="rtipo">Tipo de tubería</label>
+            <select id="rtipo" class="select">
+              <option value="8">Principal o secundaria (máx. 8 m/s)</option>
+              <option value="15">De servicio (máx. 15 m/s)</option>
+            </select>
+          </div>
+          <div class="campo"><label for="rv">V · velocidad elegida [m/s]</label><input id="rv" type="number" value="8" step="0.5" min="5" max="15"></div>
+          <div class="campo"><label for="rl">L · longitud con equivalentes [m]</label><input id="rl" type="number" value="100" step="5" min="1"></div>
+        </div>
+        <div class="salida">
+          <div class="linea"><span>D<sub>i</sub> calculado</span><b id="rDcalc">—</b></div>
+          <div class="linea"><span>Medida comercial adoptada</span><b id="rDcom">—</b></div>
+          <div class="linea"><span>P₁² − P₂²</span><b id="rTerm">—</b></div>
+          <div class="linea"><span>P₂</span><b id="rP2">—</b></div>
+          <div class="linea total"><span>ΔP en el tramo</span><b id="rDP">—</b></div>
+          <p class="ayuda mb-0" style="margin-top:.7rem" id="rAviso"></p>
+        </div>
+      </div>
+
+      <h2 id="s7">6. Selección del compresor</h2>
+      <h3 id="s71">6.1 El problema de las unidades</h3>
+      <p>La determinación del tamaño o modelo de un compresor en función del caudal puede contener errores que provoquen la elección de equipos demasiado pequeños. La causa es de unidades.</p>
+      <p>El aire atmosférico está formado por una mezcla de gases entre los que se encuentra el vapor de agua. Por esa razón, muchos valores de caudal en las especificaciones técnicas de equipos y consumidores se refieren a unidades a las que no afecten ni el vapor de agua ni la temperatura.</p>
+      <p>Los valores de caudal con los que se selecciona un compresor se pueden encontrar en Normales o FAD, y todos se relacionan entre sí en función de temperatura, presión atmosférica y humedad.</p>
+      <p><span class="term">FAD</span> viene de <em>Free Air Delivery</em>, Aire Libre Suministrado. El caudal que la mayoría de los fabricantes indica como FAD en sus catálogos corresponde al medido según la norma <strong>ISO 1217</strong>, que regula el procedimiento de medición del caudal a la salida de la unidad compresora, así como las condiciones de referencia.</p>
+
+      <div class="card">
+        <p class="card__kicker">Conversión de Normal a FAD</p>
+        <p class="mb-0" style="text-align:center"><strong>Q<sub>FAD</sub> = Q<sub>N</sub> × [(273+20)/273] × [1,013/1,00]</strong></p>
+        <p class="text-soft small" style="text-align:center">T<sub>FAD</sub> = 20 °C, P<sub>FAD</sub> = 1,00 bar abs · T<sub>N</sub> = 0 °C, P<sub>N</sub> = 1,013 bar abs</p>
+        <p class="mb-0">En la expresión no se contempla la humedad relativa del aire, porque ese parámetro tiene una incidencia mínima sobre el caudal.</p>
+      </div>
+      <p>Numéricamente, Q<sub>FAD</sub> ≈ 1,087 Q<sub>N</sub>: el número en FAD es un <span class="val">8,7 % mayor</span>.</p>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ El error que hace comprar un compresor chico</p>
+        <p>Es exactamente el que advierte el apunte, y vale la pena verlo con números.</p>
+        <p>Supongamos que calculaste una demanda de 600 N m³/h y vas al catálogo, donde un compresor figura con 600 m³/h FAD. Parecen iguales. No lo son.</p>
+        <p>Esos 600 m³/h FAD equivalen a 600/1,087 = 552 N m³/h. Te faltan casi 50 N m³/h, un 8 % de la instalación, que es del mismo orden que todo el margen de fugas que habías previsto.</p>
+        <p>En qué dirección va el error: como el número FAD es siempre mayor para la misma masa de aire, tratar un valor FAD como si fuera Normal te hace creer que el compresor entrega más de lo que entrega. Por eso el apunte dice que el error lleva a elegir equipos demasiado pequeños, y no demasiado grandes.</p>
+        <p class="mb-0"><strong>Regla para el parcial:</strong> para la misma masa de aire, FAD &gt; Normal. Si tenés que comparar, convertí siempre a la misma referencia antes.</p>
+      </div>
+
+      <h3 id="s72">6.2 El proceso de selección</h3>
+      <p><strong>Primer paso:</strong> definir el tipo de compresor más adecuado para la aplicación. Teniendo en cuenta los caudales y presiones necesarias, se selecciona según las zonas de uso de cada compresor, leídas de un nomograma.</p>
+      <p>De ahí surge que varios compresores cumplen con los requerimientos de presión y caudal, por lo que la selección no es fácil.</p>
+      <p><strong>Segundo paso:</strong> evaluar el costo total, compuesto por:</p>
+      <p class="text-soft" style="text-align:center">Costo total = costo de amortización del equipo + costo operativo</p>
+
+      <div class="card">
+        <p class="card__kicker">El criterio económico del apunte</p>
+        <ol class="mb-0">
+          <li>La vida útil de un compresor supera varias veces el proyecto de inversión, por lo que la incidencia de la amortización es insignificante.</li>
+          <li>El costo operativo, compuesto fundamentalmente por consumo y mantenimiento, es más significativo.</li>
+          <li>Por lo tanto, un factor muy importante para la selección es su <strong>eficiencia</strong>.</li>
+        </ol>
+      </div>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Por qué el compresor más barato es casi siempre el más caro</p>
+        <p>Este es el razonamiento económico central del bloque y conecta directo con todo el Bloque 1.</p>
+        <p>Un compresor industrial consume, a lo largo de su vida, energía por un valor muchas veces superior a su precio de compra. La proporción típica en la literatura es que el costo de la energía representa alrededor del 70 al 80 % del costo total de propiedad, y el equipo en sí, apenas una fracción.</p>
+        <p>Entonces, una diferencia de dos puntos de rendimiento entre dos máquinas se traduce, sobre diez o quince años de operación continua, en una cifra que hace irrelevante cualquier diferencia de precio de compra.</p>
+        <p class="mb-0">Y acá se cierra el círculo con el Bloque 1: todo lo que estudiaste sobre rendimiento isotérmico, adiabático, politrópico y global, sobre refrigeración intermedia y sobre compresión en etapas, tiene su consecuencia económica exactamente en este párrafo. Los rendimientos no eran un ejercicio de termodinámica: eran el criterio de compra.</p>
+      </div>
+
+      <figure class="figure">
+        <img src="fig/g_costo_propiedad.svg" alt="Barra apilada ilustrativa del costo total de propiedad de un compresor a lo largo de su vida útil: 25 por ciento amortización, 75 por ciento costo operativo.">
+        <figcaption>Proporción ilustrativa del costo total de propiedad. La amortización es la porción menor; el costo operativo (energía y mantenimiento), la mayor. De ahí que la eficiencia pese más que el precio de compra.</figcaption>
+      </figure>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ El apunte repite el número de figura</p>
+        <p>El apunte llama «Fig. 62» a dos figuras distintas: el nomograma para calcular el diámetro interior de la tubería (página 67) y el gráfico de zonas de uso de los distintos tipos de compresor (página 69). Además, en el texto de la página 68 remite a «los nomogramas (fig. 62)» para la selección del compresor, refiriéndose a la segunda.</p>
+        <p class="mb-0">Si en el parcial aparece una referencia a la Fig. 62, fijate por el contexto de cuál de las dos se trata: si habla de diámetros, es la de la p. 67; si habla de tipos de compresor, es la de la p. 69.</p>
+      </div>
+
+      <h2 id="s8">7. Volumen del depósito</h2>
+      <p>El apunte lo resuelve en una línea: se calcula en función a lo desarrollado en las páginas 49 y 50, es decir, con lo que ya vimos en el <a href="bloque-3.html">Bloque 3</a>:</p>
+      <p class="text-soft" style="text-align:center">J = (P₀·V₀)/(a·Δp) · x(1−x)</p>
+      <p>recordando que el caso de dimensionamiento corresponde a x = 0,5, donde x(1−x) = 0,25.</p>
+      <p class="mb-0">Para el caso de ejemplo (600 N m³/h, Δp = 2 bar, 15 arranques por hora), el resultado era <span class="val">5,07 m³</span>.</p>
+
+      <h2 id="s9">8. Selección de filtros</h2>
+      <p>El apunte plantea el procedimiento en tres pasos:</p>
+      <ol>
+        <li>Identificar y evaluar la aplicación y el proceso en los que se usa el aire comprimido. No todos los procesos y aplicaciones requieren el mismo nivel de filtrado, y en muchos casos es necesario utilizar distintos filtros colocados en serie.</li>
+        <li>Tener en cuenta el caudal de aire comprimido a filtrar y la presión de trabajo.</li>
+        <li>Determinar la pérdida de carga (caída de presión) utilizando datos o gráficos que suministra el fabricante (Fig. 63, p. 70: curva de caudal vs. caída de presión de un filtro).</li>
+      </ol>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ El filtro es un consumidor del presupuesto de 0,6 bar</p>
+        <p>Fijate cómo se cierra el circuito. La recomendación B fija una caída total admisible de 0,6 bar para toda la instalación. Ese presupuesto no lo consumen solo las cañerías: cada equipo de tratamiento del Bloque 2 y cada filtro se lleva su parte.</p>
+        <p>Un tren de tres filtros en serie puede consumir tranquilamente 0,3 bar cuando los elementos están nuevos, y bastante más cuando están saturados. Ahí está la razón de que se seleccione el filtro con la curva del fabricante en la mano y no por diámetro de conexión: el mismo filtro, sobredimensionado, cae mucho menos.</p>
+        <p class="mb-0">Y ahí también está la razón de que en el Bloque 5 el apunte destaque que una gran superficie del elemento filtrante garantiza baja caída de presión. Es el mismo criterio aplicado al FRL.</p>
+      </div>
+
+      <h2 id="s10">9. Sala de compresores</h2>
+      <h3 id="s101">9.1 Ubicación</h3>
+      <div class="card">
+        <p class="card__kicker">La regla principal</p>
+        <p class="mb-0">Ante todo, organizar una <strong>planta de compresores independiente</strong>. La experiencia dice que es preferible la centralización, con independencia del tipo de industria.</p>
+      </div>
+      <p>Con la centralización se obtiene:</p>
+      <ul>
+        <li>Mejor economía de funcionamiento</li>
+        <li>Un sistema de aire comprimido mejor diseñado</li>
+        <li>Mayor sencillez de servicio</li>
+        <li>Protección contra acceso no autorizado</li>
+        <li>Buen control del ruido</li>
+        <li>Mayores posibilidades de ventilación controlada</li>
+      </ul>
+      <p>En segundo lugar, se podría usar una zona separada del edificio. Con este tipo de instalación deben tenerse en cuenta ciertos riesgos e inconvenientes: molestias por ruido, requisitos de ventilación del compresor, riesgos físicos o de sobrecalentamiento, drenaje de los condensados, entornos peligrosos (polvo o sustancias inflamables), sustancias agresivas en el aire, necesidades de espacio para ampliaciones futuras, y acceso para el mantenimiento.</p>
+      <p>Sin embargo, la instalación en un taller o un almacén puede facilitar el montaje del sistema de recuperación de energía.</p>
+      <p class="mb-0">Si no hay sitio dentro del edificio, también se puede colocar en el exterior bajo techo, considerando: riesgo de congelación en las descargas de condensado, protección contra lluvia y nieve en la entrada de aire, necesidad de una fundación sólida y plana (asfalto o losas de hormigón), riesgo de polvo o sustancias inflamables o agresivas, y protección contra acceso no autorizado.</p>
+
+      <h3 id="s102">9.2 Aire de aspiración</h3>
+      <p>El aire de aspiración del compresor debe estar limpio y libre de contaminantes sólidos y gaseosos. Las partículas de suciedad y los gases corrosivos pueden producir desgaste y daños en el compresor.</p>
+      <ul>
+        <li>La entrada de aire se encuentra normalmente en una abertura de la carrocería insonorizada, pero también se puede colocar a mayor distancia, donde el aire sea lo más limpio posible.</li>
+        <li>La contaminación por gases de escape de vehículos puede ser letal si se mezcla con el aire que respiramos.</li>
+        <li>Se debe usar un <strong>prefiltro</strong> (ciclónico, de panel o rotativo de banda) donde el aire circundante tenga alta concentración de polvo. En esos casos hay que contemplar en la fase de diseño la caída de presión producida por el prefiltro.</li>
+        <li>Es beneficioso que el aire de aspiración esté frío: puede convenir canalizarlo desde el exterior del edificio por una tubería separada, resistente a la corrosión, con malla en la entrada, diseñada para que no penetre nieve ni lluvia, y de diámetro suficiente para que la caída de presión sea mínima.</li>
+        <li>El diseño de las tuberías de entrada de los compresores de pistón es particularmente crítico: la resonancia de las tuberías, producida por ondas estacionarias acústicas originadas por la frecuencia pulsatoria cíclica del compresor, puede provocar daños en las tuberías y en la máquina, producir vibraciones y generar un molesto ruido de baja frecuencia.</li>
+      </ul>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Por qué el aire frío de aspiración es plata</p>
+        <p>Porque el compresor aspira volumen y vende masa.</p>
+        <p>Un compresor de desplazamiento positivo aspira siempre el mismo volumen por vuelta. Si ese aire está más frío, es más denso, y por lo tanto en el mismo volumen entran más moléculas. Más masa aspirada por vuelta, con el mismo trabajo mecánico de barrido, significa más caudal Normal entregado por kilovatio consumido.</p>
+        <p>La regla práctica de la literatura es que cada 3 °C menos en la aspiración mejora aproximadamente un 1 % el consumo específico. Sobre un compresor que trabaja miles de horas al año, tomar el aire de afuera en vez de tomarlo de una sala a 40 °C se paga solo.</p>
+        <p class="mb-0">Es exactamente el mismo razonamiento que en el Bloque 1 justificaba la refrigeración intermedia entre etapas: aire más frío, más denso, menos trabajo por unidad de masa.</p>
+      </div>
+
+      <h3 id="s103">9.3 Ventilación de la sala</h3>
+      <p>El calor de la sala proviene de todas las unidades y se evacua ventilando la sala. La cantidad de aire de ventilación se determina por el tamaño del compresor y por el método de refrigeración, que puede ser por aire o por agua:</p>
+
+      <div class="card">
+        <p class="card__kicker">Calor a evacuar según el tipo de refrigeración</p>
+        <ul class="mb-0">
+          <li><strong>Compresores refrigerados por aire</strong>: el aire de ventilación contiene cerca del <span class="val">100 %</span> de la energía consumida por el motor eléctrico en forma de calor.</li>
+          <li><strong>Compresores refrigerados por agua</strong>: contiene un <span class="val">10 %</span> de la energía consumida por el motor eléctrico.</li>
+        </ul>
+      </div>
+
+      <p>El fabricante debe facilitar información detallada, aunque la cifra también se puede calcular:</p>
+      <div class="card">
+        <p class="card__kicker">Fórmula · caudal de ventilación</p>
+        <p class="mb-0" style="text-align:center"><strong>q<sub>v</sub> = P<sub>v</sub> / (0,92 · ΔT)</strong></p>
+        <p class="text-soft small mb-0" style="text-align:center">q<sub>v</sub>: caudal de aire de ventilación, m³/s · P<sub>v</sub>: flujo térmico, kW · ΔT: aumento de temperatura permitido</p>
+      </div>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Ampliación <span class="badge badge--accent">Ampliación</span> — de dónde sale el 0,92</p>
+        <p>Es una constante empírica, y en el parcial se usa tal cual. Pero si mirás las unidades, se entiende qué representa: para que q<sub>v</sub> salga en m³/s con P<sub>v</sub> en kW, el 0,92 tiene que estar en kJ/(m³·K).</p>
+        <p>Y eso es exactamente el calor específico volumétrico del aire: densidad por calor específico, ρ·c<sub>p</sub>. O sea que la fórmula no es más que el balance térmico elemental «calor a evacuar = caudal × capacidad calorífica × salto de temperatura», despejado para el caudal.</p>
+        <p class="mb-0">Saber esto te salva si en el parcial dudás del orden de los factores: ΔT y la constante van abajo, porque cuanto más salto de temperatura tolerás, menos aire necesitás mover.</p>
+      </div>
+
+      <p><strong>Ejemplo.</strong> Un compresor con motor de 55 kW, refrigerado por aire, en una sala donde se admite un aumento de temperatura de 10 °C:</p>
+      <p class="text-soft" style="text-align:center">q<sub>v</sub> = 55/(0,92×10) = 5,98 m³/s ≈ <strong>21.500 m³/h</strong></p>
+      <p>El mismo compresor, refrigerado por agua (solo el 10 % del calor va al aire):</p>
+      <p class="text-soft" style="text-align:center">q<sub>v</sub> = 5,5/(0,92×10) = 0,598 m³/s ≈ <strong>2.150 m³/h</strong></p>
+      <p>Diez veces menos aire de ventilación. Ese es el peso real de la decisión aire/agua sobre el diseño de la sala.</p>
+
+      <figure class="figure">
+        <img src="fig/g_ventilacion_aire_agua.svg" alt="Gráfico de barras comparando el caudal de ventilación requerido para un mismo motor de 55 kW: 2.150 m³/h refrigerado por agua contra 21.500 m³/h refrigerado por aire.">
+        <figcaption>Diez veces de diferencia para el mismo motor. La refrigeración por agua evacúa la mayor parte del calor por el circuito de agua, no por el aire de la sala.</figcaption>
+      </figure>
+
+      <div class="calc">
+        <h4>Calculadora de ventilación de sala</h4>
+        <div class="campos">
+          <div class="campo"><label for="vpm">Potencia del motor [kW]</label><input id="vpm" type="number" value="55" step="1" min="1"></div>
+          <div class="campo"><label for="vtipo">Tipo de refrigeración</label>
+            <select id="vtipo" class="select">
+              <option value="1.0">Por aire (100 % del calor al aire)</option>
+              <option value="0.10">Por agua (10 % del calor al aire)</option>
+            </select>
+          </div>
+          <div class="campo"><label for="vdt">ΔT admitido [K]</label><input id="vdt" type="number" value="10" step="1" min="5" max="20"></div>
+          <div class="campo"><label for="vn">Cantidad de compresores</label><input id="vn" type="number" value="1" step="1" min="1"></div>
+        </div>
+        <div class="salida">
+          <div class="linea"><span>Flujo térmico total P<sub>v</sub></span><b id="vPv">—</b></div>
+          <div class="linea total"><span>Caudal de ventilación q<sub>v</sub></span><b id="vQv">—</b></div>
+          <div class="barrita">
+            <i id="vBAgua" style="background:var(--c-blue);width:0"></i>
+            <i id="vBAire" style="background:var(--c-accent);width:0"></i>
+          </div>
+          <div class="leyendaBarra">
+            <span><i style="background:var(--c-blue)"></i>si fuera por agua <b id="vLAgua">—</b></span>
+            <span><i style="background:var(--c-accent)"></i>si fuera por aire <b id="vLAire">—</b></span>
+          </div>
+          <p class="ayuda mb-0" style="margin-top:.7rem">El 0,92 corresponde al calor específico volumétrico del aire, en kJ/(m³·K).</p>
+        </div>
+      </div>
+
+      <h3 id="s104">9.4 Control de la ventilación</h3>
+      <p>Se emplea un sistema con varios ventiladores controlados por termostato que juntos satisfacen la necesidad total (Fig. 71, p. 78).</p>
+      <p class="mb-0">Los termostatos se ajustan para diferentes rangos, de modo que la cantidad de aire de ventilación puede variar en función de la temperatura exterior y/o del número de compresores en uso: los termostatos conectan los ventiladores uno tras otro según la temperatura de la sala. Alternativamente, los ventiladores se pueden arrancar mediante un termostato multietapa. El apunte muestra además cuatro opciones de ventilación de la sala según la disposición de entrada y salida de aire (Fig. 72, p. 79).</p>
+
+      <h2 id="s11">10. Caso integrador</h2>
+      <p>Recorrido completo con el ejemplo que venimos arrastrando:</p>
+      <table>
+        <thead><tr><th style="width:3rem">#</th><th>Etapa</th><th>Resultado</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Suma de consumos nominales</td><td>10.600 N l/min</td></tr>
+          <tr><td>2</td><td>Factor de simultaneidad (0,70)</td><td>7.420 N l/min</td></tr>
+          <tr><td>3</td><td>+ 10 % pérdidas, + 15 % ampliación</td><td>9.386 N l/min = 563 N m³/h</td></tr>
+          <tr><td>4</td><td>Compresor adoptado</td><td>600 N m³/h (≈ 652 m³/h FAD)</td></tr>
+          <tr><td>5</td><td>Presión de generación y distribución</td><td>7 bar abs</td></tr>
+          <tr><td>6</td><td>Diámetro de la principal (V ≤ 8 m/s)</td><td>D<sub>i</sub> = 61,6 mm → se adopta 2½" (D<sub>i</sub> = 62,7 mm)</td></tr>
+          <tr><td>7</td><td>Pérdida de carga en 100 m de principal</td><td>ΔP = 0,09 bar → dentro del presupuesto de 0,6 bar</td></tr>
+          <tr><td>8</td><td>Pulmón (Δp = 2 bar, a = 15, x = 0,5)</td><td>J = 5,07 m³</td></tr>
+          <tr><td>9</td><td>Ventilación de sala (motor 55 kW, aire, ΔT = 10 K)</td><td>q<sub>v</sub> ≈ 21.500 m³/h</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ El paso 4 es donde se pierde el proyecto</p>
+        <p>Fijate el detalle de la fila 4: el compresor de 600 N m³/h equivale a 652 m³/h FAD. Si en el catálogo hubieras buscado «652 m³/h» creyendo que era el caudal Normal, habrías comprado una máquina un 9 % más grande de lo necesario. Y si hubieras buscado un compresor de «600 m³/h FAD» creyendo que cubría tus 600 N m³/h, habrías comprado una un 8 % más chica.</p>
+        <p class="mb-0">En los dos casos el error es del mismo orden que todo el margen de fugas del proyecto. Es la razón por la que el apunte abre el capítulo de selección advirtiendo justamente sobre esto.</p>
+      </div>
+
+      <h2 id="s12">11. Datos duros para memorizar</h2>
+      <table>
+        <thead><tr><th>Dato</th><th>Valor</th></tr></thead>
+        <tbody>
+          <tr><td>Presión de producción y distribución en neumática</td><td><strong>7 a 8 bar</strong></td></tr>
+          <tr><td>Fugas admisibles (recomendación A)</td><td>5 a 10 % de la capacidad total de compresores instalados</td></tr>
+          <tr><td>Caída de presión recomendada en toda la instalación</td><td><strong>0,6 bar</strong></td></tr>
+          <tr><td>Caída de presión máxima admisible</td><td><strong>1 bar</strong></td></tr>
+          <tr><td>Datos requeridos para el proyecto</td><td>Consumo medio · presión y pérdida admisible · calidad de aire</td></tr>
+          <tr><td>Pasos de la determinación del consumo medio</td><td><strong>Cinco</strong></td></tr>
+          <tr><td>% por pérdidas en el paso 5</td><td>5 a 15 %</td></tr>
+          <tr><td>Factor de simultaneidad</td><td>Global: consumos que funcionan a la vez</td></tr>
+          <tr><td>Coeficiente de utilización</td><td>Individual: horas de funcionamiento continuo</td></tr>
+          <tr><td>Velocidad recomendada general</td><td>5 a 15 m/s</td></tr>
+          <tr><td>Velocidad máxima en principal y secundarias</td><td><strong>8 m/s</strong></td></tr>
+          <tr><td>Velocidad máxima en tuberías de servicio</td><td><strong>15 m/s</strong></td></tr>
+          <tr><td>Elección de medida comercial</td><td>La más próxima, generalmente la inmediata superior</td></tr>
+          <tr><td>Constante de la fórmula de pérdida de carga</td><td><strong>76,35</strong></td></tr>
+          <tr><td>Exponente del caudal en la pérdida de carga</td><td><strong>1,875</strong></td></tr>
+          <tr><td>Exponente del diámetro en la pérdida de carga</td><td><strong>5</strong> (en el denominador)</td></tr>
+          <tr><td>Unidades en la pérdida de carga</td><td>L en m, Q en N m³/h, D<sub>i</sub> en mm, P en bar abs</td></tr>
+          <tr><td>Condiciones FAD (ISO 1217)</td><td>20 °C, 1,00 bar abs</td></tr>
+          <tr><td>Condiciones Normales</td><td>0 °C, 1,013 bar abs, seco</td></tr>
+          <tr><td>Relación FAD / Normal</td><td>Q<sub>FAD</sub> ≈ 1,087 Q<sub>N</sub></td></tr>
+          <tr><td>Qué NO contempla la conversión a FAD</td><td>La humedad relativa (incidencia mínima)</td></tr>
+          <tr><td>Norma que regula la medición del FAD</td><td>ISO 1217</td></tr>
+          <tr><td>Costo total del compresor</td><td>Amortización + costo operativo</td></tr>
+          <tr><td>Cuál pesa más</td><td>El operativo (consumo y mantenimiento) ⇒ manda la eficiencia</td></tr>
+          <tr><td>Regla principal de la sala</td><td>Planta de compresores independiente, centralizada</td></tr>
+          <tr><td>Prefiltros de aspiración</td><td>Ciclónico, de panel, rotativo de banda</td></tr>
+          <tr><td>Calor al aire de ventilación, refrigeración por aire</td><td>≈ 100 % de la energía del motor</td></tr>
+          <tr><td>Calor al aire de ventilación, refrigeración por agua</td><td>10 % de la energía del motor</td></tr>
+          <tr><td>Fórmula de ventilación</td><td>q<sub>v</sub> = P<sub>v</sub>/(0,92 ΔT), con q<sub>v</sub> en m³/s y P<sub>v</sub> en kW</td></tr>
+          <tr><td>Opciones de ventilación de sala que muestra el apunte</td><td>Cuatro</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="s13">12. Trampas típicas de opción múltiple</h2>
+      <table>
+        <thead><tr><th>Se confunde…</th><th>Con…</th><th>Cómo distinguirlos</th></tr></thead>
+        <tbody>
+          <tr><td>Fugas admisibles 5 a 10 % (recom. A)</td><td>% por pérdidas 5 a 15 % (paso 5 del consumo)</td><td>Son dos criterios distintos con rangos parecidos.</td></tr>
+          <tr><td>Caída recomendada 0,6 bar</td><td>Caída máxima 1 bar</td><td>0,6 es el objetivo; 1 es el techo.</td></tr>
+          <tr><td>Velocidad 8 m/s</td><td>Velocidad 15 m/s</td><td>8 en principal y secundarias, 15 en las de servicio.</td></tr>
+          <tr><td>Factor de simultaneidad</td><td>Coeficiente de utilización</td><td>Simultaneidad = cuántos a la vez (global). Utilización = cuántas horas (individual).</td></tr>
+          <tr><td>Caso A (reductora)</td><td>Caso B (compresor adicional)</td><td>Si el caudal grande está a alta presión ⇒ reductora. Si está a baja ⇒ compresor adicional.</td></tr>
+          <tr><td>Caso C</td><td>Casos A y B</td><td>El C es un problema de tiempo, no de presión ⇒ circuitos independientes.</td></tr>
+          <tr><td>FAD &gt; Normal</td><td>Normal &gt; FAD</td><td>Misma masa, referencia FAD más caliente y a menor presión ⇒ más volumen ⇒ número mayor.</td></tr>
+          <tr><td>D<sub>i</sub> en mm (pérdida de carga)</td><td>D<sub>i</sub> en m (fórmula de diámetro)</td><td>La fórmula del diámetro da metros; la de pérdida pide milímetros.</td></tr>
+          <tr><td>ΔP = P₁ − P₂</td><td>P₁² − P₂²</td><td>La fórmula da la diferencia de cuadrados; hay que sacar la raíz y después restar.</td></tr>
+          <tr><td>Amortización pesa más</td><td>El operativo pesa más</td><td>La vida útil supera varias veces el proyecto de inversión.</td></tr>
+          <tr><td>Refrigeración por aire: 10 %</td><td>Refrigeración por aire: 100 %</td><td>El 10 % corresponde a la refrigerada por agua.</td></tr>
+          <tr><td>Toma de aspiración caliente da igual</td><td>Aire frío es beneficioso</td><td>Más denso ⇒ más masa por vuelta ⇒ menos consumo específico.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="resumen">13. Resumen de una carilla</h2>
+      <p>Las instalaciones neumáticas trabajan entre 7 y 8 bar. Se proyecta a partir de tres datos: consumo medio, presión de trabajo y pérdida admisible, y calidad de aire necesaria. Como criterios de arranque, las fugas no deben superar el 5 a 10 % de la capacidad instalada y la caída total debe ser de 0,6 bar, con 1 bar como máximo.</p>
+      <p>El consumo medio se determina en cinco pasos: listar equipos con su caudal nominal y presión, sumar los caudales normalizados, aplicar el factor de simultaneidad (global: cuántos funcionan a la vez) o el coeficiente de utilización (individual: cuántas horas funciona cada uno), multiplicar, y sumar un 5 a 15 % por pérdidas más un porcentaje por ampliación futura.</p>
+      <p>Ante consumos heterogéneos hay tres soluciones: caudal grande a alta presión con uno chico a baja, válvula reductora en el secundario; caudal grande a baja con uno chico a alta, compresor adicional en el secundario; caudal grande en tiempo reducido con uno chico permanente, dos circuitos independientes.</p>
+      <p>Las tuberías se pre-dimensionan con D<sub>i</sub> = √(4Q/(πPV)), con velocidades de 5 a 15 m/s, tope de 8 m/s en principal y secundarias y 15 m/s en las de servicio, adoptando la medida comercial inmediata superior. La pérdida de carga se calcula con P₁²−P₂² = 76,35·L·Q<sup>1,875</sup>/D<sub>i</sub>⁵, con L incluyendo las longitudes equivalentes de los accesorios. Trabaja con diferencias de cuadrados porque el gas se expande al perder presión y acelera, así que la caída no es lineal. Si la pérdida resulta excesiva, se baja la velocidad, se recalcula el diámetro y se vuelve a verificar. Existe además un nomograma como alternativa.</p>
+      <p>Para seleccionar el compresor hay que cuidar las unidades: los catálogos dan Normal o FAD (Free Air Delivery, ISO 1217, medido a la salida de la unidad compresora, referido a 20 °C y 1,00 bar). Q<sub>FAD</sub> ≈ 1,087 Q<sub>N</sub>, y confundirlos lleva a elegir equipos demasiado pequeños. La conversión no contempla la humedad relativa, cuya incidencia es mínima. Se define primero el tipo de compresor según las zonas de uso y después se compara por costo total = amortización + operativo; como la vida útil supera varias veces el proyecto de inversión, la amortización es insignificante y manda el costo operativo, o sea, la eficiencia.</p>
+      <p>El pulmón se calcula como en el Bloque 3. Los filtros se seleccionan según la aplicación (a veces varios en serie), el caudal y la presión, determinando la caída de presión con la curva del fabricante.</p>
+      <p class="mb-0">La sala de compresores debe ser, ante todo, una planta independiente y centralizada: mejor economía, mejor diseño, servicio más simple, protección contra acceso no autorizado, control del ruido y ventilación controlada. El aire de aspiración debe ser limpio y frío, con prefiltro ciclónico, de panel o rotativo de banda donde haya polvo, contemplando su caída de presión; en compresores de pistón hay que cuidar la resonancia acústica de la tubería de entrada. La ventilación se calcula con q<sub>v</sub> = P<sub>v</sub>/(0,92 ΔT), teniendo en cuenta que la refrigeración por aire manda al ambiente cerca del 100 % de la energía del motor y la refrigeración por agua, solo el 10 %.</p>
+
+      <h2 id="s14">14. Banco de preguntas de opción múltiple</h2>
+      <p class="text-soft small">Formato tipo parcial. Respondé una a la vez: el feedback aparece apenas elegís una opción. Usá «Mezclar» para practicar en otro orden.</p>
+      <div id="quiz"></div>
+      <script type="application/json" id="quiz-data">
+[
+  { "tema": "Bloque 6", "q": "El rango de presión de producción y distribución en instalaciones industriales de aire comprimido para neumática es…", "opts": ["4 a 5 bar", "6 a 6,5 bar", "7 a 8 bar", "10 a 12 bar"], "ok": 2, "fb": "" },
+  { "tema": "Bloque 6", "q": "Según el apunte, las fugas de aire comprimido no deberían superar…", "opts": ["1 al 3 % de la capacidad instalada", "5 al 10 % de la capacidad instalada", "10 al 20 % de la capacidad instalada", "15 al 25 % de la capacidad instalada"], "ok": 1, "fb": " Y ese porcentaje se contempla al definir la capacidad de los compresores." },
+  { "tema": "Bloque 6", "q": "La caída de presión recomendada para el total de la instalación, y su límite máximo, son respectivamente…", "opts": ["0,3 bar y 0,6 bar", "0,6 bar y 1 bar", "1 bar y 1,5 bar", "0,5 bar y 2 bar"], "ok": 1, "fb": "" },
+  { "tema": "Bloque 6", "q": "Los datos requeridos para proyectar la instalación son…", "opts": ["Caudal, temperatura ambiente y humedad relativa", "Consumo medio, presión de trabajo y pérdida de carga admisible, y calidad del aire necesario", "Tipo de compresor, material de cañería y topología de red", "Potencia instalada, factor de potencia y horas de uso"], "ok": 1, "fb": "" },
+  { "tema": "Bloque 6", "q": "El factor de simultaneidad está definido por…", "opts": ["las horas de funcionamiento continuo de cada consumo", "la cantidad de consumos que están funcionando de manera simultánea", "la relación entre caudal generado y caudal consumido", "el porcentaje de fugas de la instalación"], "ok": 1, "fb": " Las horas de funcionamiento continuo definen el coeficiente de utilización." },
+  { "tema": "Bloque 6", "q": "En el paso final de la determinación del consumo medio, el porcentaje que se adiciona por pérdidas es de…", "opts": ["2 a 5 %", "5 a 15 %", "10 a 20 %", "20 a 30 %"], "ok": 1, "fb": " Más un porcentaje extra por ampliación futura, que no tiene valor fijado." },
+  { "tema": "Bloque 6", "q": "Ante un gran caudal a baja presión combinado con un caudal pequeño a alta presión, la solución recomendada es…", "opts": ["válvula reductora en el circuito secundario", "compresor adicional en el circuito secundario", "dos circuitos independientes", "aumentar el volumen del pulmón"], "ok": 1, "fb": " Generar todo a alta presión obligaría a comprimir de más el caudal grande, que es el que más pesa." },
+  { "tema": "Bloque 6", "q": "Ante un gran caudal en tiempo reducido combinado con un caudal pequeño durante largos períodos, corresponde…", "opts": ["válvula reductora", "compresor adicional en el secundario", "dos circuitos independientes", "aumentar la presión de distribución"], "ok": 2, "fb": " Es un problema de tiempo, no de presión." },
+  { "tema": "Bloque 6", "q": "La velocidad máxima recomendada en la tubería principal y en las secundarias es de…", "opts": ["5 m/s", "8 m/s", "12 m/s", "15 m/s"], "ok": 1, "fb": " Los 15 m/s corresponden a las tuberías de servicio." },
+  { "tema": "Bloque 6", "q": "Una vez calculado el diámetro interior, se debe adoptar…", "opts": ["el valor calculado exacto", "la medida comercial inmediata inferior", "la medida comercial más próxima, generalmente la inmediata superior", "el doble del calculado"], "ok": 2, "fb": "" },
+  { "tema": "Bloque 6", "q": "En la fórmula de pérdida de carga P₁²−P₂² = 76,35·L·Q¹'⁸⁷⁵/Dᵢ⁵, el diámetro interior debe expresarse en…", "opts": ["metros", "centímetros", "milímetros", "pulgadas"], "ok": 2, "fb": " Es una fórmula empírica de unidades mixtas: L en m, Q en N m³/h, Dᵢ en mm y P en bar abs." },
+  { "tema": "Bloque 6", "q": "Si se duplica el diámetro interior de un tramo, manteniendo todo lo demás constante, el término P₁²−P₂² se…", "opts": ["reduce a la mitad", "reduce a la cuarta parte", "reduce a la treintaidosava parte", "no se modifica"], "ok": 2, "fb": " Dᵢ está elevado a la quinta: 2⁵ = 32." },
+  { "tema": "Bloque 6", "q": "Si la pérdida de presión calculada resulta demasiado elevada, corresponde…", "opts": ["aumentar la presión de generación", "seleccionar una velocidad más baja, recalcular el diámetro y recalcular la pérdida", "acortar la red eliminando consumos", "cambiar el material de la cañería"], "ok": 1, "fb": " El cálculo es iterativo." },
+  { "tema": "Bloque 6", "q": "La longitud L de la fórmula de pérdida de carga…", "opts": ["es solo la longitud recta del tramo", "incluye la longitud equivalente de los accesorios", "se mide en el eje de la cañería principal solamente", "se toma siempre como 100 m por convención"], "ok": 1, "fb": " Codos, curvas, tes y válvulas se traducen a metros equivalentes por tabla." },
+  { "tema": "Bloque 6", "q": "Las siglas FAD significan…", "opts": ["Flujo de Aire Distribuido", "Free Air Delivery — Aire Libre Suministrado", "Factor de Aire Disponible", "Flujo de Aspiración Directa"], "ok": 1, "fb": " Medido según ISO 1217 a la salida de la unidad compresora." },
+  { "tema": "Bloque 6", "q": "Las condiciones de referencia del caudal FAD, según el apunte, son…", "opts": ["0 °C y 1,013 bar abs", "20 °C y 1,00 bar abs", "15 °C y 1,013 bar abs", "20 °C y 1,013 bar abs"], "ok": 1, "fb": " Las condiciones Normales son 0 °C y 1,013 bar abs." },
+  { "tema": "Bloque 6", "q": "Para una misma masa de aire, el valor numérico del caudal expresado en FAD respecto del expresado en Normal es…", "opts": ["menor", "igual", "mayor en torno al 9 %", "mayor al doble"], "ok": 2, "fb": " (293/273)(1,013/1,00) = 1,087." },
+  { "tema": "Bloque 6", "q": "La conversión de caudal Normal a FAD no contempla…", "opts": ["la temperatura", "la presión atmosférica", "la humedad relativa", "el caudal másico"], "ok": 2, "fb": " El apunte aclara que su incidencia sobre el caudal es mínima." },
+  { "tema": "Bloque 6", "q": "El apunte advierte que confundir las unidades de caudal al seleccionar un compresor lleva a…", "opts": ["sobredimensionar el equipo", "elegir equipos demasiado pequeños", "elegir el tipo de compresor equivocado", "errores en el cálculo del pulmón únicamente"], "ok": 1, "fb": " Como el número en FAD es mayor, tomarlo por Normal hace creer que el equipo entrega más de lo que entrega." },
+  { "tema": "Bloque 6", "q": "En la evaluación del costo total de un compresor…", "opts": ["la amortización es el componente dominante", "el costo operativo es el componente dominante, porque la vida útil supera varias veces el proyecto de inversión", "ambos pesan por igual", "solo se considera el precio de compra"], "ok": 1, "fb": " De ahí que la eficiencia sea un factor muy importante en la selección." },
+  { "tema": "Bloque 6", "q": "Para seleccionar un filtro, la caída de presión se determina…", "opts": ["con la fórmula de pérdida de carga de las cañerías", "por el diámetro de conexión del filtro", "con datos o gráficos que suministra el fabricante", "suponiendo un valor fijo de 0,1 bar"], "ok": 2, "fb": " Curva de caudal vs. caída de presión." },
+  { "tema": "Bloque 6", "q": "La regla principal para la instalación de los compresores es…", "opts": ["ubicarlos lo más cerca posible de cada consumo", "organizar una planta de compresores independiente y centralizada", "distribuirlos en distintos sectores de la planta", "instalarlos siempre a la intemperie"], "ok": 1, "fb": " La experiencia indica que la centralización es preferible, con independencia del tipo de industria." },
+  { "tema": "Bloque 6", "q": "¿Cuál de las siguientes NO es una ventaja de centralizar la sala de compresores según el apunte?", "opts": ["Mejor economía de funcionamiento", "Buen control del ruido", "Protección contra acceso no autorizado", "Reducción de la longitud total de la red de distribución"], "ok": 3, "fb": " La centralización, si acaso, alarga la red. Las ventajas listadas son economía, mejor diseño, sencillez de servicio, protección, control del ruido y ventilación controlada." },
+  { "tema": "Bloque 6", "q": "Los prefiltros recomendados para la aspiración en ambientes con alta concentración de polvo son…", "opts": ["coalescentes, de carbón activado y de membrana", "ciclónicos, de panel o rotativos de banda", "de adsorción y de absorción", "de malla metálica únicamente"], "ok": 1, "fb": " Y hay que contemplar en el diseño la caída de presión que producen." },
+  { "tema": "Bloque 6", "q": "En cuanto a la tubería de aspiración de un compresor de pistón, el apunte advierte particularmente sobre…", "opts": ["la corrosión por condensado", "la resonancia por ondas estacionarias acústicas debidas a la frecuencia pulsatoria del compresor", "la dilatación térmica", "la acumulación de aceite"], "ok": 1, "fb": " Puede dañar tuberías y máquina, generar vibraciones y ruido de baja frecuencia." },
+  { "tema": "Bloque 6", "q": "En un compresor refrigerado por agua, el aire de ventilación de la sala debe evacuar aproximadamente…", "opts": ["el 100 % de la energía consumida por el motor", "el 50 %", "el 10 %", "el 1 %"], "ok": 2, "fb": " El 100 % corresponde a los refrigerados por aire." },
+  { "tema": "Bloque 6", "q": "En la fórmula qᵥ = Pᵥ/(0,92·ΔT), si se admite un mayor aumento de temperatura en la sala, el caudal de ventilación necesario…", "opts": ["aumenta", "disminuye", "no varía", "varía con el cuadrado de ΔT"], "ok": 1, "fb": " ΔT está en el denominador: tolerar más salto térmico permite mover menos aire." },
+  { "tema": "Bloque 6", "q": "Un compresor con motor de 55 kW refrigerado por aire, con un aumento de temperatura admitido de 10 °C, requiere un caudal de ventilación de aproximadamente…", "opts": ["0,6 m³/s", "6 m³/s", "60 m³/s", "0,06 m³/s"], "ok": 1, "fb": " 55/(0,92×10) = 5,98 m³/s. Los 0,6 m³/s corresponderían al mismo equipo refrigerado por agua." },
+  { "tema": "Bloque 6", "q": "El control de la ventilación de la sala se resuelve con…", "opts": ["un único ventilador de velocidad fija", "varios ventiladores con termostatos ajustados a distintos rangos, o un termostato multietapa", "ventilación natural exclusivamente", "un extractor accionado por el propio compresor"], "ok": 1, "fb": " Los termostatos conectan los ventiladores uno tras otro según la temperatura de la sala." },
+  { "tema": "Bloque 6", "q": "Si la instalación de los compresores se realiza en el exterior bajo techo, uno de los riesgos específicos a considerar es…", "opts": ["la resonancia de la tubería de aspiración", "la congelación en las descargas de condensado", "el exceso de ventilación", "la imposibilidad de centralizar"], "ok": 1, "fb": " Junto con la protección contra lluvia y nieve en la entrada de aire, la fundación sólida y plana, el polvo y sustancias agresivas, y la protección contra acceso no autorizado." }
+]
+      </script>
+
+      <h2 id="s15">15. Cierre de la unidad</h2>
+      <p>Con este bloque queda cerrada la unidad de Aire Comprimido. El recorrido completo fue:</p>
+      <table>
+        <thead><tr><th style="width:4rem">Bloque</th><th>Tema</th><th>Pregunta que responde</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>El fluido y su calidad</td><td>¿Qué es el aire comprimido y qué pureza hace falta?</td></tr>
+          <tr><td>1</td><td>Producción: compresores</td><td>¿Cómo se comprime y cuánto cuesta hacerlo?</td></tr>
+          <tr><td>2</td><td>Tratamiento</td><td>¿Cómo se lo deja frío, seco y limpio?</td></tr>
+          <tr><td>3</td><td>Acumulación</td><td>¿Cómo se desacopla la producción del consumo?</td></tr>
+          <tr><td>4</td><td>Distribución</td><td>¿Cómo se lo lleva hasta donde se usa?</td></tr>
+          <tr><td>5</td><td>Punto de consumo</td><td>¿Cómo se lo adapta a cada máquina?</td></tr>
+          <tr><td>6</td><td>Proyecto integral</td><td>¿Con qué números se decide todo lo anterior?</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ El hilo que atraviesa los seis bloques</p>
+        <p>Si tuvieras que quedarte con una sola idea de toda la unidad, sería esta: <strong>el aire comprimido es caro</strong>.</p>
+        <p>Todo lo demás son consecuencias. Se refrigera entre etapas porque el calor cuesta trabajo. Se seca porque el agua rompe equipos que hay que reponer. Se pone un pulmón porque los arranques del motor cuestan. Se limita la velocidad en la cañería porque la pérdida de carga se paga en presión de generación. Se toleran solo 5 a 10 % de fugas porque cada fuga es un compresor trabajando gratis para la atmósfera. Se elige por eficiencia y no por precio porque el equipo se paga una vez y la energía todos los días.</p>
+        <p class="mb-0">Un sistema de aire comprimido bien proyectado es, en el fondo, un sistema donde nadie comprime más aire, ni a más presión, ni durante más tiempo del estrictamente necesario.</p>
+      </div>
+
+      <div class="callout callout--duda">
+        <p class="callout__title">◆ Figuras del apunte pendientes de incorporar</p>
+        <p class="mb-0">Estas figuras están citadas en el texto pero todavía no se recortaron del PDF de cátedra: Fig. 60 (p. 62, sistema completo con opciones de refrigeradores y secadores), Fig. 61 (p. 66, tabla de longitudes equivalentes), Fig. 62 (p. 67, nomograma de diámetro — y p. 69, zonas de uso de compresores, con el mismo número de figura), Fig. 63 (p. 70, curva de un filtro), Fig. 71 (p. 78, ventiladores por termostato) y Fig. 72 (p. 79, cuatro opciones de ventilación de sala). Los cinco gráficos de elaboración propia de este bloque (flujo del proyecto, ΔP vs. diámetro, presupuesto de 0,6 bar, ventilación aire/agua y costo de propiedad) ya están incorporados arriba.</p>
+      </div>
+
+      <nav class="pager"></nav>
+
+      <p class="page-foot">
+        Bloque 6 de la unidad de Aire Comprimido · Instalaciones Industriales · Ing. Luciano Manavella · UTN Facultad Regional Córdoba.<br>
+        Figuras 60 a 63, 71 y 72 del apunte de cátedra, pendientes de recortar e incorporar. Los gráficos en color son de elaboración propia; los valores marcados como ilustrativos no provienen del apunte.
+      </p>
+
+    </main>
+    <aside class="toc" aria-label="Contenido de la página"></aside>
+  </div>
+</div>
+
+<script src="../../assets/js/site.js"></script>
+<script src="../../assets/js/study.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  function num(v, d) {
+    return v.toLocaleString("es-AR", { minimumFractionDigits: d, maximumFractionDigits: d });
+  }
+
+  /* ---------- calculadora de consumo medio ---------- */
+  var cids = ["csuma", "cfs", "cperd", "camp"];
+  var cel = {};
+  cids.forEach(function (i) { cel[i] = document.getElementById(i); });
+
+  function calcularConsumo() {
+    var suma = parseFloat(cel.csuma.value);
+    var fs = parseFloat(cel.cfs.value);
+    var perd = parseFloat(cel.cperd.value);
+    var amp = parseFloat(cel.camp.value);
+    if ([suma, fs, perd, amp].some(function (v) { return !isFinite(v); }) || suma <= 0 || fs <= 0) return;
+
+    var trasFactor = suma * fs;
+    var trasPerdidas = trasFactor * (1 + perd / 100);
+    var minimo = trasPerdidas * (1 + amp / 100);
+
+    document.getElementById("cOut1").textContent = num(suma, 0) + " N l/min";
+    document.getElementById("cOut2").textContent = num(trasFactor, 0) + " N l/min";
+    document.getElementById("cOut3").textContent = num(trasPerdidas, 0) + " N l/min";
+    document.getElementById("cOut4").textContent = num(minimo, 0) + " N l/min";
+    document.getElementById("cOutM3h").textContent = "Equivale a " + num(minimo * 60 / 1000, 1) + " N m³/h.";
+  }
+  if (cel.csuma) {
+    cids.forEach(function (i) { cel[i].addEventListener("input", calcularConsumo); });
+    calcularConsumo();
+  }
+
+  /* ---------- calculadora de diametro y perdida de carga ---------- */
+  var COMERCIALES = [
+    { label: "1/2\"", d: 15.8 }, { label: "3/4\"", d: 20.9 }, { label: "1\"", d: 26.6 },
+    { label: "1¼\"", d: 35.1 }, { label: "1½\"", d: 40.9 }, { label: "2\"", d: 52.5 },
+    { label: "2½\"", d: 62.7 }, { label: "3\"", d: 77.9 }, { label: "4\"", d: 102.3 }, { label: "6\"", d: 154.1 }
+  ];
+  var rids = ["rq", "rp1", "rtipo", "rv", "rl"];
+  var rel = {};
+  rids.forEach(function (i) { rel[i] = document.getElementById(i); });
+
+  function calcularRed() {
+    var Q = parseFloat(rel.rq.value);       // N m3/h
+    var P1 = parseFloat(rel.rp1.value);     // bar abs
+    var vmax = parseFloat(rel.rtipo.value);
+    var V = parseFloat(rel.rv.value);
+    var L = parseFloat(rel.rl.value);
+    var aviso = document.getElementById("rAviso");
+
+    if ([Q, P1, V, L].some(function (v) { return !isFinite(v); }) || Q <= 0 || P1 <= 1 || V <= 0 || L <= 0) {
+      aviso.textContent = "Revisá los valores cargados.";
+      return;
+    }
+
+    var msgs = [];
+    if (V > vmax) msgs.push("La velocidad elegida supera el tope de " + vmax + " m/s para este tipo de tubería.");
+
+    var Qs = Q / 3600; // N m3/s
+    var Di_m = Math.sqrt(4 * Qs / (Math.PI * P1 * V));
+    var Di_mm = Di_m * 1000;
+
+    var comercial = COMERCIALES.find(function (c) { return c.d >= Di_mm; }) || COMERCIALES[COMERCIALES.length - 1];
+
+    document.getElementById("rDcalc").textContent = num(Di_mm, 1) + " mm";
+    document.getElementById("rDcom").textContent = comercial.label + " (Dᵢ ≈ " + num(comercial.d, 1) + " mm)";
+
+    var Di5 = Math.pow(comercial.d, 5);
+    var term = 76.35 * L * Math.pow(Q, 1.875) / Di5;
+    var P1sq = P1 * P1;
+
+    if (term >= P1sq) {
+      document.getElementById("rTerm").textContent = num(term, 3);
+      document.getElementById("rP2").textContent = "—";
+      document.getElementById("rDP").textContent = "—";
+      aviso.textContent = "La pérdida supera la presión disponible: el diámetro es demasiado chico para este caudal y longitud.";
+      return;
+    }
+
+    var P2 = Math.sqrt(P1sq - term);
+    var dP = P1 - P2;
+
+    document.getElementById("rTerm").textContent = num(term, 3);
+    document.getElementById("rP2").textContent = num(P2, 3) + " bar abs";
+    document.getElementById("rDP").textContent = num(dP, 3) + " bar";
+
+    if (dP < 0.6) msgs.push("Dentro del presupuesto recomendado de 0,6 bar.");
+    else if (dP <= 1) msgs.push("Entre 0,6 y 1 bar: al límite del criterio recomendado.");
+    else msgs.push("Supera 1 bar: instalación mal proyectada según el apunte. Bajá la velocidad y recalculá.");
+
+    aviso.textContent = msgs.join(" ");
+  }
+  if (rel.rq) {
+    rids.forEach(function (i) { rel[i].addEventListener("input", calcularRed); });
+    calcularRed();
+  }
+
+  /* ---------- calculadora de ventilacion ---------- */
+  var vids = ["vpm", "vtipo", "vdt", "vn"];
+  var vel = {};
+  vids.forEach(function (i) { vel[i] = document.getElementById(i); });
+
+  function calcularVentilacion() {
+    var Pm = parseFloat(vel.vpm.value);
+    var frac = parseFloat(vel.vtipo.value);
+    var dT = parseFloat(vel.vdt.value);
+    var n = parseFloat(vel.vn.value);
+    if ([Pm, frac, dT, n].some(function (v) { return !isFinite(v); }) || Pm <= 0 || dT <= 0 || n <= 0) return;
+
+    var Pv = Pm * n * frac;
+    var Pv_aire = Pm * n * 1.0;
+    var Pv_agua = Pm * n * 0.10;
+
+    var qv = Pv / (0.92 * dT);          // m3/s
+    var qv_aire = Pv_aire / (0.92 * dT);
+    var qv_agua = Pv_agua / (0.92 * dT);
+
+    document.getElementById("vPv").textContent = num(Pv, 1) + " kW";
+    document.getElementById("vQv").textContent = num(qv, 3) + " m³/s  ≈ " + num(qv * 3600, 0) + " m³/h";
+
+    var maxq = Math.max(qv_aire, qv_agua);
+    document.getElementById("vBAgua").style.width = (100 * qv_agua / maxq) + "%";
+    document.getElementById("vBAire").style.width = (100 * qv_aire / maxq) + "%";
+    document.getElementById("vLAgua").textContent = num(qv_agua * 3600, 0) + " m³/h";
+    document.getElementById("vLAire").textContent = num(qv_aire * 3600, 0) + " m³/h";
+  }
+  if (vel.vpm) {
+    vids.forEach(function (i) { vel[i].addEventListener("input", calcularVentilacion); });
+    calcularVentilacion();
+  }
+})();
+</script>
+</body>
+</html>

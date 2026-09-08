@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transporte y distribución: la red · Bloque 4 · Aire Comprimido</title>
+<meta name="description" content="Los tres niveles de tubería, red abierta vs. cerrada, el cuello de cisne, reglas de montaje y los materiales de cañería. Bloque 4 de la unidad de Aire Comprimido, Instalaciones Industriales, UTN FRC.">
+<link rel="stylesheet" href="../../assets/css/libdoc.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💨</text></svg>">
+<script>window.SITE_ROOT = "../../";</script>
+</head>
+<body data-materia="instalaciones-industriales" data-unidad="aire-comprimido">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header id="site-header"></header>
+<div class="scrim"></div>
+
+<div class="layout">
+  <nav class="sidebar" aria-label="Navegación de la unidad"></nav>
+
+  <div class="main-wrap">
+    <main class="content" id="main">
+
+      <nav class="breadcrumb" aria-label="Ruta"></nav>
+
+      <h1>Transporte y distribución: la red</h1>
+      <p class="lead">
+        Del pulmón en adelante el aire tiene que moverse por kilómetros de cañería. Eso trae dos
+        problemas nuevos, pérdida de carga y condensado en movimiento, y la red es la respuesta de
+        diseño a los dos.
+      </p>
+      <p class="text-soft small">Bloque 4 · Apunte de cátedra, páginas 53 a 56 (red) y 70 a 76 (materiales y accesorios) · Ing. Luciano Manavella · Instalaciones Industriales, UTN FRC</p>
+
+      <div class="card">
+        <p class="card__kicker">De dónde venimos y a dónde vamos</p>
+        <p>Del Bloque 3 salimos con el aire <span class="term">almacenado en el pulmón a presión estable</span>. Todo lo que hicimos hasta acá pasó dentro de recipientes: compresor, refrigerador, secador, filtros, tanque. El aire estuvo prácticamente quieto.</p>
+        <p>A partir de ahora tiene que <strong>moverse</strong>, y moverse por kilómetros de cañería hasta cada punto de trabajo. Eso introduce dos problemas nuevos que no existían antes:</p>
+        <ol>
+          <li><strong>La pérdida de carga.</strong> Cada metro de caño, cada codo, cada te y cada cambio de sección se cobran en bar. Al final del recorrido llega menos presión de la que salió.</li>
+          <li><strong>El condensado en movimiento.</strong> El agua que el pulmón no separó viaja con el aire. Si no se le da un camino de salida, se acumula en los puntos bajos y termina llegando a las herramientas.</li>
+        </ol>
+        <p class="mb-0">La red no es «caño». Es la respuesta de diseño a esos dos problemas.</p>
+      </div>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Lo que traés del bloque anterior</p>
+        <ul class="mb-0">
+          <li>El aire sale del pulmón en <strong>condiciones Normales</strong> cuando se lo expresa en catálogo, pero circula por el caño a la presión de trabajo. Esa distinción vuelve a importar cuando se calculen diámetros (Bloque 6).</li>
+          <li>El pulmón separa condensado, pero <strong>no lo elimina todo</strong>. Siempre queda agua en tránsito.</li>
+          <li>El aire, por ser compresible, cambia de densidad a lo largo del recorrido a medida que pierde presión. Eso explica por qué la fórmula de pérdida de carga (Bloque 6) tiene una forma poco intuitiva.</li>
+        </ul>
+      </div>
+
+      <div class="callout callout--parcial">
+        <p class="callout__title">✔ Cómo estudiar este bloque para opción múltiple</p>
+        <p>Este bloque es, junto con el 6, el más denso en <strong>datos numéricos sueltos</strong> y en <strong>listas de ventajas y desventajas</strong>. Es material ideal para opción múltiple y es donde más fácil se pierden puntos por confiar en la intuición. Concentrate en tres cosas:</p>
+        <ul class="mb-0">
+          <li>Los <strong>números</strong>: pendiente 0,5 a 2 %, diámetro mínimo de bajante, presiones y temperaturas admisibles de cada material.</li>
+          <li>Los <strong>pares de opuestos</strong>: red abierta vs. red cerrada, y los materiales entre sí. Casi todo ítem MC de este bloque es una comparación.</li>
+          <li>Las <strong>reglas absolutas</strong>, que se prestan a preguntas de verdadero o falso disfrazadas: la toma siempre por arriba, el montaje siempre aéreo, la tubería nunca en contacto con cables eléctricos.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <p class="card__kicker">Objetivos de aprendizaje</p>
+        <ul class="mb-0">
+          <li>Clasificar cualquier tramo de una instalación como tubería principal, secundaria o de servicio, y decir qué caudal transporta cada una.</li>
+          <li>Explicar por qué en las tres se prevé un margen para ampliaciones.</li>
+          <li>Comparar red abierta y red cerrada en inversión, mantenimiento, dirección del flujo y eliminación de condensado.</li>
+          <li>Justificar por qué la red abierta lleva pendiente y la cerrada no puede tenerla útilmente, y qué consecuencia tiene eso.</li>
+          <li>Explicar el cuello de cisne y por qué la toma va siempre por arriba.</li>
+          <li>Elegir un material de cañería y defender la elección con al menos tres criterios técnicos.</li>
+          <li>Reconocer las limitaciones específicas de cada material (corrosión, temperatura, presión, tipo de unión, personal requerido).</li>
+        </ul>
+      </div>
+
+      <h2 id="s1">Mapa de entrada</h2>
+      <div class="grid grid--2">
+        <div class="card"><p class="card__kicker">¿Cómo se organiza?</p><p class="mb-0">Principal → secundarias → de servicio (bajantes). Cada nivel toma aire del anterior y transporta menos caudal.</p></div>
+        <div class="card"><p class="card__kicker">¿Qué forma tiene?</p><p class="mb-0">Abierta (barata, mantenimiento malo, pendiente posible) vs. cerrada (cara, mantenimiento bueno, flujo sin dirección fija).</p></div>
+        <div class="card"><p class="card__kicker">¿Cómo se conecta el consumo?</p><p class="mb-0">Siempre por arriba → cuello de cisne.</p></div>
+        <div class="card"><p class="card__kicker">¿De qué está hecha?</p><p class="mb-0">Metálicas (acero negro, galvanizado, inoxidable, cobre, aluminio) y no metálicas (termoplástico PE).</p></div>
+      </div>
+      <p class="text-soft small">Una rama secundaria cuelga de «¿Qué forma tiene?»: las <strong>reglas de montaje</strong> — aérea, recta, sin contacto eléctrico, con dilatación, con válvulas de bloqueo.</p>
+
+      <h2 id="s2">1. La red: los tres niveles de tubería</h2>
+      <p>Para transportar y distribuir el aire comprimido se emplea una <strong>red</strong>. Dentro de ella se distinguen <strong>tres tipos de tubería</strong>, y la clasificación es jerárquica: cada nivel toma aire del anterior y transporta menos caudal.</p>
+
+      <h3 id="s21">1.1 Tubería principal</h3>
+      <p><strong>Sale del depósito o pulmón y canaliza la totalidad del caudal de aire.</strong> Para determinar la sección de pasaje debe preverse un <strong>margen de seguridad</strong> que contemple posibles crecimientos de la planta.</p>
+
+      <h3 id="s22">1.2 Tuberías secundarias</h3>
+      <p>Toman el aire de la tubería principal y <strong>se ramifican por las zonas de trabajo</strong>. El caudal que transporta cada una es la <strong>suma de los caudales que de ella se deriven</strong>. También acá conviene pensar en futuras ampliaciones al calcular el diámetro.</p>
+
+      <h3 id="s23">1.3 Tuberías de servicio</h3>
+      <p>Son las <strong>bajantes</strong> que alimentan los equipos neumáticos en los puntos de manipulación. Están equipadas con:</p>
+      <ul>
+        <li><strong>Acoples rápidos</strong> para la conexión de mangueras.</li>
+        <li>Los grupos <strong>filtro-regulador-lubricador (FRL)</strong>, que se desarrollan en el Bloque 5.</li>
+      </ul>
+      <p>Se dimensionan en base al consumo que alimentan, y hay una regla dura:</p>
+
+      <div class="card">
+        <p class="card__kicker">Diámetro mínimo de bajante</p>
+        <p class="mb-0">Se debe <strong>evitar utilizar tuberías de sección menor a 1/2"</strong> en las tuberías de servicio.</p>
+      </div>
+
+      <figure class="figure">
+        <img src="fig/g_red_niveles.svg" alt="Esquema de planta con los tres niveles de tubería: principal desde la sala de compresores, secundarias por zona, y bajantes de servicio hacia cada equipo, con válvulas de bloqueo y purga en el punto bajo.">
+        <figcaption>Los tres niveles en planta. La principal (petróleo) sale de la sala de compresores; las secundarias (gris) se ramifican por zona; las de servicio (ámbar) bajan a cada equipo. Las válvulas de bloqueo permiten aislar tramos, y la purga va en el punto más bajo de la red.</figcaption>
+      </figure>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Por qué las tres se sobredimensionan</p>
+        <p>El criterio de «prever ampliaciones» aparece en los tres niveles, y no es conservadurismo gratuito. Tiene una razón física y una económica.</p>
+        <p>La razón física: en el Bloque 6 vas a ver que la pérdida de carga va con el diámetro interior elevado a la quinta potencia, en el denominador. Un caño apenas más chico de lo necesario no pierde «un poquito» más: pierde muchísimo más. Duplicar el diámetro divide el término de pérdidas por 32.</p>
+        <p>La razón económica: el costo de un caño más grande es marginal frente al costo de <strong>volver a instalar la red</strong>. El caño se paga una vez; la pérdida de carga se paga todos los días en energía del compresor.</p>
+        <p class="mb-0">Por eso el apunte insiste en que <strong>un buen diámetro de la tubería principal evita problemas ante una ampliación de la red</strong>.</p>
+      </div>
+
+      <h2 id="s3">2. Redes abiertas y redes cerradas</h2>
+      <p>Esta es la comparación central del bloque y la fuente más probable de preguntas.</p>
+
+      <h3 id="s31">2.1 Red abierta</h3>
+      <p>Se constituye por <strong>una sola línea principal</strong> de la cual se desprenden las líneas secundarias y las de servicio (Fig. 52, p. 54).</p>
+      <ul>
+        <li>Se deben implementar <strong>inclinaciones de las tuberías entre 0,5 y 2 %</strong> en la dirección del flujo de aire comprimido, para conducir y eliminar el condensado.</li>
+        <li><strong>Ventaja principal</strong>: la <strong>baja inversión inicial</strong> necesaria para lograr esta configuración.</li>
+        <li><strong>Desventaja principal</strong>: el <strong>mantenimiento</strong>. Ante una reparación es posible que se detenga el suministro de aire «aguas abajo» del punto de corte, lo que implica una detención de la producción.</li>
+      </ul>
+
+      <table>
+        <caption>Elementos del esquema de red abierta del apunte (Fig. 52).</caption>
+        <thead><tr><th style="width:5rem">Ref.</th><th>Elemento</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Compresor</td></tr>
+          <tr><td>2</td><td>Refrigerador posterior</td></tr>
+          <tr><td>3</td><td>Depósito o pulmón con purga automática incorporada</td></tr>
+          <tr><td>4</td><td>Separador de condensado</td></tr>
+          <tr><td>5</td><td>Tubería de servicio (bajante) con válvula de bloqueo y purga</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="s32">2.2 Red cerrada</h3>
+      <p>La línea principal se cierra sobre sí misma formando un anillo (Fig. 53, p. 55).</p>
+      <ul>
+        <li>La <strong>inversión inicial es mayor</strong> respecto de la red abierta.</li>
+        <li>Se <strong>facilitan las labores de mantenimiento sin afectar la producción</strong>: si se corta un tramo, el aire llega por el otro lado del anillo.</li>
+        <li><strong>Falta de dirección constante del flujo.</strong> La dirección en cada punto depende de las demandas puntuales, así que el aire cambia de sentido según el consumo.</li>
+        <li><strong>Defecto derivado</strong>: la dificultad de eliminar el condensado, precisamente por esa falta de dirección constante. Por eso <strong>es necesario incorporar secadores</strong> para el aire comprimido.</li>
+      </ul>
+
+      <table>
+        <caption>Elementos del esquema de red cerrada del apunte (Fig. 53).</caption>
+        <thead><tr><th style="width:5rem">Ref.</th><th>Elemento</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Compresor</td></tr>
+          <tr><td>2</td><td>Refrigerador posterior</td></tr>
+          <tr><td>3</td><td>Depósito o pulmón con purga automática incorporada</td></tr>
+          <tr><td>4</td><td><strong>Secador de aire (de adsorción)</strong></td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ La cadena causal completa de la red cerrada</p>
+        <p>Esta es la pregunta de comprensión más probable del bloque, y conviene tenerla como una cadena de cuatro eslabones y no como cuatro datos sueltos:</p>
+        <p><strong>el anillo se cierra → el flujo puede ir para cualquiera de los dos lados según dónde se consuma → no hay una «dirección aguas abajo» estable → la pendiente no sirve para arrastrar el condensado hacia un punto de purga → hay que sacar el agua antes de que entre a la red, o sea, secando.</strong></p>
+        <p class="mb-0">Fijate que la ventaja y la desventaja de la red cerrada son <strong>la misma propiedad</strong> mirada desde dos lados: la redundancia de caminos es lo que le da continuidad de servicio y lo que le quita dirección de flujo. No son dos características independientes.</p>
+      </div>
+
+      <h3 id="s33">2.3 Tabla comparativa</h3>
+      <table>
+        <thead><tr><th>Criterio</th><th>Red abierta</th><th>Red cerrada</th></tr></thead>
+        <tbody>
+          <tr><td>Inversión inicial</td><td><strong>Baja</strong></td><td><strong>Mayor</strong></td></tr>
+          <tr><td>Mantenimiento</td><td>Puede cortar el suministro aguas abajo y detener la producción</td><td>Se puede reparar <strong>sin afectar la producción</strong></td></tr>
+          <tr><td>Dirección del flujo</td><td><strong>Constante</strong>, definida</td><td><strong>Variable</strong>, depende de las demandas puntuales</td></tr>
+          <tr><td>Pendiente</td><td><strong>0,5 a 2 %</strong> en la dirección del flujo</td><td>No es efectiva, por falta de dirección constante</td></tr>
+          <tr><td>Eliminación del condensado</td><td>Por pendiente y purgas en puntos bajos</td><td><strong>Difícil</strong> ⇒ se requiere <strong>secador</strong></td></tr>
+          <tr><td>Longitud de cañería</td><td>Menor</td><td>Mayor</td></tr>
+        </tbody>
+      </table>
+
+      <div class="grid grid--2">
+        <div class="card"><p class="card__kicker">Red abierta, en una frase</p><p class="mb-0">Barata de instalar, mala para mantener: cortás un tramo y apagás todo lo que sigue.</p></div>
+        <div class="card"><p class="card__kicker">Red cerrada, en una frase</p><p class="mb-0">Cara de instalar, buena para mantener: pero sin dirección fija de flujo, necesita secador.</p></div>
+      </div>
+
+      <h2 id="s4">3. La toma de aire: el cuello de cisne</h2>
+      <p>Este es el punto donde la red se conecta al consumo, y tiene una regla que el apunte escribe <strong>en mayúsculas</strong>, cosa que hace en muy pocos lugares:</p>
+
+      <div class="callout callout--dato">
+        <p class="callout__title">◆ Regla absoluta</p>
+        <p>LA TOMA DE AIRE COMPRIMIDO DEBE HACERSE SIEMPRE DESDE LA PARTE SUPERIOR DE LA TUBERÍA, porque el condensado se encuentra en la parte inferior de la misma.</p>
+        <p class="mb-0">Para esto se recurre a una acometida llamada <strong>cuello de cisne</strong>.</p>
+      </div>
+
+      <p>El cuello de cisne es literalmente eso: la derivación sale por arriba del caño principal, hace una curva y recién ahí baja hacia el punto de uso.</p>
+
+      <figure class="figure">
+        <img src="fig/g_cisne.svg" alt="Corte de la tubería principal comparando una toma incorrecta por abajo, donde el condensado entra directo a la herramienta, con el cuello de cisne correcto que toma por arriba, sube, gira y recién ahí baja.">
+        <figcaption>Corte de la tubería principal. A la izquierda, la toma incorrecta por abajo: el condensado que corre por el fondo del caño entra directo a la herramienta. A la derecha, el cuello de cisne: la toma sube desde arriba del caño antes de bajar, así que el agua nunca llega a entrar.</figcaption>
+      </figure>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Por qué funciona</p>
+        <p>Dentro del caño hay dos fluidos conviviendo: aire, que ocupa toda la sección, y agua líquida, que por densidad corre pegada a la generatriz inferior. Si derivás por abajo, tu bajante es el primer camino que encuentra el agua para irse: le estás dando un desagüe directo a la herramienta.</p>
+        <p>Si derivás por arriba, el agua tiene que subir contra la gravedad para entrar, y no lo hace. Sigue de largo por el fondo del caño hasta el próximo punto de purga.</p>
+        <p class="mb-0">Es la misma lógica del sifón invertido, y es una de esas soluciones que no cuestan nada y resuelven un problema entero. Por eso está en mayúsculas.</p>
+      </div>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ El error de examen y el error de obra</p>
+        <p>En el parcial: elegir la opción que dice «por la parte inferior» porque suena razonable si uno piensa en la gravedad ayudando a bajar el aire. El aire no necesita ayuda de la gravedad; el agua sí, y esa es justamente la que no querés.</p>
+        <p class="mb-0">En obra: hacer el cuello de cisne pero con la curva demasiado corta, de modo que el punto alto queda apenas por encima de la generatriz superior. Con arrastre de gotas a alta velocidad, el agua salta igual. La acometida tiene que subir de verdad antes de bajar.</p>
+      </div>
+
+      <h2 id="s5">4. Reglas de montaje de la red</h2>
+      <p>El apunte lista una serie de recomendaciones para las instalaciones. Las que se refieren al trazado y montaje de la red son estas (las que se refieren al cálculo van en el Bloque 6).</p>
+
+      <table>
+        <thead><tr><th style="width:2.5rem">#</th><th>Recomendación</th><th>Por qué</th></tr></thead>
+        <tbody>
+          <tr><td>C</td><td>Diseñar la red <strong>en base a la arquitectura del edificio</strong> y a los requerimientos de pureza del aire</td><td>La red se adapta al edificio, no al revés</td></tr>
+          <tr><td>D</td><td>Tubería <strong>lo más recta posible</strong>, para disminuir longitud, número de codos, tes y cambios de sección</td><td>Todos ellos aumentan la pérdida de presión</td></tr>
+          <tr><td>E</td><td><strong>Montaje siempre aéreo</strong>, sostenido de techos y paredes</td><td>Facilita accesorios, puntos de drenaje, ampliaciones, inspección y mantenimiento</td></tr>
+          <tr><td>F</td><td>La tubería <strong>no debe entrar en contacto con cables eléctricos</strong></td><td>Prevención de accidentes</td></tr>
+          <tr><td>G</td><td>Prever <strong>libertad para que la tubería se expanda o contraiga</strong> ante variaciones de temperatura</td><td>Dilatación térmica</td></tr>
+          <tr><td>H</td><td>Antes de implementar extensiones o nuevas demandas, <strong>verificar los diámetros</strong></td><td>Una ampliación sobre un diámetro justo dispara la pérdida de carga</td></tr>
+          <tr><td>I</td><td>Un <strong>buen diámetro de la tubería principal</strong> evita problemas ante una ampliación</td><td>Es la decisión más difícil de revertir</td></tr>
+          <tr><td>J</td><td>Ubicar <strong>frecuentemente válvulas de bloqueo</strong> en la red</td><td>Permite aislar tramos para mantenimiento</td></tr>
+          <tr><td>K</td><td>Todo <strong>cambio brusco de dirección o inclinación</strong> es un sitio de acumulación de condensados</td><td>Ahí van las purgas</td></tr>
+          <tr><td>L</td><td>Las tomas para bajantes <strong>nunca por la parte inferior</strong>, siempre por la superior</td><td>Cuello de cisne</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Ampliación <span class="badge badge--accent">Ampliación</span> — el montaje aéreo tiene una razón que el apunte no dice explícitamente</p>
+        <p>El apunte justifica el montaje aéreo por accesibilidad, y es cierto. Pero hay una segunda razón, más de fondo: <strong>una cañería enterrada no se puede purgar ni inspeccionar</strong>, y el aire comprimido siempre lleva agua.</p>
+        <p class="mb-0">Un caño enterrado con condensado adentro se corroe desde adentro hacia afuera, en un lugar donde no vas a ver la mancha de óxido ni escuchar la fuga. Cuando te enterás, ya perdiste presión durante meses y contaminaste la red con partículas de óxido. Aéreo, la misma falla se ve, se escucha y se arregla en una mañana.</p>
+      </div>
+
+      <h2 id="s6">5. Materiales de la cañería</h2>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ Dónde está esto en el apunte</p>
+        <p>Este capítulo corresponde a las <strong>páginas 70 a 76</strong> del apunte, donde aparece dentro del capítulo de proyecto, después del cálculo de diámetros. Lo traemos acá porque temáticamente es parte de la red: no se puede hablar de la red sin decir de qué está hecha.</p>
+        <p class="mb-0">Si estudiás en paralelo con el PDF de cátedra, tenelo presente para no buscarlo en el lugar equivocado.</p>
+      </div>
+
+      <p>Los materiales se dividen básicamente en <strong>dos tipos: metálicos y no metálicos</strong>. Al tubo no metálico se lo llama <span class="term">tubo termoplástico</span>. Las canalizaciones metálicas pueden ser de <strong>acero negro, acero inoxidable, cobre o aluminio extruido y anodizado</strong>.</p>
+
+      <h3 id="s61">5.1 Acero negro</h3>
+      <p>Las tuberías de <strong>acero negro Schedule 40</strong> son las <strong>más comunes</strong> en los sistemas de aire comprimido, por su <strong>buen precio y durabilidad</strong>.</p>
+      <ul>
+        <li>Los tubos de <strong>diámetro menor a 76 mm</strong> normalmente están <strong>roscados</strong>; los de mayor diámetro necesitan <strong>soldaduras y bridas</strong>.</li>
+        <li><strong>Se corroen</strong> si están expuestos a humedad condensada, y aparecen constantemente partículas sólidas que provocan contaminación.</li>
+        <li>La corrosión interna <strong>se agrava con condensados de características altamente ácidas</strong>.</li>
+        <li>Comparado con aluminio o cobre, es <strong>mucho más pesado y difícil de manejar</strong>, lo que incrementa significativamente las horas de trabajo de instalación.</li>
+      </ul>
+
+      <h3 id="s62">5.2 Acero galvanizado</h3>
+      <p>Muchas veces se seleccionan tuberías de acero galvanizadas para el transporte <span class="val">a 7 bar</span>. El revestimiento ayuda a que no se oxiden tanto como las estándar Schedule 40.</p>
+      <p>Pero con el paso del tiempo, cuando hay señales de corrosión, <strong>el material galvanizado empieza a desprenderse</strong>. En consecuencia, las tuberías se convierten en una <strong>fuente de contaminantes potencialmente destructivos</strong> que pueden afectar la integridad mecánica de los componentes del sistema.</p>
+
+      <div class="callout callout--ojo">
+        <p class="callout__title">⚠ El galvanizado no es «acero negro pero mejor»</p>
+        <p>Es una de las trampas conceptuales del tema. El galvanizado <strong>pospone</strong> el problema, no lo elimina, y cuando falla, falla peor: el acero negro se corroe y suelta óxido, que es feo pero blando; el galvanizado suelta <strong>escamas de zinc</strong>, que son duras y viajan por la red hasta trabar una válvula o rayar un cilindro.</p>
+        <p class="mb-0">En un ítem MC, una opción que diga «el galvanizado elimina definitivamente el problema de la corrosión» es falsa por definición.</p>
+      </div>
+
+      <h3 id="s63">5.3 Acero inoxidable</h3>
+      <p>Las tuberías del tipo <strong>Schedule 10</strong> son:</p>
+      <ul>
+        <li><strong>Livianas</strong> en comparación con el acero negro y <strong>resistentes a la corrosión</strong>.</li>
+        <li>Fáciles de manejar, por lo que <strong>deberían ser más baratas de instalar</strong>, pero requieren <strong>soldadores profesionales</strong>.</li>
+        <li>Para conexiones soldadas, el inoxidable necesita <strong>un solo cordón de soldadura</strong>, mientras que el acero negro requiere <strong>tres</strong> (soldadura, rellenado y cobertura).</li>
+        <li><strong>No precinta bien cuando se enrosca</strong>: funciona mucho mejor con <strong>conexiones con ranuras</strong>.</li>
+      </ul>
+
+      <h3 id="s64">5.4 Cobre</h3>
+      <p>Los tubos de cobre son una selección muy común y, con las medidas y conexiones adecuadas, son muy duraderos y efectivos.</p>
+      <ul>
+        <li>Los tipos <strong>M hard, L hard y K soft</strong> funcionan a <span class="val">presión de 17 bar</span>.</li>
+        <li>Resisten <span class="val">altas temperaturas de hasta 204 °C</span>.</li>
+        <li>Aunque el cobre fallara, lo haría <strong>de una manera predecible</strong>: los extremos de los tubos empezarían a separarse.</li>
+        <li><strong>No se recomienda la soldadura con plomo</strong>: tiene resistencia muy baja, pueden aparecer fugas, y según la aleación empieza a derretirse a <span class="val">183 °C</span>.</li>
+        <li>Las soldaduras de <strong>plata o soldaduras duras</strong> son formas de soldadura fuerte, no deben confundirse con las de plomo, y se derriten entre <span class="val">618 y 982 °C</span>.</li>
+      </ul>
+
+      <h3 id="s65">5.5 Aluminio extruido y anodizado</h3>
+      <p>Muy utilizado. Sus características:</p>
+      <ul>
+        <li>Muy <strong>resistente a la corrosión</strong> y <strong>ligero</strong>, lo que permite una instalación más fácil.</li>
+        <li>La falta de corrosión interna se traduce en una <strong>superficie interior más lisa</strong>, reduciendo la pérdida de presión que provoca la fricción.</li>
+        <li>El <strong>diámetro interior de las conexiones es exacto al diámetro interior de los tubos</strong>, así que <strong>no hay obstáculos en el flujo</strong> de aire.</li>
+        <li><strong>Elevada flexibilidad de las conexiones</strong>: el sistema se adapta fácilmente a las necesidades del edificio y a los requerimientos de montaje y desmontaje de las áreas de producción.</li>
+        <li>Se puede instalar o desmontar <strong>sin necesidad de personal técnico o soldadores expertos</strong>.</li>
+        <li>Rango de temperatura de operación <span class="val">de 15 a 80 °C</span>, que puede variar según las marcas.</li>
+      </ul>
+
+      <figure class="figure">
+        <img src="fig/g_materiales.svg" alt="Dos gráficos de barras: presión citada en el apunte en bar para galvanizado y cobre, y temperatura citada en el apunte en grados Celsius para aluminio (rango 15 a 80) y cobre (máximo 204).">
+        <figcaption>Los únicos valores de presión y temperatura que el apunte cita explícitamente para materiales de cañería. El cobre domina en los dos ejes; el resto de los materiales no tiene un valor máximo declarado en este capítulo.</figcaption>
+      </figure>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Las dos ventajas del aluminio que son la misma</p>
+        <p>«Superficie interior lisa» y «diámetro interior de la conexión igual al del tubo» apuntan al mismo objetivo: <strong>minimizar la pérdida de carga</strong>.</p>
+        <p>La primera ataca la rugosidad, que es la fricción distribuida a lo largo del caño. La segunda ataca los escalones internos en cada unión, que son pérdidas localizadas. Un accesorio roscado convencional siempre reduce la sección de paso en la unión, y cada reducción es un accesorio más que sumar a la longitud equivalente.</p>
+        <p class="mb-0">En un sistema donde el apunte pide que la caída total no supere 0,6 bar, esas pérdidas localizadas dejan de ser un detalle.</p>
+      </div>
+
+      <h3 id="s66">5.6 Tuberías termoplásticas</h3>
+      <p>Se unen mediante <strong>termofusión</strong>. El material es <strong>resina de polietileno (PE)</strong>, especialmente formulada para ser <strong>resistente a los aceites sintéticos y minerales</strong> usados en la lubricación de compresores.</p>
+      <p>Su instalación tiene diferencias considerables respecto del metal y <strong>debe ser realizada por personal capacitado</strong>. Consideraciones:</p>
+      <ul>
+        <li><strong>No es resistente a los rayos UV</strong>: debe instalarse con protección suficiente si se expone a la luz solar directa.</li>
+        <li><strong>No instalar cuando la temperatura ambiente sea inferior a 5 °C</strong>, ni con viento o lluvia.</li>
+        <li><strong>Dejar pasar de 24 a 48 horas</strong> para que el material se adapte a la temperatura ambiente antes de soldar.</li>
+        <li>Se debe <strong>probar la presión</strong> de todos los sistemas de tuberías según las normas correspondientes.</li>
+      </ul>
+
+      <h3 id="s67">5.7 Tabla comparativa de materiales</h3>
+      <table>
+        <thead><tr><th>Material</th><th>Norma / tipo</th><th>Datos duros</th><th>Fuerte</th><th>Débil</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Acero negro</strong></td><td>Schedule 40</td><td>Roscado hasta 76 mm; más allá, soldado o bridado</td><td>Precio y durabilidad; el más común</td><td>Se corroe con condensado, peor si es ácido; pesado</td></tr>
+          <tr><td><strong>Acero galvanizado</strong></td><td>—</td><td>Usado para transporte a 7 bar</td><td>Menos oxidación que el negro</td><td>El recubrimiento se desprende con el tiempo y contamina</td></tr>
+          <tr><td><strong>Acero inoxidable</strong></td><td>Schedule 10</td><td>1 cordón de soldadura (el negro necesita 3)</td><td>Liviano y resistente a la corrosión</td><td>Requiere soldadores profesionales; no sella bien roscado</td></tr>
+          <tr><td><strong>Cobre</strong></td><td>M hard, L hard, K soft</td><td>17 bar; hasta 204 °C; plomo funde a 183 °C, plata/fuerte 618–982 °C</td><td>Duradero; falla predecible</td><td>No soldar con plomo</td></tr>
+          <tr><td><strong>Aluminio</strong></td><td>Extruido y anodizado</td><td>15 a 80 °C (según marca)</td><td>Liviano, no se corroe, interior liso, racores sin obstrucción, montaje sin soldador</td><td>Rango de temperatura acotado</td></tr>
+          <tr><td><strong>Termoplástico</strong></td><td>Resina de PE, termofusión</td><td>No instalar bajo 5 °C; aclimatar 24–48 h</td><td>Resiste aceites sintéticos y minerales</td><td>No resiste UV; requiere personal capacitado</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="s7">6. Accesorios</h2>
+      <p>Los accesorios son los elementos utilizados para la <strong>unión de las tuberías</strong>. En este grupo se encuentran: <strong>cuplas, reducciones, codos, curvas, tes</strong>, etc.</p>
+      <ul>
+        <li><strong>Acero (negro o galvanizado)</strong>: accesorios <strong>roscados</strong>, con rosca <strong>BSP o NPT</strong>, hasta un tamaño de <span class="val">4 pulgadas</span>. Para dimensiones superiores hay que recurrir a <strong>uniones bridadas o soldadas</strong> (Fig. 64, p. 73).</li>
+        <li><strong>Aluminio</strong>: los accesorios se llaman <strong>racores</strong>, diseñados para que sean muy fáciles de instalar y desinstalar. Su forma cambia en función del tamaño de la tubería (Figs. 65 a 67, pp. 73–75).</li>
+        <li><strong>Termoplásticos</strong>: muy variados, incluyendo el <strong>adaptador roscado</strong> para conectar con elementos metálicos. La unión se hace por <strong>termofusión</strong> entre tubería y accesorio (Figs. 68 a 70, pp. 75–76).</li>
+      </ul>
+
+      <div class="callout callout--nota">
+        <p class="callout__title">ℹ Ampliación <span class="badge badge--accent">Ampliación</span> — los accesorios no son un detalle de compra</p>
+        <p>Cada accesorio se traduce en una <strong>longitud equivalente</strong> de cañería recta, y esa longitud entra directamente en la fórmula de pérdida de carga del Bloque 6. Un codo de 90° a 2" puede equivaler a más de un metro de caño recto; una te derivada, a varios metros.</p>
+        <p class="mb-0">Por eso la recomendación D del apunte («tubería lo más recta posible») no es estética. Cada codo que sacás del trazado es longitud que le restás al cálculo, presión que no perdés y kilovatios que el compresor no consume. La tabla de longitudes equivalentes (Fig. 61, p. 66) se usa en el Bloque 6.</p>
+      </div>
+
+      <h2 id="s8">7. Datos duros para memorizar</h2>
+      <table>
+        <thead><tr><th>Dato</th><th>Valor</th></tr></thead>
+        <tbody>
+          <tr><td>Pendiente en red abierta</td><td><strong>0,5 a 2 %</strong>, en la dirección del flujo</td></tr>
+          <tr><td>Diámetro mínimo de tubería de servicio</td><td><strong>1/2"</strong> (evitar secciones menores)</td></tr>
+          <tr><td>Acero negro: umbral roscado / soldado</td><td><strong>76 mm</strong></td></tr>
+          <tr><td>Acero negro / inoxidable: schedule</td><td><strong>Sch 40</strong> / <strong>Sch 10</strong></td></tr>
+          <tr><td>Cordones de soldadura: inoxidable vs. acero negro</td><td><strong>1</strong> vs. <strong>3</strong></td></tr>
+          <tr><td>Cobre: presión de trabajo</td><td><strong>17 bar</strong></td></tr>
+          <tr><td>Cobre: temperatura máxima</td><td><strong>204 °C</strong></td></tr>
+          <tr><td>Soldadura de plomo: fusión</td><td><strong>183 °C</strong> (no recomendada)</td></tr>
+          <tr><td>Soldadura de plata / fuerte: fusión</td><td><strong>618 a 982 °C</strong></td></tr>
+          <tr><td>Aluminio: rango de temperatura</td><td><strong>15 a 80 °C</strong></td></tr>
+          <tr><td>Termoplástico: material</td><td><strong>Resina de polietileno (PE)</strong></td></tr>
+          <tr><td>Termoplástico: temperatura mínima de instalación</td><td><strong>5 °C</strong></td></tr>
+          <tr><td>Termoplástico: aclimatación antes de soldar</td><td><strong>24 a 48 horas</strong></td></tr>
+          <tr><td>Accesorios de acero roscados hasta</td><td><strong>4 pulgadas</strong></td></tr>
+          <tr><td>Roscas de accesorios de acero</td><td><strong>BSP o NPT</strong></td></tr>
+          <tr><td>Accesorios de aluminio</td><td><strong>Racores</strong></td></tr>
+          <tr><td>Unión de termoplástico</td><td><strong>Termofusión</strong></td></tr>
+          <tr><td>Elemento adicional obligado en red cerrada</td><td><strong>Secador</strong></td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="s9">8. Trampas típicas de opción múltiple</h2>
+      <table>
+        <thead><tr><th>Se confunde…</th><th>Con…</th><th>Cómo distinguirlos</th></tr></thead>
+        <tbody>
+          <tr><td>Red abierta</td><td>Red cerrada</td><td>Abierta: barata, mantenimiento malo, flujo con dirección fija, pendiente útil. Cerrada: cara, mantenimiento bueno, flujo sin dirección fija, necesita secador.</td></tr>
+          <tr><td>«La red cerrada elimina mejor el condensado»</td><td>Es al revés: le cuesta más</td><td>Sin dirección constante, la pendiente no arrastra el agua a ningún lado.</td></tr>
+          <tr><td>Toma por arriba</td><td>Toma por abajo</td><td>Siempre por arriba, cuello de cisne. El condensado va por el fondo.</td></tr>
+          <tr><td>Pendiente 0,5–2 %</td><td>5–10 % (que es el tope de fugas, Bloque 6)</td><td>Son dos números distintos de dos temas distintos.</td></tr>
+          <tr><td>Tubería secundaria</td><td>Tubería de servicio</td><td>La secundaria se ramifica por zonas; la de servicio es la bajante al equipo, con acople rápido y FRL.</td></tr>
+          <tr><td>Schedule 40</td><td>Schedule 10</td><td>40 = acero negro, 10 = inoxidable.</td></tr>
+          <tr><td>Cobre 17 bar</td><td>Cobre 204 °C</td><td>17 es presión, 204 es temperatura.</td></tr>
+          <tr><td>Plomo 183 °C</td><td>Plata 618–982 °C</td><td>El plomo funde bajo y por eso no se recomienda.</td></tr>
+          <tr><td>Aluminio 15–80 °C</td><td>Cobre 204 °C</td><td>El aluminio tiene rango mucho más acotado.</td></tr>
+          <tr><td>Termoplástico resiste aceites</td><td>Termoplástico resiste UV</td><td>Resiste aceites (está formulado para eso); no resiste UV.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="resumen">En resumen</h2>
+      <p>La red tiene <strong>tres niveles</strong>. La <strong>principal</strong> sale del pulmón y lleva todo el caudal. Las <strong>secundarias</strong> se ramifican por zonas y llevan la suma de lo que de ellas se deriva. Las <strong>de servicio</strong> o bajantes alimentan cada equipo, llevan acople rápido y FRL, y no bajan de <span class="val">1/2"</span>. En los tres niveles se prevé margen para ampliaciones.</p>
+      <p>Hay <strong>dos topologías</strong>. La <strong>abierta</strong> es una sola línea principal: barata, con pendiente de <span class="val">0,5 a 2 %</span> en la dirección del flujo para arrastrar el condensado, pero una reparación corta el suministro aguas abajo y detiene la producción. La <strong>cerrada</strong> es un anillo: más cara, permite reparar sin cortar producción, pero <strong>el flujo no tiene dirección constante</strong>, y por eso no se puede eliminar el condensado por pendiente y <strong>hay que incorporar secador</strong>.</p>
+      <p>La toma de aire para una bajante se hace <strong>siempre por la parte superior</strong> de la cañería, mediante un <strong>cuello de cisne</strong>, porque el condensado circula por el fondo del caño.</p>
+      <p>El montaje es <strong>siempre aéreo</strong>, con trazado lo más recto posible, sin contacto con cables eléctricos, con libertad de dilatación y con válvulas de bloqueo frecuentes. Todo cambio brusco de dirección o inclinación acumula condensado y necesita purga.</p>
+      <p>Los <strong>materiales</strong> son metálicos y termoplásticos. <strong>Acero negro Sch 40</strong>: el más común, barato y durable, roscado hasta 76 mm, pero se corroe. <strong>Galvanizado</strong>: mejor al principio, pero el recubrimiento se desprende y contamina. <strong>Inoxidable Sch 10</strong>: liviano y anticorrosivo, un solo cordón de soldadura, pero requiere soldadores profesionales y no sella roscado. <strong>Cobre</strong>: 17 bar, hasta 204 °C, falla predecible, nunca soldar con plomo. <strong>Aluminio extruido y anodizado</strong>: liviano, interior liso, racores sin obstrucción, montaje sin soldador, pero solo de 15 a 80 °C. <strong>Termoplástico de PE</strong>: se une por termofusión, resiste aceites, no resiste UV, no se instala bajo 5 °C y necesita 24 a 48 h de aclimatación.</p>
+      <p class="mb-0">Los <strong>accesorios</strong> de acero son roscados BSP o NPT hasta 4"; más allá, bridados o soldados. Los de aluminio son <strong>racores</strong>. Cada accesorio suma longitud equivalente y por eso el trazado se busca recto.</p>
+
+      <h2 id="s10">Banco de preguntas de opción múltiple</h2>
+      <p class="text-soft small">Formato tipo parcial. Respondé una a la vez: el feedback aparece apenas elegís una opción.</p>
+      <div id="quiz"></div>
+      <script type="application/json" id="quiz-data">
+[
+  { "tema": "Bloque 4", "q": "La tubería que sale del depósito y canaliza la totalidad del caudal se denomina…", "opts": ["tubería de servicio", "tubería principal", "tubería secundaria", "bajante"], "ok": 1, "fb": " Principal: sale del pulmón, lleva todo el caudal y se le prevé margen de crecimiento." },
+  { "tema": "Bloque 4", "q": "Según el apunte, en las tuberías de servicio debe evitarse utilizar secciones menores a…", "opts": ["1/4\"", "3/8\"", "1/2\"", "1\""], "ok": 2, "fb": " Es el mínimo explícito para bajantes." },
+  { "tema": "Bloque 4", "q": "La pendiente que debe darse a las tuberías de una red abierta es de…", "opts": ["0,1 a 0,5 %", "0,5 a 2 %", "2 a 5 %", "5 a 10 %"], "ok": 1, "fb": " En la dirección del flujo, para conducir y eliminar el condensado. El 5 a 10 % es el tope de fugas admisibles, que es otro tema." },
+  { "tema": "Bloque 4", "q": "La principal desventaja de la red abierta es…", "opts": ["su elevada inversión inicial", "la falta de dirección constante del flujo", "que una reparación puede detener el suministro aguas abajo y parar la producción", "la imposibilidad de eliminar el condensado"], "ok": 2, "fb": " La inversión baja es su ventaja, y el condensado lo maneja bien por pendiente. El problema es el mantenimiento." },
+  { "tema": "Bloque 4", "q": "En una red cerrada es necesario incorporar secadores porque…", "opts": ["el aire circula a mayor velocidad", "la falta de dirección constante del flujo dificulta la eliminación del condensado", "la mayor longitud de cañería enfría más el aire", "las purgas automáticas no funcionan en anillo"], "ok": 1, "fb": " Sin dirección fija, la pendiente no arrastra el agua a un punto de purga definido, así que hay que sacarla antes de que entre." },
+  { "tema": "Bloque 4", "q": "La toma de aire para una bajante debe hacerse…", "opts": ["por la parte inferior de la tubería, aprovechando la gravedad", "por la parte superior de la tubería, mediante un cuello de cisne", "indistintamente, siempre que haya purga", "por el lateral, a 45°"], "ok": 1, "fb": " El condensado circula por el fondo del caño; derivar por abajo sería darle un desagüe directo a la herramienta." },
+  { "tema": "Bloque 4", "q": "Las tuberías de acero negro Schedule 40 de diámetro menor a 76 mm se unen normalmente…", "opts": ["por termofusión", "roscadas", "con bridas", "con racores"], "ok": 1, "fb": " Por encima de 76 mm se pasa a soldadura y bridas." },
+  { "tema": "Bloque 4", "q": "¿Cuántos cordones de soldadura requiere una unión soldada de acero negro, frente al acero inoxidable?", "opts": ["1 contra 3", "3 contra 1", "2 contra 2", "3 contra 2"], "ok": 1, "fb": " El acero negro necesita soldadura, rellenado y cobertura; el inoxidable, un solo cordón." },
+  { "tema": "Bloque 4", "q": "Los tubos de cobre tipo M hard, L hard y K soft funcionan a una presión de…", "opts": ["7 bar", "10 bar", "17 bar", "25 bar"], "ok": 2, "fb": " Y resisten temperaturas de hasta 204 °C." },
+  { "tema": "Bloque 4", "q": "Respecto de la soldadura de tubos de cobre, el apunte indica que…", "opts": ["la soldadura de plomo es la recomendada por su bajo punto de fusión", "la soldadura de plomo no se recomienda: tiene baja resistencia y funde a 183 °C", "las soldaduras de plata funden a 183 °C", "el cobre no admite soldadura de ningún tipo"], "ok": 1, "fb": " Las de plata o soldaduras duras funden entre 618 y 982 °C y no deben confundirse con las de plomo." },
+  { "tema": "Bloque 4", "q": "El rango de temperatura de operación de las tuberías de aluminio extruido y anodizado es de aproximadamente…", "opts": ["0 a 50 °C", "15 a 80 °C", "5 a 120 °C", "−20 a 204 °C"], "ok": 1, "fb": " Puede variar según las marcas, pero es un rango notablemente más acotado que el del cobre." },
+  { "tema": "Bloque 4", "q": "Una ventaja específica del aluminio frente al acero, en términos de pérdida de carga, es que…", "opts": ["admite mayor velocidad de circulación", "trabaja a mayor presión", "su superficie interior es más lisa y el diámetro interior de las conexiones coincide con el del tubo", "permite mayores pendientes"], "ok": 2, "fb": " Menos fricción distribuida y sin escalones en las uniones." },
+  { "tema": "Bloque 4", "q": "Las tuberías termoplásticas para aire comprimido se fabrican con resina de polietileno formulada para resistir…", "opts": ["la radiación ultravioleta", "los aceites sintéticos y minerales usados en la lubricación de compresores", "temperaturas superiores a 100 °C", "presiones superiores a 17 bar"], "ok": 1, "fb": " Justamente no resisten los rayos UV y deben protegerse de la luz solar directa." },
+  { "tema": "Bloque 4", "q": "Antes de soldar por termofusión un sistema termoplástico, el apunte recomienda…", "opts": ["precalentar el material a 40 °C", "dejar pasar de 24 a 48 horas para que el material se adapte a la temperatura ambiente", "instalarlo preferentemente con temperaturas por debajo de 5 °C", "aplicar una imprimación epoxi"], "ok": 1, "fb": " Y además no instalar con temperatura ambiente menor a 5 °C, ni con viento o lluvia." },
+  { "tema": "Bloque 4", "q": "El problema del acero galvanizado a largo plazo es que…", "opts": ["pierde resistencia mecánica por fatiga", "el recubrimiento se desprende y se convierte en fuente de contaminantes", "no admite roscado", "reacciona con el aceite del compresor"], "ok": 1, "fb": " Retrasa la corrosión, pero cuando aparece, el galvanizado desprendido daña componentes aguas abajo." },
+  { "tema": "Bloque 4", "q": "Los accesorios de las tuberías de acero son roscados (BSP o NPT) hasta un tamaño de…", "opts": ["2 pulgadas", "3 pulgadas", "4 pulgadas", "6 pulgadas"], "ok": 2, "fb": " Para dimensiones superiores se recurre a uniones bridadas o soldadas." }
+]
+      </script>
+
+      <h2 id="s11">Conexión con el Bloque 5</h2>
+      <p>La red ya llega hasta la bajante. Pero entre la bajante y la herramienta todavía falta algo.</p>
+      <p>El aire que viaja por la red está tratado para un promedio de la planta, a una presión de distribución de 7 a 8 bar. Cada consumo individual, en cambio, puede necesitar <strong>menos presión</strong> de la que se distribuye, puede necesitar <strong>aceite de lubricación</strong> que la red no tiene, y siempre necesita un <strong>último filtrado local</strong> que retenga lo que la propia cañería aportó en el camino: óxido, escamas, condensado que se formó después del secador.</p>
+      <p class="mb-0">Ese último tramo, el que adapta el aire genérico de la red a las necesidades particulares de cada máquina, es la <strong>unidad de mantenimiento FRL</strong>. Es el tema del Bloque 5, y es el último componente antes de la herramienta.</p>
+
+      <div class="callout callout--duda">
+        <p class="callout__title">◆ Figuras del apunte pendientes de incorporar</p>
+        <p class="mb-0">Estas figuras están citadas en el texto pero todavía no se recortaron del PDF de cátedra: Fig. 52 (p. 54, esquema de red abierta, ref. 1 a 5), Fig. 53 (p. 55, esquema de red cerrada, ref. 1 a 4), Fig. 64 (p. 73, accesorios roscados de acero), Figs. 65 a 67 (pp. 73–75, racores de aluminio) y Figs. 68 a 70 (pp. 75–76, accesorios termoplásticos y termofusión). Los tres gráficos de elaboración propia de este bloque (cuello de cisne, esquema de red por niveles y comparación de materiales) ya están incorporados arriba.</p>
+      </div>
+
+      <nav class="pager"></nav>
+
+      <p class="page-foot">
+        Bloque 4 de la unidad de Aire Comprimido · Instalaciones Industriales · Ing. Luciano Manavella · UTN Facultad Regional Córdoba.<br>
+        Figuras 52, 53 y 64 a 70 del apunte de cátedra, pendientes de recortar e incorporar. Los gráficos en color son de elaboración propia.
+      </p>
+
+    </main>
+    <aside class="toc" aria-label="Contenido de la página"></aside>
+  </div>
+</div>
+
+<script src="../../assets/js/site.js"></script>
+<script src="../../assets/js/study.js"></script>
+</body>
+</html>
